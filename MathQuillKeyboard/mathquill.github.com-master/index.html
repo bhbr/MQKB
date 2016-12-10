@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+
+<meta name="viewport" content="width=800">
+
+<title>MathQuill: Easily type math into your webapp</title>
+
+<link rel="stylesheet" type="text/css" href="support/home.css">
+<link rel="stylesheet" type="text/css" href="lib/mathquill.css">
+<link rel="stylesheet" type="text/css" href="support/keys.css">
+
+<style>
+main {
+  background-image: url("../images/quill_2_opacity.png");
+  background-position: 50% 0%;
+  background-repeat: no-repeat;
+}
+h1, h2 {
+  text-align: center;
+}
+h1 {
+  font-size: 4em;
+  font-weight: 200;
+  margin: .8em 0 0;
+}
+h2 {
+  font: 200 1.1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 0;
+}
+h3:target, h3.target {
+  background: #F4ECFF;
+  margin: 1.9em -.2em -.1em -.2em;
+  padding: .1em .2em;
+}
+
+#pre-partner-tree {
+  margin-bottom: 0;
+}
+#partner-tree {
+  height: 280px;
+  position: relative;
+}
+#quill_small {
+  width: 100px;
+
+  position: absolute;
+  top: 0;
+  left: 250px;
+}
+#partner-tree .line {
+  border-left: solid 1px lightgray;
+
+  display: inline-block;
+  position: absolute;
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+}
+#sapientdocs-line {
+  height: 99px;
+  top: 91px;
+  left: 232px;
+  -webkit-transform: rotate(79deg);
+  transform: rotate(79deg);
+}
+#sapientdocs {
+  width: 120px;
+
+  position: absolute;
+  top: 80px;
+  left: 0;
+}
+#desmos-line {
+  height: 118px;
+  top: 109px;
+  left: 253px;
+  -webkit-transform: rotate(54deg);
+  transform: rotate(54deg);
+}
+#desmos {
+  width: 175px;
+
+  position: absolute;
+  top: 184px;
+  left: 64px;
+}
+#learnosity {
+  width: 220px;
+
+  position: absolute;
+  top: 230px;
+  left: 228px;
+}
+#learnosity-line {
+  z-index: 1;
+  height: 133px;
+  top: 109px;
+  left: 310px;
+  -webkit-transform: rotate(-22deg);
+  transform: rotate(-22deg);
+}
+#you-line {
+  height: 115px;
+
+  position: absolute;
+  left: 352px;
+  top: 87px;
+  -webkit-transform: rotate(-72deg);
+  transform: rotate(-72deg);
+}
+#you {
+  margin: 0;
+
+  position: absolute;
+  top: 100px;
+  left: 475px;
+
+  font-family: Helvetica, Arial, sans-serif;
+  color: #aaa;
+
+  font-size: 18px;
+  line-height: 1.2;
+}
+#you a {
+  color: #6e6ee2;
+}
+#you #your-logo { /* lol specificity war with `#you a` */
+  display: block;
+  text-align: center;
+  color: inherit;
+
+  line-height: 45px;
+  font-size: 20px;
+
+  -webkit-border-radius: .5em;
+  border-radius: .5em;
+  border: dashed 2px;
+  margin-bottom: .2em;
+}
+
+#community-links * {
+  vertical-align: middle;
+}
+#community-links > * {
+  padding-right: 1em;
+}
+code {
+  font-size: 1.1em;
+}
+
+
+.github-mention {
+  color: black;
+  font: .9em "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+a.github-mention {
+  font-weight: bold;
+}
+</style>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript" src="lib/mathquill.js"></script>
+
+</head>
+<body>
+<nav>
+  <span id="nav-home">MathQuill</span>
+  <a href="http://github.com/mathquill/mathquill" class="github-corner"><svg width="100" height="100" viewBox="0 0 250 250" style="fill: #508; color: white; border: 0; float: right;"><title>Fork me on GitHub</title><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+  <div>
+    <a href="/#community" id="nav-community">Community</a>
+    <a href="http://docs.mathquill.com">Docs</a>
+    <a href="http://github.com/mathquill/mathquill">Source</a>
+    <a href="/partners.html">Partners</a>
+  </div>
+
+  <script>
+  $.easing.easeInOutExpo = function (x, t, b, c, d) {
+    if (t==0) return b;
+    if (t==d) return b+c;
+    if ((t/=d/2) < 1) return c/2 * Math.pow(2, 10 * (t - 1)) + b;
+    return c/2 * (-Math.pow(2, -10 * --t) + 2) + b;
+  };
+  $('#nav-community').click(function() {
+    if (history.pushState) {
+      history.pushState(null, null, '#community');
+
+      // ugh https://github.com/whatwg/html/issues/639
+      $('#community').addClass('target');
+      $(window).one('popstate', function() { $('#community').removeClass('target'); });
+    }
+    $('html, body').stop().animate({
+      scrollTop: $('#community').offset().top,
+    }, 600, 'easeInOutExpo', function() {
+      if (!history.pushState) location.hash = '#community';
+    });
+    return false;
+  });
+  </script>
+</nav>
+<main>
+
+<h1>MathQuill</h1>
+<h2>Easily type math in your webapp</h2>
+
+<p id="animation">
+  Easily type math:
+  <span id="math-field-animated"></span>
+  <kbd class="light"></kbd>
+  <span id="continue-typing">demo typing</span>
+</p>
+
+<script>
+var MQ = MathQuill.getInterface(2); // for backcompat
+var mathFieldAnimated = MQ.MathField($('#math-field-animated')[0], {
+  spaceBehavesLikeTab: true
+});
+mathFieldAnimated.focus()
+$('#math-field-animated').on('focusout.animation mousedown.animation keydown.animation', function() {
+  clearTimeout(animationId);
+  $('kbd').fadeOut(1000);
+  var containerCoords = $('#animation').offset();
+  var mathFieldCoords = $('#math-field-animated').offset();
+  $('#continue-typing').show().css({
+    top: mathFieldCoords.top - containerCoords.top + $('#math-field-animated').height() + 12,
+    left: mathFieldCoords.left - containerCoords.left + ($('#math-field-animated').width() - $('#continue-typing').outerWidth())/2
+  });
+});
+$('#continue-typing').click(function() {
+  $(this).hide();
+  mathFieldAnimated.focus();
+
+  var alteredLatex = mathFieldAnimated.latex();
+
+  // make sure we're back in the state we were before the
+  // viewer interacted with the math field, by clearing it
+  // then insta-running the whole typing sequence
+  mathFieldAnimated.latex('');
+  for (var i = 0; i < nextCharIndex; i += 1) {
+    // Type numerator
+    if (i < exprLength) {
+      if (expression[i] === ' ') mathFieldAnimated.keystroke('Spacebar');
+      else mathFieldAnimated.typedText(expression[i]);
+    // Select numerator
+    } else if (i >= exprLength && i < exprLength + selectLength) {
+      mathFieldAnimated.keystroke('Shift-Left');
+    // Type denominator
+    } else {
+      mathFieldAnimated.typedText(expressionDenom[i - exprLength - selectLength]);
+    }
+  }
+
+  // if the LaTeX hadn't been altered at all, forge ahead with typing
+  if (mathFieldAnimated.latex() === alteredLatex) {
+    animateTyping();
+  // but if it had been altered and was just reset, standard brief pause
+  } else {
+   animationId = setTimeout(animateTyping, 500);
+  }
+});
+
+var expression = 'x=-b\\pm \\sqrt b^2 -4ac';
+var exprLength = expression.length;
+var selectLength = 10;
+var expressionDenom = '/2a';
+var nextCharIndex = 0;
+
+function showKeystroke(key) {
+  var cursorCoords = $('#animation .mq-cursor, #animation .mq-selection').offset();
+  var containerCoords = $('#animation').offset();
+  $('kbd').text(key).stop().css({
+    display: 'inline',
+    opacity: 1,
+    top: $('#math-field-animated').offset().top - containerCoords.top + $('#math-field-animated').height() + 10,
+    left: cursorCoords.left - containerCoords.left - ($('kbd').outerWidth()/2) + 2
+  });
+}
+
+var animationId = setTimeout(animateTyping, 1500);
+function animateTyping() {
+  // Type numerator
+  if (nextCharIndex < exprLength) {
+    var character = expression[nextCharIndex];
+    if (character == ' ') {
+      mathFieldAnimated.keystroke('Spacebar');
+      showKeystroke('Space');
+    } else {
+      mathFieldAnimated.typedText(character);
+      showKeystroke(character);
+    }
+
+  // Select numerator
+  } else if (nextCharIndex >= exprLength && nextCharIndex < exprLength + selectLength) {
+    mathFieldAnimated.keystroke('Shift-Left');
+    showKeystroke('Shift-Left');
+    nextCharIndex++;
+    animationId = setTimeout(animateTyping, 150);
+    return;
+
+  // Type denominator
+  } else {
+    var denomIndex = nextCharIndex - (exprLength + selectLength);
+    var character = expressionDenom[denomIndex];
+    mathFieldAnimated.typedText(character);
+    showKeystroke(character);
+    if (denomIndex === 0) {
+      nextCharIndex++;
+      animationId = setTimeout(animateTyping, 600);
+      return;
+    }
+  }
+
+  if (nextCharIndex < (exprLength + selectLength + expressionDenom.length - 1)) {
+   nextCharIndex++;
+   animationId = setTimeout(animateTyping, 500);
+  } else {
+    $('kbd').fadeOut(1000);
+    $('#math-field-animated').off('.animation');
+  }
+}
+</script>
+
+<p>In your webapp:</p>
+
+<div id="example">
+  <p>Type math here: <span id="math-field"></span></p>
+  <p>LaTeX of what you typed: <code id="latex"></code></p>
+
+  <script>
+  var mathFieldSpan = document.getElementById('math-field');
+  var latexSpan = document.getElementById('latex');
+
+  var MQ = MathQuill.getInterface(2); // for backcompat
+  var mathField = MQ.MathField(mathFieldSpan, {
+    spaceBehavesLikeTab: true, // configurable
+    handlers: {
+      edit: function() { // useful event handlers
+        latexSpan.textContent = mathField.latex(); // simple API
+      }
+    }
+  });
+  </script>
+</div>
+
+<!--- Syntax highlighting courtesy of rouge.jneen.net -->
+<pre class="highlight">
+<span class="nt">&lt;p&gt;</span>Type math here: <span class="nt">&lt;span</span> <span class="na">id=</span><span class="s">"math-field"</span><span class="nt">&gt;&lt;/span&gt;&lt;/p&gt;</span>
+<span class="nt">&lt;p&gt;</span>LaTeX of what you typed: <span class="nt">&lt;span</span> <span class="na">id=</span><span class="s">"latex"</span><span class="nt">&gt;&lt;/span&gt;&lt;/p&gt;</span>
+
+<span class="nt">&lt;script&gt;</span>
+<span class="kd">var</span> <span class="nx">mathFieldSpan</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'math-field'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">latexSpan</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'latex'</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">MQ</span> <span class="o">=</span> <span class="nx">MathQuill</span><span class="p">.</span><span class="nx">getInterface</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span> <span class="c1">// for backcompat</span>
+<span class="kd">var</span> <span class="nx">mathField</span> <span class="o">=</span> <span class="nx">MQ</span><span class="p">.</span><span class="nx">MathField</span><span class="p">(</span><span class="nx">mathFieldSpan</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">spaceBehavesLikeTab</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="c1">// configurable</span>
+  <span class="na">handlers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">edit</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="c1">// useful event handlers</span>
+      <span class="nx">latexSpan</span><span class="p">.</span><span class="nx">textContent</span> <span class="o">=</span> <span class="nx">mathField</span><span class="p">.</span><span class="nx">latex</span><span class="p">();</span> <span class="c1">// simple API</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+<span class="nt">&lt;/script&gt;</span>
+</pre>
+
+<h3>Usage</h3>
+<p>See the <a href="http://docs.mathquill.com/en/latest/Getting_Started/">Getting Started Guide</a> on Read the Docs.</p>
+
+<h3 id="community">Community</h3>
+<p>We love offering help and receiving feedback:</p>
+<p id="community-links"><script async defer src="http://slackin.mathquill.com/slackin.js?large"></script> <a href="irc://irc.freenode.net/mathquill" class="no-underline"><img alt="freenode irc: #mathquill" src="https://img.shields.io/badge/freenode%20irc-%23mathquill-brightgreen.svg" style="height: 1.2em" /></a> <a href="https://twitter.com/intent/tweet?screen_name=MathQuill" class="twitter-mention-button" data-size="large" data-related="MathQuill" data-dnt="true">Tweet to @MathQuill</a>
+<p>Or, email us: <a href="mailto:maintainers@mathquill.com"><code>maintainers@mathquill.com</code></a></p>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></p>
+
+<h3>Partners</h3>
+<p id="pre-partner-tree">Ongoing development is thanks to <a href="/partners.html">our innovative partners</a>:</p>
+<div id="partner-tree">
+  <img id="quill_small" src="/images/quill_small.png">
+  <span class="line" id="sapientdocs-line"></span>
+  <a title="Coming soon!"><img id="sapientdocs" src="/images/partner_logos/sapientdocs.png"></a>
+  <span class="line" id="desmos-line"></span>
+  <a href="http://desmos.com"><img id="desmos" src="/images/partner_logos/desmos.png"></a>
+  <a href="https://www.learnosity.com"><img id="learnosity" src="/images/partner_logos/learnosity.jpg"></a>
+  <span class="line" id="learnosity-line"></span>
+  <span class="line" id="you-line"></span>
+  <p id="you">
+    <a id="your-logo" class="no-underline" href="/partners.html" title="this could be us but you playin'">You</a>
+    Use MathQuill? <a href="/partners.html">Partner with us</a> so we can work more closely with you!
+  </p>
+</div>
+
+<h3>About</h3>
+<p>MathQuill is an open source formula editor for the Web maintained by <a href="http://github.com/laughinghan" title="Han" class="github-mention">@laughinghan</a> and <a href="http://github.com/stufflebear" title="Mary" class="github-mention">@stufflebear</a>.</p>
+<p>MathQuill was born of a need to communicate math. The creators, <span class="github-mention">@laughinghan</span> and <a href="http://github.com/jneen" title="Jeanine" class="github-mention">@jneen</a>, used LaTeX for projects together, but struggled to collaborate online once they were apart. They wanted a tool to both write and read math without resorting to ugly flat text or more cumbersome conventions.</p>
+<p>After a couple of iterations, MathQuill had become widely useful. Today, MathQuill is used in educational software, math visualizations, collaborative editors, and more.</p>
+
+</main>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-73742753-2', 'auto');
+  ga('send', 'pageview');
+</script>
+</body>
+</html>

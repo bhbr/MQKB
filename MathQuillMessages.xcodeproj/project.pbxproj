@@ -1,0 +1,690 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B59A0D151DFC76E10004F6E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59A0D141DFC76E10004F6E7 /* AppDelegate.swift */; };
+		B59A0D171DFC76E10004F6E7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59A0D161DFC76E10004F6E7 /* ViewController.swift */; };
+		B59A0D1A1DFC76E10004F6E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B59A0D181DFC76E10004F6E7 /* Main.storyboard */; };
+		B59A0D1C1DFC76E10004F6E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B59A0D1B1DFC76E10004F6E7 /* Assets.xcassets */; };
+		B59A0D1F1DFC76E10004F6E7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B59A0D1D1DFC76E10004F6E7 /* LaunchScreen.storyboard */; };
+		B59A0D2A1DFC76E10004F6E7 /* MathQuillMessagesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59A0D291DFC76E10004F6E7 /* MathQuillMessagesTests.swift */; };
+		B59A0D351DFC76E10004F6E7 /* MathQuillMessagesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59A0D341DFC76E10004F6E7 /* MathQuillMessagesUITests.swift */; };
+		B59A0D491DFC77530004F6E7 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59A0D481DFC77530004F6E7 /* KeyboardViewController.swift */; };
+		B59A0D4D1DFC77530004F6E7 /* MathQuillKeyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B59A0D461DFC77520004F6E7 /* MathQuillKeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B59A0D551DFC77BB0004F6E7 /* MQKBView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B59A0D541DFC77BB0004F6E7 /* MQKBView.xib */; };
+		B59A0D571DFC77EE0004F6E7 /* mystyle.css in Resources */ = {isa = PBXBuildFile; fileRef = B59A0D561DFC77EE0004F6E7 /* mystyle.css */; };
+		B59A0D591DFC78160004F6E7 /* test.html in Resources */ = {isa = PBXBuildFile; fileRef = B59A0D581DFC78160004F6E7 /* test.html */; };
+		B59A0D5A1DFC78160004F6E7 /* test.html in Resources */ = {isa = PBXBuildFile; fileRef = B59A0D581DFC78160004F6E7 /* test.html */; };
+		B59A0D5B1DFC78160004F6E7 /* test.html in Resources */ = {isa = PBXBuildFile; fileRef = B59A0D581DFC78160004F6E7 /* test.html */; };
+		B59A0D5C1DFC78160004F6E7 /* test.html in Resources */ = {isa = PBXBuildFile; fileRef = B59A0D581DFC78160004F6E7 /* test.html */; };
+		B59A0D5E1DFC7CCA0004F6E7 /* mathquill.github.com-master in Resources */ = {isa = PBXBuildFile; fileRef = B59A0D5D1DFC7CCA0004F6E7 /* mathquill.github.com-master */; };
+		B59A0D5F1DFC7CCA0004F6E7 /* mathquill.github.com-master in Resources */ = {isa = PBXBuildFile; fileRef = B59A0D5D1DFC7CCA0004F6E7 /* mathquill.github.com-master */; };
+		B59A0D601DFC7CCA0004F6E7 /* mathquill.github.com-master in Resources */ = {isa = PBXBuildFile; fileRef = B59A0D5D1DFC7CCA0004F6E7 /* mathquill.github.com-master */; };
+		B59A0D611DFC7CCA0004F6E7 /* mathquill.github.com-master in Resources */ = {isa = PBXBuildFile; fileRef = B59A0D5D1DFC7CCA0004F6E7 /* mathquill.github.com-master */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B59A0D261DFC76E10004F6E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B59A0D091DFC76E10004F6E7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B59A0D101DFC76E10004F6E7;
+			remoteInfo = MathQuillMessages;
+		};
+		B59A0D311DFC76E10004F6E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B59A0D091DFC76E10004F6E7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B59A0D101DFC76E10004F6E7;
+			remoteInfo = MathQuillMessages;
+		};
+		B59A0D4B1DFC77530004F6E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B59A0D091DFC76E10004F6E7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B59A0D451DFC77520004F6E7;
+			remoteInfo = MathQuillKeyboard;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B59A0D511DFC77530004F6E7 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				B59A0D4D1DFC77530004F6E7 /* MathQuillKeyboard.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		B59A0D111DFC76E10004F6E7 /* MathQuillMessages.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MathQuillMessages.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B59A0D141DFC76E10004F6E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B59A0D161DFC76E10004F6E7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B59A0D191DFC76E10004F6E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B59A0D1B1DFC76E10004F6E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B59A0D1E1DFC76E10004F6E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B59A0D201DFC76E10004F6E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B59A0D251DFC76E10004F6E7 /* MathQuillMessagesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MathQuillMessagesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B59A0D291DFC76E10004F6E7 /* MathQuillMessagesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathQuillMessagesTests.swift; sourceTree = "<group>"; };
+		B59A0D2B1DFC76E10004F6E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B59A0D301DFC76E10004F6E7 /* MathQuillMessagesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MathQuillMessagesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B59A0D341DFC76E10004F6E7 /* MathQuillMessagesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathQuillMessagesUITests.swift; sourceTree = "<group>"; };
+		B59A0D361DFC76E10004F6E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B59A0D461DFC77520004F6E7 /* MathQuillKeyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MathQuillKeyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		B59A0D481DFC77530004F6E7 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
+		B59A0D4A1DFC77530004F6E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B59A0D541DFC77BB0004F6E7 /* MQKBView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MQKBView.xib; sourceTree = "<group>"; };
+		B59A0D561DFC77EE0004F6E7 /* mystyle.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = mystyle.css; sourceTree = "<group>"; };
+		B59A0D581DFC78160004F6E7 /* test.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = test.html; sourceTree = "<group>"; };
+		B59A0D5D1DFC7CCA0004F6E7 /* mathquill.github.com-master */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "mathquill.github.com-master"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B59A0D0E1DFC76E10004F6E7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B59A0D221DFC76E10004F6E7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B59A0D2D1DFC76E10004F6E7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B59A0D431DFC77520004F6E7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B59A0D081DFC76E10004F6E7 = {
+			isa = PBXGroup;
+			children = (
+				B59A0D131DFC76E10004F6E7 /* MathQuillMessages */,
+				B59A0D281DFC76E10004F6E7 /* MathQuillMessagesTests */,
+				B59A0D331DFC76E10004F6E7 /* MathQuillMessagesUITests */,
+				B59A0D471DFC77530004F6E7 /* MathQuillKeyboard */,
+				B59A0D121DFC76E10004F6E7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B59A0D121DFC76E10004F6E7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B59A0D111DFC76E10004F6E7 /* MathQuillMessages.app */,
+				B59A0D251DFC76E10004F6E7 /* MathQuillMessagesTests.xctest */,
+				B59A0D301DFC76E10004F6E7 /* MathQuillMessagesUITests.xctest */,
+				B59A0D461DFC77520004F6E7 /* MathQuillKeyboard.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B59A0D131DFC76E10004F6E7 /* MathQuillMessages */ = {
+			isa = PBXGroup;
+			children = (
+				B59A0D141DFC76E10004F6E7 /* AppDelegate.swift */,
+				B59A0D161DFC76E10004F6E7 /* ViewController.swift */,
+				B59A0D181DFC76E10004F6E7 /* Main.storyboard */,
+				B59A0D1B1DFC76E10004F6E7 /* Assets.xcassets */,
+				B59A0D1D1DFC76E10004F6E7 /* LaunchScreen.storyboard */,
+				B59A0D201DFC76E10004F6E7 /* Info.plist */,
+			);
+			path = MathQuillMessages;
+			sourceTree = "<group>";
+		};
+		B59A0D281DFC76E10004F6E7 /* MathQuillMessagesTests */ = {
+			isa = PBXGroup;
+			children = (
+				B59A0D291DFC76E10004F6E7 /* MathQuillMessagesTests.swift */,
+				B59A0D2B1DFC76E10004F6E7 /* Info.plist */,
+			);
+			path = MathQuillMessagesTests;
+			sourceTree = "<group>";
+		};
+		B59A0D331DFC76E10004F6E7 /* MathQuillMessagesUITests */ = {
+			isa = PBXGroup;
+			children = (
+				B59A0D341DFC76E10004F6E7 /* MathQuillMessagesUITests.swift */,
+				B59A0D361DFC76E10004F6E7 /* Info.plist */,
+			);
+			path = MathQuillMessagesUITests;
+			sourceTree = "<group>";
+		};
+		B59A0D471DFC77530004F6E7 /* MathQuillKeyboard */ = {
+			isa = PBXGroup;
+			children = (
+				B59A0D5D1DFC7CCA0004F6E7 /* mathquill.github.com-master */,
+				B59A0D481DFC77530004F6E7 /* KeyboardViewController.swift */,
+				B59A0D561DFC77EE0004F6E7 /* mystyle.css */,
+				B59A0D581DFC78160004F6E7 /* test.html */,
+				B59A0D541DFC77BB0004F6E7 /* MQKBView.xib */,
+				B59A0D4A1DFC77530004F6E7 /* Info.plist */,
+			);
+			path = MathQuillKeyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B59A0D101DFC76E10004F6E7 /* MathQuillMessages */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B59A0D391DFC76E10004F6E7 /* Build configuration list for PBXNativeTarget "MathQuillMessages" */;
+			buildPhases = (
+				B59A0D0D1DFC76E10004F6E7 /* Sources */,
+				B59A0D0E1DFC76E10004F6E7 /* Frameworks */,
+				B59A0D0F1DFC76E10004F6E7 /* Resources */,
+				B59A0D511DFC77530004F6E7 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B59A0D4C1DFC77530004F6E7 /* PBXTargetDependency */,
+			);
+			name = MathQuillMessages;
+			productName = MathQuillMessages;
+			productReference = B59A0D111DFC76E10004F6E7 /* MathQuillMessages.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B59A0D241DFC76E10004F6E7 /* MathQuillMessagesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B59A0D3C1DFC76E10004F6E7 /* Build configuration list for PBXNativeTarget "MathQuillMessagesTests" */;
+			buildPhases = (
+				B59A0D211DFC76E10004F6E7 /* Sources */,
+				B59A0D221DFC76E10004F6E7 /* Frameworks */,
+				B59A0D231DFC76E10004F6E7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B59A0D271DFC76E10004F6E7 /* PBXTargetDependency */,
+			);
+			name = MathQuillMessagesTests;
+			productName = MathQuillMessagesTests;
+			productReference = B59A0D251DFC76E10004F6E7 /* MathQuillMessagesTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		B59A0D2F1DFC76E10004F6E7 /* MathQuillMessagesUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B59A0D3F1DFC76E10004F6E7 /* Build configuration list for PBXNativeTarget "MathQuillMessagesUITests" */;
+			buildPhases = (
+				B59A0D2C1DFC76E10004F6E7 /* Sources */,
+				B59A0D2D1DFC76E10004F6E7 /* Frameworks */,
+				B59A0D2E1DFC76E10004F6E7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B59A0D321DFC76E10004F6E7 /* PBXTargetDependency */,
+			);
+			name = MathQuillMessagesUITests;
+			productName = MathQuillMessagesUITests;
+			productReference = B59A0D301DFC76E10004F6E7 /* MathQuillMessagesUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		B59A0D451DFC77520004F6E7 /* MathQuillKeyboard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B59A0D4E1DFC77530004F6E7 /* Build configuration list for PBXNativeTarget "MathQuillKeyboard" */;
+			buildPhases = (
+				B59A0D421DFC77520004F6E7 /* Sources */,
+				B59A0D431DFC77520004F6E7 /* Frameworks */,
+				B59A0D441DFC77520004F6E7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MathQuillKeyboard;
+			productName = MathQuillKeyboard;
+			productReference = B59A0D461DFC77520004F6E7 /* MathQuillKeyboard.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B59A0D091DFC76E10004F6E7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0810;
+				LastUpgradeCheck = 0810;
+				ORGANIZATIONNAME = "Ben Hambrecht";
+				TargetAttributes = {
+					B59A0D101DFC76E10004F6E7 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 8T6F76KZ56;
+						ProvisioningStyle = Automatic;
+					};
+					B59A0D241DFC76E10004F6E7 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 8T6F76KZ56;
+						ProvisioningStyle = Automatic;
+						TestTargetID = B59A0D101DFC76E10004F6E7;
+					};
+					B59A0D2F1DFC76E10004F6E7 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 8T6F76KZ56;
+						ProvisioningStyle = Automatic;
+						TestTargetID = B59A0D101DFC76E10004F6E7;
+					};
+					B59A0D451DFC77520004F6E7 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 8T6F76KZ56;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = B59A0D0C1DFC76E10004F6E7 /* Build configuration list for PBXProject "MathQuillMessages" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B59A0D081DFC76E10004F6E7;
+			productRefGroup = B59A0D121DFC76E10004F6E7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B59A0D101DFC76E10004F6E7 /* MathQuillMessages */,
+				B59A0D241DFC76E10004F6E7 /* MathQuillMessagesTests */,
+				B59A0D2F1DFC76E10004F6E7 /* MathQuillMessagesUITests */,
+				B59A0D451DFC77520004F6E7 /* MathQuillKeyboard */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B59A0D0F1DFC76E10004F6E7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B59A0D1F1DFC76E10004F6E7 /* LaunchScreen.storyboard in Resources */,
+				B59A0D1C1DFC76E10004F6E7 /* Assets.xcassets in Resources */,
+				B59A0D1A1DFC76E10004F6E7 /* Main.storyboard in Resources */,
+				B59A0D5E1DFC7CCA0004F6E7 /* mathquill.github.com-master in Resources */,
+				B59A0D591DFC78160004F6E7 /* test.html in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B59A0D231DFC76E10004F6E7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B59A0D5A1DFC78160004F6E7 /* test.html in Resources */,
+				B59A0D5F1DFC7CCA0004F6E7 /* mathquill.github.com-master in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B59A0D2E1DFC76E10004F6E7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B59A0D5B1DFC78160004F6E7 /* test.html in Resources */,
+				B59A0D601DFC7CCA0004F6E7 /* mathquill.github.com-master in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B59A0D441DFC77520004F6E7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B59A0D5C1DFC78160004F6E7 /* test.html in Resources */,
+				B59A0D551DFC77BB0004F6E7 /* MQKBView.xib in Resources */,
+				B59A0D571DFC77EE0004F6E7 /* mystyle.css in Resources */,
+				B59A0D611DFC7CCA0004F6E7 /* mathquill.github.com-master in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B59A0D0D1DFC76E10004F6E7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B59A0D171DFC76E10004F6E7 /* ViewController.swift in Sources */,
+				B59A0D151DFC76E10004F6E7 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B59A0D211DFC76E10004F6E7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B59A0D2A1DFC76E10004F6E7 /* MathQuillMessagesTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B59A0D2C1DFC76E10004F6E7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B59A0D351DFC76E10004F6E7 /* MathQuillMessagesUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B59A0D421DFC77520004F6E7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B59A0D491DFC77530004F6E7 /* KeyboardViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B59A0D271DFC76E10004F6E7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B59A0D101DFC76E10004F6E7 /* MathQuillMessages */;
+			targetProxy = B59A0D261DFC76E10004F6E7 /* PBXContainerItemProxy */;
+		};
+		B59A0D321DFC76E10004F6E7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B59A0D101DFC76E10004F6E7 /* MathQuillMessages */;
+			targetProxy = B59A0D311DFC76E10004F6E7 /* PBXContainerItemProxy */;
+		};
+		B59A0D4C1DFC77530004F6E7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B59A0D451DFC77520004F6E7 /* MathQuillKeyboard */;
+			targetProxy = B59A0D4B1DFC77530004F6E7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B59A0D181DFC76E10004F6E7 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B59A0D191DFC76E10004F6E7 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B59A0D1D1DFC76E10004F6E7 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B59A0D1E1DFC76E10004F6E7 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B59A0D371DFC76E10004F6E7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B59A0D381DFC76E10004F6E7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B59A0D3A1DFC76E10004F6E7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 8T6F76KZ56;
+				INFOPLIST_FILE = MathQuillMessages/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = BH.MathQuillMessages;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		B59A0D3B1DFC76E10004F6E7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 8T6F76KZ56;
+				INFOPLIST_FILE = MathQuillMessages/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = BH.MathQuillMessages;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		B59A0D3D1DFC76E10004F6E7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 8T6F76KZ56;
+				INFOPLIST_FILE = MathQuillMessagesTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = BH.MathQuillMessagesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MathQuillMessages.app/MathQuillMessages";
+			};
+			name = Debug;
+		};
+		B59A0D3E1DFC76E10004F6E7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 8T6F76KZ56;
+				INFOPLIST_FILE = MathQuillMessagesTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = BH.MathQuillMessagesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MathQuillMessages.app/MathQuillMessages";
+			};
+			name = Release;
+		};
+		B59A0D401DFC76E10004F6E7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = 8T6F76KZ56;
+				INFOPLIST_FILE = MathQuillMessagesUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = BH.MathQuillMessagesUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = MathQuillMessages;
+			};
+			name = Debug;
+		};
+		B59A0D411DFC76E10004F6E7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = 8T6F76KZ56;
+				INFOPLIST_FILE = MathQuillMessagesUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = BH.MathQuillMessagesUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = MathQuillMessages;
+			};
+			name = Release;
+		};
+		B59A0D4F1DFC77530004F6E7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 8T6F76KZ56;
+				INFOPLIST_FILE = MathQuillKeyboard/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = BH.MathQuillMessages.MathQuillKeyboard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		B59A0D501DFC77530004F6E7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 8T6F76KZ56;
+				INFOPLIST_FILE = MathQuillKeyboard/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = BH.MathQuillMessages.MathQuillKeyboard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B59A0D0C1DFC76E10004F6E7 /* Build configuration list for PBXProject "MathQuillMessages" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B59A0D371DFC76E10004F6E7 /* Debug */,
+				B59A0D381DFC76E10004F6E7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B59A0D391DFC76E10004F6E7 /* Build configuration list for PBXNativeTarget "MathQuillMessages" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B59A0D3A1DFC76E10004F6E7 /* Debug */,
+				B59A0D3B1DFC76E10004F6E7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		B59A0D3C1DFC76E10004F6E7 /* Build configuration list for PBXNativeTarget "MathQuillMessagesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B59A0D3D1DFC76E10004F6E7 /* Debug */,
+				B59A0D3E1DFC76E10004F6E7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		B59A0D3F1DFC76E10004F6E7 /* Build configuration list for PBXNativeTarget "MathQuillMessagesUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B59A0D401DFC76E10004F6E7 /* Debug */,
+				B59A0D411DFC76E10004F6E7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		B59A0D4E1DFC77530004F6E7 /* Build configuration list for PBXNativeTarget "MathQuillKeyboard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B59A0D4F1DFC77530004F6E7 /* Debug */,
+				B59A0D501DFC77530004F6E7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B59A0D091DFC76E10004F6E7 /* Project object */;
+}
