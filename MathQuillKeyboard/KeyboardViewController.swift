@@ -10,6 +10,7 @@ import UIKit
 import WebKit
 import CoreGraphics
 
+
 extension UIImage {
     
     func trim() -> UIImage {
@@ -127,13 +128,14 @@ extension UIImage {
 }
 
 
-class KeyboardViewController: UIInputViewController {
+class KeyboardViewController: UIInputViewController, UITextViewDelegate {
     
     @IBOutlet var nextKeyboardButton: UIButton!
     
     @IBOutlet var containerView : UIView!
     var formulaWebView: WKWebView?
     var myView : UIView!
+    var myTextView: UITextView!
     
     override func updateViewConstraints() {
         super.updateViewConstraints()
@@ -162,7 +164,26 @@ class KeyboardViewController: UIInputViewController {
         
         view.setNeedsDisplay()
         
+        myTextView = UITextView()
+        myTextView.delegate = self
+        
+        let myButton = CYRKeyboardButton.init(frame: CGRect(x:50,y:50,width:30,height:45))
+        myButton.translatesAutoresizingMaskIntoConstraints = false
+        myButton.input = "a"
+        myButton.inputOptions = ["a", "b", "&"]
+        myButton.textInput = myTextView
+        view.addSubview(myButton)
+        
         self.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
+        
+        
+        
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        let typedSymbol = textView.text
+        _ = formulaWebView?.evaluateJavaScript("answerMathField.typedText('" + typedSymbol! + "');", completionHandler: nil)
+        myTextView.text = ""
     }
     
     override func didReceiveMemoryWarning() {
@@ -174,9 +195,9 @@ class KeyboardViewController: UIInputViewController {
         // The app is about to change the document's contents. Perform any preparation here.
     }
     
-    override func textDidChange(_ textInput: UITextInput?) {
-        // The app has just changed the document's contents, the document context has been updated.
-    }
+    //override func textDidChange(_ textInput: UITextInput?) {
+    //    // The app has just changed the document's contents, the document context has been updated.
+    //}
     
     @IBAction func buttonTap(button: UIButton!) {
         if let char = button.titleLabel?.text {
