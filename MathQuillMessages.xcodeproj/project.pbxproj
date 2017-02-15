@@ -7,12 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B538DEEF1E020BE3009B3B37 /* CYRKeyboardButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B538DEEE1E020BE3009B3B37 /* CYRKeyboardButton.m */; };
-		B538DEF01E020BE3009B3B37 /* CYRKeyboardButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B538DEEE1E020BE3009B3B37 /* CYRKeyboardButton.m */; };
-		B538DEF31E020BED009B3B37 /* CYRKeyboardButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = B538DEF21E020BED009B3B37 /* CYRKeyboardButtonView.m */; };
-		B538DEF41E020BED009B3B37 /* CYRKeyboardButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = B538DEF21E020BED009B3B37 /* CYRKeyboardButtonView.m */; };
-		B538DEF71E020C98009B3B37 /* TurtleBezierPath.m in Sources */ = {isa = PBXBuildFile; fileRef = B538DEF61E020C98009B3B37 /* TurtleBezierPath.m */; };
-		B538DEF81E020C98009B3B37 /* TurtleBezierPath.m in Sources */ = {isa = PBXBuildFile; fileRef = B538DEF61E020C98009B3B37 /* TurtleBezierPath.m */; };
+		B50332061E52E36700F730AE /* OldCYRKeyboardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50332041E52E36700F730AE /* OldCYRKeyboardButton.swift */; };
+		B50332071E52E36700F730AE /* OldCYRKeyboardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50332041E52E36700F730AE /* OldCYRKeyboardButton.swift */; };
+		B50332081E52E36700F730AE /* OldCYRKeyboardButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50332051E52E36700F730AE /* OldCYRKeyboardButtonView.swift */; };
+		B50332091E52E36700F730AE /* OldCYRKeyboardButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50332051E52E36700F730AE /* OldCYRKeyboardButtonView.swift */; };
+		B503320B1E52E37300F730AE /* TurtleBezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = B503320A1E52E37300F730AE /* TurtleBezierPath.swift */; };
+		B503320C1E52E37300F730AE /* TurtleBezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = B503320A1E52E37300F730AE /* TurtleBezierPath.swift */; };
+		B503320F1E54592300F730AE /* BHKeyboardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B503320E1E54592300F730AE /* BHKeyboardButton.swift */; };
+		B50332101E54592300F730AE /* BHKeyboardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B503320E1E54592300F730AE /* BHKeyboardButton.swift */; };
+		B50332131E54626F00F730AE /* CYRKeyboardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50332111E54626F00F730AE /* CYRKeyboardButton.swift */; };
+		B50332141E54626F00F730AE /* CYRKeyboardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50332111E54626F00F730AE /* CYRKeyboardButton.swift */; };
+		B50332151E54626F00F730AE /* CYRKeyboardButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50332121E54626F00F730AE /* CYRKeyboardButtonView.swift */; };
+		B50332161E54626F00F730AE /* CYRKeyboardButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50332121E54626F00F730AE /* CYRKeyboardButtonView.swift */; };
+		B50332181E5466AD00F730AE /* BHKeyboardButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50332171E5466AD00F730AE /* BHKeyboardButtonView.swift */; };
+		B50332191E5466AD00F730AE /* BHKeyboardButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50332171E5466AD00F730AE /* BHKeyboardButtonView.swift */; };
+		B511B7CD1E4A25FB002B8280 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B59A0D1B1DFC76E10004F6E7 /* Assets.xcassets */; };
+		B511B7CE1E4A25FB002B8280 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B59A0D1B1DFC76E10004F6E7 /* Assets.xcassets */; };
+		B511B7CF1E4A25FC002B8280 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B59A0D1B1DFC76E10004F6E7 /* Assets.xcassets */; };
+		B563D0AE1E51EB0B00B85B32 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59A0D481DFC77530004F6E7 /* KeyboardViewController.swift */; };
 		B59A0D151DFC76E10004F6E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59A0D141DFC76E10004F6E7 /* AppDelegate.swift */; };
 		B59A0D171DFC76E10004F6E7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59A0D161DFC76E10004F6E7 /* ViewController.swift */; };
 		B59A0D1A1DFC76E10004F6E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B59A0D181DFC76E10004F6E7 /* Main.storyboard */; };
@@ -73,14 +85,17 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B50332041E52E36700F730AE /* OldCYRKeyboardButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OldCYRKeyboardButton.swift; sourceTree = "<group>"; };
+		B50332051E52E36700F730AE /* OldCYRKeyboardButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OldCYRKeyboardButtonView.swift; sourceTree = "<group>"; };
+		B503320A1E52E37300F730AE /* TurtleBezierPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurtleBezierPath.swift; sourceTree = "<group>"; };
+		B503320E1E54592300F730AE /* BHKeyboardButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BHKeyboardButton.swift; sourceTree = "<group>"; };
+		B50332111E54626F00F730AE /* CYRKeyboardButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CYRKeyboardButton.swift; sourceTree = "<group>"; };
+		B50332121E54626F00F730AE /* CYRKeyboardButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CYRKeyboardButtonView.swift; sourceTree = "<group>"; };
+		B50332171E5466AD00F730AE /* BHKeyboardButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BHKeyboardButtonView.swift; sourceTree = "<group>"; };
+		B511B7CB1E4A254E002B8280 /* MathQuillMessages.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MathQuillMessages.entitlements; sourceTree = "<group>"; };
+		B511B7CC1E4A2579002B8280 /* MathQuillKeyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MathQuillKeyboard.entitlements; sourceTree = "<group>"; };
 		B538DEEB1E020BE2009B3B37 /* MathQuillMessages-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MathQuillMessages-Bridging-Header.h"; sourceTree = "<group>"; };
 		B538DEEC1E020BE2009B3B37 /* MathQuillKeyboard-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MathQuillKeyboard-Bridging-Header.h"; sourceTree = "<group>"; };
-		B538DEED1E020BE3009B3B37 /* CYRKeyboardButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYRKeyboardButton.h; sourceTree = "<group>"; };
-		B538DEEE1E020BE3009B3B37 /* CYRKeyboardButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYRKeyboardButton.m; sourceTree = "<group>"; };
-		B538DEF11E020BED009B3B37 /* CYRKeyboardButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYRKeyboardButtonView.h; sourceTree = "<group>"; };
-		B538DEF21E020BED009B3B37 /* CYRKeyboardButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYRKeyboardButtonView.m; sourceTree = "<group>"; };
-		B538DEF51E020C98009B3B37 /* TurtleBezierPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TurtleBezierPath.h; sourceTree = "<group>"; };
-		B538DEF61E020C98009B3B37 /* TurtleBezierPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TurtleBezierPath.m; sourceTree = "<group>"; };
 		B59A0D111DFC76E10004F6E7 /* MathQuillMessages.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MathQuillMessages.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B59A0D141DFC76E10004F6E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B59A0D161DFC76E10004F6E7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -135,15 +150,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B503320D1E52E37B00F730AE /* CYRKeyboardButton */ = {
+			isa = PBXGroup;
+			children = (
+				B503320A1E52E37300F730AE /* TurtleBezierPath.swift */,
+				B50332041E52E36700F730AE /* OldCYRKeyboardButton.swift */,
+				B50332051E52E36700F730AE /* OldCYRKeyboardButtonView.swift */,
+				B50332111E54626F00F730AE /* CYRKeyboardButton.swift */,
+				B50332121E54626F00F730AE /* CYRKeyboardButtonView.swift */,
+				B503320E1E54592300F730AE /* BHKeyboardButton.swift */,
+				B50332171E5466AD00F730AE /* BHKeyboardButtonView.swift */,
+			);
+			name = CYRKeyboardButton;
+			sourceTree = "<group>";
+		};
 		B59A0D081DFC76E10004F6E7 = {
 			isa = PBXGroup;
 			children = (
-				B538DEF51E020C98009B3B37 /* TurtleBezierPath.h */,
-				B538DEF61E020C98009B3B37 /* TurtleBezierPath.m */,
-				B538DEED1E020BE3009B3B37 /* CYRKeyboardButton.h */,
-				B538DEEE1E020BE3009B3B37 /* CYRKeyboardButton.m */,
-				B538DEF11E020BED009B3B37 /* CYRKeyboardButtonView.h */,
-				B538DEF21E020BED009B3B37 /* CYRKeyboardButtonView.m */,
+				B503320D1E52E37B00F730AE /* CYRKeyboardButton */,
 				B59A0D131DFC76E10004F6E7 /* MathQuillMessages */,
 				B59A0D281DFC76E10004F6E7 /* MathQuillMessagesTests */,
 				B59A0D331DFC76E10004F6E7 /* MathQuillMessagesUITests */,
@@ -168,6 +192,7 @@
 		B59A0D131DFC76E10004F6E7 /* MathQuillMessages */ = {
 			isa = PBXGroup;
 			children = (
+				B511B7CB1E4A254E002B8280 /* MathQuillMessages.entitlements */,
 				B59A0D141DFC76E10004F6E7 /* AppDelegate.swift */,
 				B59A0D161DFC76E10004F6E7 /* ViewController.swift */,
 				B59A0D181DFC76E10004F6E7 /* Main.storyboard */,
@@ -199,6 +224,7 @@
 		B59A0D471DFC77530004F6E7 /* MathQuillKeyboard */ = {
 			isa = PBXGroup;
 			children = (
+				B511B7CC1E4A2579002B8280 /* MathQuillKeyboard.entitlements */,
 				B59A0D5D1DFC7CCA0004F6E7 /* mathquill.github.com-master */,
 				B59A0D481DFC77530004F6E7 /* KeyboardViewController.swift */,
 				B59A0D561DFC77EE0004F6E7 /* mystyle.css */,
@@ -291,7 +317,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0810;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Ben Hambrecht";
 				TargetAttributes = {
 					B59A0D101DFC76E10004F6E7 = {
@@ -299,6 +325,11 @@
 						DevelopmentTeam = 8T6F76KZ56;
 						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					B59A0D241DFC76E10004F6E7 = {
 						CreatedOnToolsVersion = 8.1;
@@ -317,6 +348,11 @@
 						DevelopmentTeam = 8T6F76KZ56;
 						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -359,6 +395,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B59A0D5A1DFC78160004F6E7 /* test.html in Resources */,
+				B511B7CD1E4A25FB002B8280 /* Assets.xcassets in Resources */,
 				B59A0D5F1DFC7CCA0004F6E7 /* mathquill.github.com-master in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -368,6 +405,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B59A0D5B1DFC78160004F6E7 /* test.html in Resources */,
+				B511B7CE1E4A25FB002B8280 /* Assets.xcassets in Resources */,
 				B59A0D601DFC7CCA0004F6E7 /* mathquill.github.com-master in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -380,6 +418,7 @@
 				B59A0D551DFC77BB0004F6E7 /* MQKBView.xib in Resources */,
 				B59A0D571DFC77EE0004F6E7 /* mystyle.css in Resources */,
 				B59A0D611DFC7CCA0004F6E7 /* mathquill.github.com-master in Resources */,
+				B511B7CF1E4A25FC002B8280 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,11 +429,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B538DEF31E020BED009B3B37 /* CYRKeyboardButtonView.m in Sources */,
-				B538DEEF1E020BE3009B3B37 /* CYRKeyboardButton.m in Sources */,
+				B503320F1E54592300F730AE /* BHKeyboardButton.swift in Sources */,
 				B59A0D171DFC76E10004F6E7 /* ViewController.swift in Sources */,
+				B503320B1E52E37300F730AE /* TurtleBezierPath.swift in Sources */,
+				B50332061E52E36700F730AE /* OldCYRKeyboardButton.swift in Sources */,
 				B59A0D151DFC76E10004F6E7 /* AppDelegate.swift in Sources */,
-				B538DEF71E020C98009B3B37 /* TurtleBezierPath.m in Sources */,
+				B50332131E54626F00F730AE /* CYRKeyboardButton.swift in Sources */,
+				B563D0AE1E51EB0B00B85B32 /* KeyboardViewController.swift in Sources */,
+				B50332081E52E36700F730AE /* OldCYRKeyboardButtonView.swift in Sources */,
+				B50332151E54626F00F730AE /* CYRKeyboardButtonView.swift in Sources */,
+				B50332181E5466AD00F730AE /* BHKeyboardButtonView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,10 +462,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B538DEF41E020BED009B3B37 /* CYRKeyboardButtonView.m in Sources */,
+				B50332101E54592300F730AE /* BHKeyboardButton.swift in Sources */,
 				B59A0D491DFC77530004F6E7 /* KeyboardViewController.swift in Sources */,
-				B538DEF01E020BE3009B3B37 /* CYRKeyboardButton.m in Sources */,
-				B538DEF81E020C98009B3B37 /* TurtleBezierPath.m in Sources */,
+				B50332071E52E36700F730AE /* OldCYRKeyboardButton.swift in Sources */,
+				B50332091E52E36700F730AE /* OldCYRKeyboardButtonView.swift in Sources */,
+				B503320C1E52E37300F730AE /* TurtleBezierPath.swift in Sources */,
+				B50332161E54626F00F730AE /* CYRKeyboardButtonView.swift in Sources */,
+				B50332141E54626F00F730AE /* CYRKeyboardButton.swift in Sources */,
+				B50332191E5466AD00F730AE /* BHKeyboardButtonView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,6 +531,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -534,6 +583,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -566,6 +616,8 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_MODULE_DEBUGGING = NO;
+				CODE_SIGN_ENTITLEMENTS = MathQuillMessages/MathQuillMessages.entitlements;
 				DEVELOPMENT_TEAM = 8T6F76KZ56;
 				INFOPLIST_FILE = MathQuillMessages/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -583,6 +635,8 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_MODULE_DEBUGGING = NO;
+				CODE_SIGN_ENTITLEMENTS = MathQuillMessages/MathQuillMessages.entitlements;
 				DEVELOPMENT_TEAM = 8T6F76KZ56;
 				INFOPLIST_FILE = MathQuillMessages/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -655,8 +709,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_MODULE_DEBUGGING = NO;
+				CODE_SIGN_ENTITLEMENTS = MathQuillKeyboard/MathQuillKeyboard.entitlements;
 				DEVELOPMENT_TEAM = 8T6F76KZ56;
 				INFOPLIST_FILE = MathQuillKeyboard/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = BH.MathQuillMessages.MathQuillKeyboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -671,8 +728,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_MODULE_DEBUGGING = NO;
+				CODE_SIGN_ENTITLEMENTS = MathQuillKeyboard/MathQuillKeyboard.entitlements;
 				DEVELOPMENT_TEAM = 8T6F76KZ56;
 				INFOPLIST_FILE = MathQuillKeyboard/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = BH.MathQuillMessages.MathQuillKeyboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";

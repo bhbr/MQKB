@@ -11,6 +11,8 @@ import WebKit
 import CoreGraphics
 
 
+
+
 extension UIImage {
     
     func trim() -> UIImage {
@@ -124,11 +126,12 @@ extension UIImage {
         
         return context
     }
+
     
 }
 
 
-class KeyboardViewController: UIInputViewController, UITextViewDelegate {
+class KeyboardViewController: UIInputViewController, UITextViewDelegate, BHKeyboardButtonDelegate {
     
     @IBOutlet var nextKeyboardButton: UIButton!
     
@@ -167,11 +170,22 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate {
         myTextView = UITextView()
         myTextView.delegate = self
         
-        let myButton = CYRKeyboardButton.init(frame: CGRect(x:50,y:50,width:30,height:45))
+        let myButton = BHKeyboardButton(frame: CGRect(x:50,y:100,width:57,height:56))
+        // iPhone: 30x45, iPad: 57x56
         myButton.translatesAutoresizingMaskIntoConstraints = false
-        myButton.input = "a"
-        myButton.inputOptions = ["a", "b", "&"]
+        myButton.input = "\\int"
+        let image = UIImage(named:"integral_key")
+        myButton.setImage(image)
+        myButton.displayType = .Image
+        myButton.inputOptions = ["\\int", "\\sqrt", "\\sqrt"]
+        let optionImage1 = UIImage(named:"integral_key")!
+        let optionImage2 = UIImage(named:"sqrt_key")!
+        let optionImage3 = UIImage(named:"sqrt_key")!
+        myButton.inputOptionsImages = [optionImage1, optionImage2, optionImage3]
+        //myButton.selectedInputOptionsImages = [image!.inverted()!, image!.inverted()!, image!.inverted()!]
         myButton.textInput = myTextView
+//    myButton.titleLabel?.text = "s"
+        
         view.addSubview(myButton)
         
         self.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
@@ -182,7 +196,10 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate {
     
     func textViewDidChange(_ textView: UITextView) {
         let typedSymbol = textView.text
-        _ = formulaWebView?.evaluateJavaScript("answerMathField.typedText('" + typedSymbol! + "');", completionHandler: nil)
+        _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('" + typedSymbol! + "');", completionHandler: nil)
+        if (typedSymbol! == "\\sqrt") {
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.keystroke('Left');", completionHandler: nil)
+        }
         myTextView.text = ""
     }
     
@@ -199,8 +216,8 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate {
     //    // The app has just changed the document's contents, the document context has been updated.
     //}
     
-    @IBAction func buttonTap(button: UIButton!) {
-        if let char = button.titleLabel?.text {
+    @IBAction func buttonTap(button: BHKeyboardButton!) { // to be removed
+        if let char = button.input {
             if char == "Left" {
                 _ = formulaWebView?.evaluateJavaScript("answerMathField.keystroke('Left');", completionHandler: nil)
             } else if char == "Right" {
@@ -260,6 +277,11 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate {
     }
     
     
+    func buttonPressed(inputIdentifier: String) {
+        NSLog(inputIdentifier)
+    }
+    
+    
     func isOpenAccessGranted() -> Bool {
         if #available(iOS 10.0, iOSApplicationExtension 10.0, *) {
             let value = UIPasteboard.general.string
@@ -308,6 +330,12 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate {
         return trimmedImage
     }
     
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        return true
+    }
     
+    @IBAction func interrupt() {
+        
+    }
     
 }
