@@ -5,14 +5,13 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11762"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KeyboardViewController" customModule="MathQuillKeyboard" customModuleProvider="target">
             <connections>
                 <outlet property="containerView" destination="RnM-21-70V" id="RMB-Tp-wAi"/>
-                <outlet property="nextKeyboardButton" destination="xaw-Vq-gOH" id="ze7-Uz-stS"/>
                 <outlet property="view" destination="iN0-l3-epB" id="qRg-zU-dbo"/>
             </connections>
         </placeholder>
@@ -22,44 +21,18 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RnM-21-70V">
-                    <rect key="frame" x="16" y="16" width="288" height="64"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <rect key="frame" x="45" y="1" width="274" height="75"/>
+                    <color key="backgroundColor" red="1" green="0.98149815287851849" blue="0.84064918776408848" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="64" id="B4c-vP-jVT"/>
+                        <constraint firstAttribute="height" constant="75" id="B4c-vP-jVT"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xaw-Vq-gOH">
-                    <rect key="frame" x="259" y="88" width="45" height="30"/>
-                    <color key="backgroundColor" red="0.7398021494" green="0.91406852169999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="45" id="qi5-tj-mMk"/>
-                    </constraints>
-                    <state key="normal" title="Next"/>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mvu-bv-ZKk">
-                    <rect key="frame" x="227" y="120" width="78" height="30"/>
-                    <color key="backgroundColor" red="0.7398021494" green="0.91406852169999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="30" id="pfW-cg-Fw4"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" title="Interrupt">
-                        <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    </state>
-                    <connections>
-                        <action selector="interrupt" destination="-1" eventType="touchUpInside" id="shM-kq-fwo"/>
-                    </connections>
-                </button>
             </subviews>
-            <color key="backgroundColor" red="1" green="0.6286392815281967" blue="0.67751957361912529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.82352941176470584" green="0.83529411764705885" blue="0.85882352941176465" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="RnM-21-70V" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="7qp-SP-vT0"/>
-                <constraint firstItem="xaw-Vq-gOH" firstAttribute="trailing" secondItem="RnM-21-70V" secondAttribute="trailing" id="LKn-fi-yzc"/>
-                <constraint firstItem="RnM-21-70V" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="Rks-vT-h7B"/>
-                <constraint firstItem="mvu-bv-ZKk" firstAttribute="top" secondItem="xaw-Vq-gOH" secondAttribute="bottom" constant="2" id="YYO-wx-thN"/>
-                <constraint firstItem="xaw-Vq-gOH" firstAttribute="top" secondItem="RnM-21-70V" secondAttribute="bottom" constant="8" id="boP-px-B6T"/>
-                <constraint firstAttribute="trailing" secondItem="mvu-bv-ZKk" secondAttribute="trailing" constant="15" id="eNl-ee-ffF"/>
-                <constraint firstAttribute="trailing" secondItem="RnM-21-70V" secondAttribute="trailing" constant="16" id="nqX-V6-xqA"/>
+                <constraint firstItem="RnM-21-70V" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="45" id="7qp-SP-vT0"/>
+                <constraint firstItem="RnM-21-70V" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="1" id="Rks-vT-h7B"/>
+                <constraint firstAttribute="trailing" secondItem="RnM-21-70V" secondAttribute="trailing" constant="1" id="nqX-V6-xqA"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

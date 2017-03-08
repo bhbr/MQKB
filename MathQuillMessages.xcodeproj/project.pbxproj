@@ -7,23 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B50332061E52E36700F730AE /* OldCYRKeyboardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50332041E52E36700F730AE /* OldCYRKeyboardButton.swift */; };
-		B50332071E52E36700F730AE /* OldCYRKeyboardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50332041E52E36700F730AE /* OldCYRKeyboardButton.swift */; };
-		B50332081E52E36700F730AE /* OldCYRKeyboardButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50332051E52E36700F730AE /* OldCYRKeyboardButtonView.swift */; };
-		B50332091E52E36700F730AE /* OldCYRKeyboardButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50332051E52E36700F730AE /* OldCYRKeyboardButtonView.swift */; };
 		B503320B1E52E37300F730AE /* TurtleBezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = B503320A1E52E37300F730AE /* TurtleBezierPath.swift */; };
 		B503320C1E52E37300F730AE /* TurtleBezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = B503320A1E52E37300F730AE /* TurtleBezierPath.swift */; };
-		B503320F1E54592300F730AE /* BHKeyboardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B503320E1E54592300F730AE /* BHKeyboardButton.swift */; };
-		B50332101E54592300F730AE /* BHKeyboardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B503320E1E54592300F730AE /* BHKeyboardButton.swift */; };
-		B50332131E54626F00F730AE /* CYRKeyboardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50332111E54626F00F730AE /* CYRKeyboardButton.swift */; };
-		B50332141E54626F00F730AE /* CYRKeyboardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50332111E54626F00F730AE /* CYRKeyboardButton.swift */; };
-		B50332151E54626F00F730AE /* CYRKeyboardButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50332121E54626F00F730AE /* CYRKeyboardButtonView.swift */; };
-		B50332161E54626F00F730AE /* CYRKeyboardButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50332121E54626F00F730AE /* CYRKeyboardButtonView.swift */; };
-		B50332181E5466AD00F730AE /* BHKeyboardButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50332171E5466AD00F730AE /* BHKeyboardButtonView.swift */; };
-		B50332191E5466AD00F730AE /* BHKeyboardButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50332171E5466AD00F730AE /* BHKeyboardButtonView.swift */; };
 		B511B7CD1E4A25FB002B8280 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B59A0D1B1DFC76E10004F6E7 /* Assets.xcassets */; };
 		B511B7CE1E4A25FB002B8280 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B59A0D1B1DFC76E10004F6E7 /* Assets.xcassets */; };
 		B511B7CF1E4A25FC002B8280 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B59A0D1B1DFC76E10004F6E7 /* Assets.xcassets */; };
+		B54324B41E54EC0000C63E38 /* jquery-3.1.1.min.js in Resources */ = {isa = PBXBuildFile; fileRef = B54324B31E54EC0000C63E38 /* jquery-3.1.1.min.js */; };
+		B54324B51E54EC0000C63E38 /* jquery-3.1.1.min.js in Resources */ = {isa = PBXBuildFile; fileRef = B54324B31E54EC0000C63E38 /* jquery-3.1.1.min.js */; };
 		B563D0AE1E51EB0B00B85B32 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59A0D481DFC77530004F6E7 /* KeyboardViewController.swift */; };
 		B59A0D151DFC76E10004F6E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59A0D141DFC76E10004F6E7 /* AppDelegate.swift */; };
 		B59A0D171DFC76E10004F6E7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59A0D161DFC76E10004F6E7 /* ViewController.swift */; };
@@ -44,6 +34,10 @@
 		B59A0D5F1DFC7CCA0004F6E7 /* mathquill.github.com-master in Resources */ = {isa = PBXBuildFile; fileRef = B59A0D5D1DFC7CCA0004F6E7 /* mathquill.github.com-master */; };
 		B59A0D601DFC7CCA0004F6E7 /* mathquill.github.com-master in Resources */ = {isa = PBXBuildFile; fileRef = B59A0D5D1DFC7CCA0004F6E7 /* mathquill.github.com-master */; };
 		B59A0D611DFC7CCA0004F6E7 /* mathquill.github.com-master in Resources */ = {isa = PBXBuildFile; fileRef = B59A0D5D1DFC7CCA0004F6E7 /* mathquill.github.com-master */; };
+		B5CF16DE1E6DC2C70063D1A9 /* MuFuKeyboardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CF16DC1E6DC2C70063D1A9 /* MuFuKeyboardButton.swift */; };
+		B5CF16DF1E6DC2C70063D1A9 /* MuFuKeyboardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CF16DC1E6DC2C70063D1A9 /* MuFuKeyboardButton.swift */; };
+		B5CF16E01E6DC2C70063D1A9 /* MuFuKeyboardButtonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CF16DD1E6DC2C70063D1A9 /* MuFuKeyboardButtonDetailView.swift */; };
+		B5CF16E11E6DC2C70063D1A9 /* MuFuKeyboardButtonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CF16DD1E6DC2C70063D1A9 /* MuFuKeyboardButtonDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,17 +79,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		B50332041E52E36700F730AE /* OldCYRKeyboardButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OldCYRKeyboardButton.swift; sourceTree = "<group>"; };
-		B50332051E52E36700F730AE /* OldCYRKeyboardButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OldCYRKeyboardButtonView.swift; sourceTree = "<group>"; };
 		B503320A1E52E37300F730AE /* TurtleBezierPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurtleBezierPath.swift; sourceTree = "<group>"; };
-		B503320E1E54592300F730AE /* BHKeyboardButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BHKeyboardButton.swift; sourceTree = "<group>"; };
-		B50332111E54626F00F730AE /* CYRKeyboardButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CYRKeyboardButton.swift; sourceTree = "<group>"; };
-		B50332121E54626F00F730AE /* CYRKeyboardButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CYRKeyboardButtonView.swift; sourceTree = "<group>"; };
-		B50332171E5466AD00F730AE /* BHKeyboardButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BHKeyboardButtonView.swift; sourceTree = "<group>"; };
 		B511B7CB1E4A254E002B8280 /* MathQuillMessages.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MathQuillMessages.entitlements; sourceTree = "<group>"; };
 		B511B7CC1E4A2579002B8280 /* MathQuillKeyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MathQuillKeyboard.entitlements; sourceTree = "<group>"; };
 		B538DEEB1E020BE2009B3B37 /* MathQuillMessages-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MathQuillMessages-Bridging-Header.h"; sourceTree = "<group>"; };
 		B538DEEC1E020BE2009B3B37 /* MathQuillKeyboard-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MathQuillKeyboard-Bridging-Header.h"; sourceTree = "<group>"; };
+		B54324B31E54EC0000C63E38 /* jquery-3.1.1.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "jquery-3.1.1.min.js"; sourceTree = "<group>"; };
 		B59A0D111DFC76E10004F6E7 /* MathQuillMessages.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MathQuillMessages.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B59A0D141DFC76E10004F6E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B59A0D161DFC76E10004F6E7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -116,6 +105,8 @@
 		B59A0D561DFC77EE0004F6E7 /* mystyle.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = mystyle.css; sourceTree = "<group>"; };
 		B59A0D581DFC78160004F6E7 /* test.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = test.html; sourceTree = "<group>"; };
 		B59A0D5D1DFC7CCA0004F6E7 /* mathquill.github.com-master */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "mathquill.github.com-master"; sourceTree = "<group>"; };
+		B5CF16DC1E6DC2C70063D1A9 /* MuFuKeyboardButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MuFuKeyboardButton.swift; path = ../MuFuKeyboardButton/MuFuKeyboardButton.swift; sourceTree = "<group>"; };
+		B5CF16DD1E6DC2C70063D1A9 /* MuFuKeyboardButtonDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MuFuKeyboardButtonDetailView.swift; path = ../MuFuKeyboardButton/MuFuKeyboardButtonDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,24 +141,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B503320D1E52E37B00F730AE /* CYRKeyboardButton */ = {
-			isa = PBXGroup;
-			children = (
-				B503320A1E52E37300F730AE /* TurtleBezierPath.swift */,
-				B50332041E52E36700F730AE /* OldCYRKeyboardButton.swift */,
-				B50332051E52E36700F730AE /* OldCYRKeyboardButtonView.swift */,
-				B50332111E54626F00F730AE /* CYRKeyboardButton.swift */,
-				B50332121E54626F00F730AE /* CYRKeyboardButtonView.swift */,
-				B503320E1E54592300F730AE /* BHKeyboardButton.swift */,
-				B50332171E5466AD00F730AE /* BHKeyboardButtonView.swift */,
-			);
-			name = CYRKeyboardButton;
-			sourceTree = "<group>";
-		};
 		B59A0D081DFC76E10004F6E7 = {
 			isa = PBXGroup;
 			children = (
-				B503320D1E52E37B00F730AE /* CYRKeyboardButton */,
+				B503320A1E52E37300F730AE /* TurtleBezierPath.swift */,
+				B5CF16DC1E6DC2C70063D1A9 /* MuFuKeyboardButton.swift */,
+				B5CF16DD1E6DC2C70063D1A9 /* MuFuKeyboardButtonDetailView.swift */,
 				B59A0D131DFC76E10004F6E7 /* MathQuillMessages */,
 				B59A0D281DFC76E10004F6E7 /* MathQuillMessagesTests */,
 				B59A0D331DFC76E10004F6E7 /* MathQuillMessagesUITests */,
@@ -231,6 +210,7 @@
 				B59A0D581DFC78160004F6E7 /* test.html */,
 				B59A0D541DFC77BB0004F6E7 /* MQKBView.xib */,
 				B59A0D4A1DFC77530004F6E7 /* Info.plist */,
+				B54324B31E54EC0000C63E38 /* jquery-3.1.1.min.js */,
 			);
 			path = MathQuillKeyboard;
 			sourceTree = "<group>";
@@ -386,6 +366,7 @@
 				B59A0D1C1DFC76E10004F6E7 /* Assets.xcassets in Resources */,
 				B59A0D1A1DFC76E10004F6E7 /* Main.storyboard in Resources */,
 				B59A0D5E1DFC7CCA0004F6E7 /* mathquill.github.com-master in Resources */,
+				B54324B41E54EC0000C63E38 /* jquery-3.1.1.min.js in Resources */,
 				B59A0D591DFC78160004F6E7 /* test.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -418,6 +399,7 @@
 				B59A0D551DFC77BB0004F6E7 /* MQKBView.xib in Resources */,
 				B59A0D571DFC77EE0004F6E7 /* mystyle.css in Resources */,
 				B59A0D611DFC7CCA0004F6E7 /* mathquill.github.com-master in Resources */,
+				B54324B51E54EC0000C63E38 /* jquery-3.1.1.min.js in Resources */,
 				B511B7CF1E4A25FC002B8280 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -429,16 +411,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B503320F1E54592300F730AE /* BHKeyboardButton.swift in Sources */,
 				B59A0D171DFC76E10004F6E7 /* ViewController.swift in Sources */,
 				B503320B1E52E37300F730AE /* TurtleBezierPath.swift in Sources */,
-				B50332061E52E36700F730AE /* OldCYRKeyboardButton.swift in Sources */,
 				B59A0D151DFC76E10004F6E7 /* AppDelegate.swift in Sources */,
-				B50332131E54626F00F730AE /* CYRKeyboardButton.swift in Sources */,
+				B5CF16E01E6DC2C70063D1A9 /* MuFuKeyboardButtonDetailView.swift in Sources */,
 				B563D0AE1E51EB0B00B85B32 /* KeyboardViewController.swift in Sources */,
-				B50332081E52E36700F730AE /* OldCYRKeyboardButtonView.swift in Sources */,
-				B50332151E54626F00F730AE /* CYRKeyboardButtonView.swift in Sources */,
-				B50332181E5466AD00F730AE /* BHKeyboardButtonView.swift in Sources */,
+				B5CF16DE1E6DC2C70063D1A9 /* MuFuKeyboardButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,14 +440,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B50332101E54592300F730AE /* BHKeyboardButton.swift in Sources */,
+				B5CF16E11E6DC2C70063D1A9 /* MuFuKeyboardButtonDetailView.swift in Sources */,
 				B59A0D491DFC77530004F6E7 /* KeyboardViewController.swift in Sources */,
-				B50332071E52E36700F730AE /* OldCYRKeyboardButton.swift in Sources */,
-				B50332091E52E36700F730AE /* OldCYRKeyboardButtonView.swift in Sources */,
 				B503320C1E52E37300F730AE /* TurtleBezierPath.swift in Sources */,
-				B50332161E54626F00F730AE /* CYRKeyboardButtonView.swift in Sources */,
-				B50332141E54626F00F730AE /* CYRKeyboardButton.swift in Sources */,
-				B50332191E5466AD00F730AE /* BHKeyboardButtonView.swift in Sources */,
+				B5CF16DF1E6DC2C70063D1A9 /* MuFuKeyboardButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

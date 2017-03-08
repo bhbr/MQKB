@@ -10,10 +10,28 @@ import UIKit
 import WebKit
 import CoreGraphics
 
-
-
-
 extension UIImage {
+    
+    func padToSquare() -> UIImage {
+        
+        let sideLength = (size.width > size.height) ? size.width : size.height
+        let newWidth = sideLength
+        let newHeight = sideLength
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: newWidth, height: newHeight), false, scale)
+        _ = UIGraphicsGetCurrentContext()
+        
+        // Now we can draw anything we want into this new context.
+        let origin = CGPoint(x: (newWidth - size.width) / 2.0,
+                             y: (newHeight - size.height) / 2.0)
+        draw(at: origin)
+        
+        // Clean up and get the new image.
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage!
+        
+    }
     
     func trim() -> UIImage {
         let newRect = self.cropRect
@@ -98,7 +116,10 @@ extension UIImage {
         print(lowY)
         print(highY)
         
-        return CGRect(x: 0, y: 0, width: CGFloat(widthInt), height: highY + lowY)
+        let padding: CGFloat = 5.0
+        
+        //return CGRect(x: 0, y: 0, width: CGFloat(widthInt), height: highY + lowY)
+        return CGRect(x: lowX - padding, y: lowY - padding, width: highX - lowX + 2.0 * padding, height: highY - lowY + 2.0 * padding)
     }
     
     func createARGBBitmapContextFromImage(inImage: CGImage) -> CGContext? {
@@ -126,12 +147,47 @@ extension UIImage {
         
         return context
     }
+    
+    convenience init?(imageName: String) {
+        self.init(named: imageName)!
+        accessibilityIdentifier = imageName
+    }
+    
+    // http://stackoverflow.com/a/40177870/4488252
+    func imageWithColor (newColor: UIColor?) -> UIImage? {
+        
+        if let newColor = newColor {
+            UIGraphicsBeginImageContextWithOptions(size, false, scale)
+            
+            let context = UIGraphicsGetCurrentContext()!
+            context.translateBy(x: 0, y: size.height)
+            context.scaleBy(x: 1.0, y: -1.0)
+            context.setBlendMode(.normal)
+            
+            let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+            context.clip(to: rect, mask: cgImage!)
+            
+            newColor.setFill()
+            context.fill(rect)
+            
+            let newImage = UIGraphicsGetImageFromCurrentImageContext()!
+            UIGraphicsEndImageContext()
+            newImage.accessibilityIdentifier = accessibilityIdentifier
+            return newImage
+        }
+        
+        if let accessibilityIdentifier = accessibilityIdentifier {
+            return UIImage(imageName: accessibilityIdentifier)
+        }
+        
+        return self
+    }
 
     
 }
 
 
-class KeyboardViewController: UIInputViewController, UITextViewDelegate, BHKeyboardButtonDelegate {
+class KeyboardViewController: UIInputViewController, UITextViewDelegate, MFKBDelegate {
     
     @IBOutlet var nextKeyboardButton: UIButton!
     
@@ -155,11 +211,15 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate, BHKeybo
         
         formulaWebView = WKWebView()
         formulaWebView?.contentScaleFactor = 1.0
+        formulaWebView?.backgroundColor = .clear //UIColor(red: 1.0, green: 1.0, blue: 0.9, alpha: 1.0)
         
         containerView.addSubview(formulaWebView!)
         formulaWebView?.frame = containerView.frame
         formulaWebView?.frame.origin = CGPoint(x: 0, y: 0)
+        formulaWebView?.layer.borderWidth = 1.0
+        formulaWebView?.layer.borderColor = UIColor.black.cgColor
         
+        formulaWebView?.tintColor = .yellow
         
         let localfilePath = Bundle.main.url(forResource: "test", withExtension: "html")
         let myRequest = URLRequest(url: localfilePath!)
@@ -170,37 +230,338 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate, BHKeybo
         myTextView = UITextView()
         myTextView.delegate = self
         
-        let myButton = BHKeyboardButton(frame: CGRect(x:50,y:100,width:57,height:56))
-        // iPhone: 30x45, iPad: 57x56
-        myButton.translatesAutoresizingMaskIntoConstraints = false
-        myButton.input = "\\int"
-        let image = UIImage(named:"integral_key")
-        myButton.setImage(image)
-        myButton.displayType = .Image
-        myButton.inputOptions = ["\\int", "\\sqrt", "\\sqrt"]
-        let optionImage1 = UIImage(named:"integral_key")!
-        let optionImage2 = UIImage(named:"sqrt_key")!
-        let optionImage3 = UIImage(named:"sqrt_key")!
-        myButton.inputOptionsImages = [optionImage1, optionImage2, optionImage3]
-        //myButton.selectedInputOptionsImages = [image!.inverted()!, image!.inverted()!, image!.inverted()!]
-        myButton.textInput = myTextView
-//    myButton.titleLabel?.text = "s"
+//        let myButton = MuFuKeyboardButton(frame: CGRect(x:50,y:150,width:30,height:45))
+//        // iPhone: 30x45, iPad: 57x56 // ???
+//        myButton.translatesAutoresizingMaskIntoConstraints = false
+//        myButton.inputID = "√"
+//        let image = UIImage(named:"sqrt_key")
+//        myButton.displayImageView.image = image
+//        myButton.magnifiedDisplayImageView.image = image
+//        myButton.displayType = .Image
+//        myButton.delegate = self
+//        myButton.inputOptionsIDs = ["√", "∫"]//, "omega"]
+//        //myButton.rowCounts = [1, 2]
+//        let optionImage1 = UIImage(named:"integral_key")!
+//        let optionImage2 = UIImage(named:"sqrt_key")!
+//        let optionImage3 = UIImage(named:"sqrt_key")!
+//        //myButton.inputOptionsImages = [optionImage1, optionImage2, optionImage3]
+//
+//        //myButton.textInput = myTextView
+//        
+//        view.addSubview(myButton)
         
-        view.addSubview(myButton)
+        let button7 = MuFuKeyboardButton(x: 10.0, y: 80.0, style: .Phone)
+        button7.position = .Left
+        button7.inputID = "7"
+        button7.displayType = .Label
+        button7.delegate = self
+        view.addSubview(button7)
         
-        self.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
+        let button8 = MuFuKeyboardButton(x: 10.0 + 30.0, y: 80.0, style: .Phone)
+        button8.position = .Inner
+        button8.inputID = "8"
+        button8.displayType = .Label
+        button8.delegate = self
+        view.addSubview(button8)
+        
+        let button9 = MuFuKeyboardButton(x: 10.0 + 2.0 * 30.0, y: 80.0, style: .Phone)
+        button9.position = .Inner
+        button9.inputID = "9"
+        button9.displayType = .Label
+        button9.delegate = self
+        view.addSubview(button9)
+        
+        let button4 = MuFuKeyboardButton(x: 10.0, y: 80.0 + 45.0, style: .Phone)
+        button4.position = .Left
+        button4.inputID = "4"
+        button4.displayType = .Label
+        button4.delegate = self
+        view.addSubview(button4)
+        
+        let button5 = MuFuKeyboardButton(x: 10.0 + 30.0, y: 80.0 + 45.0, style: .Phone)
+        button5.position = .Inner
+        button5.inputID = "5"
+        button5.displayType = .Label
+        button5.delegate = self
+        view.addSubview(button5)
+        
+        let button6 = MuFuKeyboardButton(x: 10.0 + 2.0 * 30.0, y: 80.0 + 45.0, style: .Phone)
+        button6.position = .Inner
+        button6.inputID = "6"
+        button6.displayType = .Label
+        button6.delegate = self
+        view.addSubview(button6)
+        
+        let button1 = MuFuKeyboardButton(x: 10.0, y: 80.0 + 2.0 * 45.0, style: .Phone)
+        button1.position = .Left
+        button1.inputID = "1"
+        button1.displayType = .Label
+        button1.delegate = self
+        view.addSubview(button1)
+        
+        let button2 = MuFuKeyboardButton(x: 10.0 + 30.0, y: 80.0 + 2.0 * 45.0, style: .Phone)
+        button2.position = .Inner
+        button2.inputID = "2"
+        button2.displayType = .Label
+        button2.delegate = self
+        view.addSubview(button2)
+        
+        let button3 = MuFuKeyboardButton(x: 10.0 + 2.0 * 30.0, y: 80.0 + 2.0 * 45.0, style: .Phone)
+        button3.position = .Inner
+        button3.inputID = "3"
+        button3.displayType = .Label
+        button3.delegate = self
+        view.addSubview(button3)
+        
+        let button0 = MuFuKeyboardButton(x: 10.0 + 3.0 * 30.0, y: 80.0, style: .Phone)
+        button0.position = .Inner
+        button0.inputID = "0"
+        button0.displayType = .Label
+        button0.delegate = self
+        view.addSubview(button0)
+        
+        let buttonDot = MuFuKeyboardButton(x: 10.0 + 3.0 * 30.0, y: 80.0 + 45.0, style: .Phone)
+        buttonDot.position = .Inner
+        buttonDot.inputID = "."
+        buttonDot.inputOptionsIDs = [",", "'", ":", ";", "…"]
+        buttonDot.displayType = .Label
+        buttonDot.delegate = self
+        view.addSubview(buttonDot)
+        
+        let buttonEquals = MuFuKeyboardButton(x: 10.0 + 3.0 * 30.0, y: 80.0 + 2.0 * 45.0, style: .Phone)
+        buttonEquals.position = .Inner
+        buttonEquals.inputID = "="
+        buttonEquals.inputOptionsIDs = ["<", "≤", ">", "≥",  "≠", "≪", "≫"]
+        buttonEquals.displayType = .Label
+        buttonEquals.delegate = self
+        view.addSubview(buttonEquals)
+        
+        let buttonPlus = MuFuKeyboardButton(x: 10.0 + 4.0 * 30.0, y: 80.0, style: .Phone)
+        buttonPlus.position = .Inner
+        buttonPlus.inputID = "+"
+        buttonPlus.inputOptionsIDs = ["±", "∓"]
+        buttonPlus.displayType = .Label
+        buttonPlus.delegate = self
+        view.addSubview(buttonPlus)
+        
+        let buttonMinus = MuFuKeyboardButton(x: 10.0 + 4.0 * 30.0, y: 80.0 + 45.0, style: .Phone)
+        buttonMinus.position = .Inner
+        buttonMinus.inputID = "-"
+        buttonMinus.displayType = .Label
+        buttonMinus.delegate = self
+        view.addSubview(buttonMinus)
+        
+        
+        let buttonTimes = MuFuKeyboardButton(x: 10.0 + 4.0 * 30.0, y: 80.0 + 2.0 * 45.0, style: .Phone)
+        buttonTimes.position = .Inner
+        buttonTimes.inputID = "×"
+        buttonTimes.inputOptionsIDs = ["∙", "∗", "∘"]
+        buttonTimes.displayType = .Label
+        buttonTimes.delegate = self
+        view.addSubview(buttonTimes)
+        
+        let buttonDivision = MuFuKeyboardButton(x: 10.0 + 5.0 * 30.0, y: 80.0, style: .Phone)
+        buttonDivision.position = .Inner
+        buttonDivision.inputID = "÷"
+        buttonDivision.displayImageView.image = UIImage(named: "frac_key")
+        //buttonDivision.inputOptionsIDs = [":", "/", "\\"]
+        buttonDivision.displayType = .Image
+        buttonDivision.delegate = self
+        view.addSubview(buttonDivision)
+        
+        let buttonSqrt = MuFuKeyboardButton(x: 10.0 + 5.0 * 30.0, y: 80.0 + 2.0 * 45.0, style: .Phone)
+        buttonSqrt.position = .Inner
+        buttonSqrt.inputID = "sqrt"
+        buttonSqrt.displayImageView.image = UIImage(named: "sqrt_key")
+        buttonSqrt.magnifiedDisplayImageView.image = UIImage(named: "sqrt_key")
+        buttonSqrt.inputOptionsIDs = ["nsqrt"]
+        let nsqrtImage = UIImage(named: "nsqrt_key")!
+        buttonSqrt.inputOptionsImages = [nsqrtImage]
+        buttonSqrt.displayType = .Image
+        buttonSqrt.delegate = self
+        view.addSubview(buttonSqrt)
+        
+        
+        let buttonExponent = MuFuKeyboardButton(x: 10.0 + 5.0 * 30.0, y: 80.0 + 45.0, style: .Phone)
+        buttonExponent.position = .Inner
+        buttonExponent.inputID = "^"
+        buttonExponent.inputOptionsIDs = ["_", "^_"]
+        buttonExponent.displayImageView.image = UIImage(named:"exponent")
+        buttonExponent.inputOptionsImages = [UIImage(named:"sub")!, UIImage(named:"subsup")!]
+        buttonExponent.displayType = .Image
+        buttonExponent.delegate = self
+        view.addSubview(buttonExponent)
+        
+        
+        let buttonLeft = MuFuKeyboardButton(x: 10.0 + 7.0 * 30.0, y: 80.0 + 45.0, style: .Phone)
+        buttonLeft.position = .Inner
+        buttonLeft.inputID = "Left"
+        buttonLeft.displayLabel.text = "←"
+        buttonLeft.keyColor = SPECIAL_BUTTON_BG_COLOR
+        buttonLeft.keyTextColor = .white
+        buttonLeft.displayType = .Label
+        buttonLeft.delegate = self
+        view.addSubview(buttonLeft)
+
+        let buttonRight = MuFuKeyboardButton(x: 10.0 + 9.0 * 30.0, y: 80.0 + 45.0, style: .Phone)
+        buttonRight.position = .Inner
+        buttonRight.inputID = "Right"
+        buttonRight.displayLabel.text = "→"
+        buttonRight.keyColor = SPECIAL_BUTTON_BG_COLOR
+        buttonRight.keyTextColor = .white
+        buttonRight.displayType = .Label
+        buttonRight.delegate = self
+        view.addSubview(buttonRight)
+
+        let buttonUp = MuFuKeyboardButton(x: 10.0 + 8.0 * 30.0, y: 80.0, style: .Phone)
+        buttonUp.position = .Inner
+        buttonUp.inputID = "Up"
+        buttonUp.displayLabel.text = "↑"
+        buttonUp.keyColor = SPECIAL_BUTTON_BG_COLOR
+        buttonUp.keyTextColor = .white
+        buttonUp.displayType = .Label
+        buttonUp.delegate = self
+        view.addSubview(buttonUp)
+
+        let buttonDown = MuFuKeyboardButton(x: 10.0 + 8.0 * 30.0, y: 80.0 + 45.0, style: .Phone)
+        buttonDown.position = .Inner
+        buttonDown.inputID = "Down"
+        buttonDown.displayLabel.text = "↓"
+        buttonDown.keyColor = SPECIAL_BUTTON_BG_COLOR
+        buttonDown.keyTextColor = .white
+        buttonDown.displayType = .Label
+        buttonDown.delegate = self
+        view.addSubview(buttonDown)
+
+        let buttonX = MuFuKeyboardButton(x: 10.0 + 6.0 * 30.0, y: 80.0 + 2.0 * 45.0, style: .Phone)
+        buttonX.position = .Inner
+        buttonX.inputID = "x"
+        buttonX.inputOptionsIDs = ["y", "z", "u", "v", "w"]
+        buttonX.displayLabel.text = "x"
+        buttonX.displayType = .Label
+        buttonX.delegate = self
+        view.addSubview(buttonX)
+        
+        let buttonA = MuFuKeyboardButton(x: 10.0 + 7.0 * 30.0, y: 80.0 + 2.0 * 45.0, style: .Phone)
+        buttonA.position = .Inner
+        buttonA.inputID = "a"
+        buttonA.inputOptionsIDs = ["b", "c", "d", "e", "f"]
+        buttonA.displayLabel.text = "a"
+        buttonA.displayType = .Label
+        buttonA.delegate = self
+        view.addSubview(buttonA)
+        
+        
+        let buttonOpen = MuFuKeyboardButton(x: 10.0 + 6.0 * 30.0, y: 80.0, style: .Phone)
+        buttonOpen.position = .Inner
+        buttonOpen.inputID = "("
+        buttonOpen.inputOptionsIDs = ["[", "{"]
+        buttonOpen.displayLabel.text = "("
+        buttonOpen.displayType = .Label
+        buttonOpen.delegate = self
+        view.addSubview(buttonOpen)
+        
+        let buttonClose = MuFuKeyboardButton(x: 10.0 + 7.0 * 30.0, y: 80.0, style: .Phone)
+        buttonClose.position = .Inner
+        buttonClose.inputID = ")"
+        buttonClose.inputOptionsIDs = ["]", "}"]
+        buttonClose.displayLabel.text = ")"
+        buttonClose.displayType = .Label
+        buttonClose.delegate = self
+        view.addSubview(buttonClose)
+        
+        let buttonInsert = MuFuKeyboardButton(x: 10.0 + 8.0 * 30.0, y: 80.0 + 2.0 * 45.0, style: .Phone)
+        buttonInsert.frame.size.width = 60.0
+        buttonInsert.position = .Inner
+        buttonInsert.inputID = "Copy"
+        buttonInsert.displayLabel.text = "Copy"
+        buttonInsert.showMagnifier = false
+        buttonInsert.keyColor = UIColor(red: 0.7, green: 0.7, blue: 1.0, alpha: 1.0)
+        buttonInsert.displayType = .Label
+        buttonInsert.delegate = self
+        view.addSubview(buttonInsert)
+        
+        let buttonDelete = MuFuKeyboardButton(x: 10.0 + 9.0 * 30.0, y: 80.0, style: .Phone)
+        //buttonDelete.frame.size.width = 40.0
+        buttonDelete.position = .Inner
+        buttonDelete.inputID = "Delete"
+        buttonDelete.displayImageView.image = UIImage(named:"backspace_key")
+        buttonDelete.showMagnifier = false
+        buttonDelete.keyColor = SPECIAL_BUTTON_BG_COLOR
+        buttonDelete.displayType = .Image
+        buttonDelete.delegate = self
+        view.addSubview(buttonDelete)
+
+
+        let buttonNext = MuFuKeyboardButton(x: 10.0, y: 10.0, style: .Phone)
+        buttonNext.position = .Inner
+        buttonNext.frame.size.width = 33.0
+        buttonNext.inputID = "Next"
+        buttonNext.displayLabel.text = "🌐"
+        buttonNext.showMagnifier = false
+        buttonNext.keyColor = SPECIAL_BUTTON_BG_COLOR
+        buttonNext.displayType = .Label
+        buttonNext.delegate = self
+        view.addSubview(buttonNext)
+        
+        buttonNext.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
+        
+        
+        
         
         
         
     }
     
-    func textViewDidChange(_ textView: UITextView) {
-        let typedSymbol = textView.text
-        _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('" + typedSymbol! + "');", completionHandler: nil)
-        if (typedSymbol! == "\\sqrt") {
+    func handleKeyboardEvent(_ id: String) {
+        switch id {
+        case "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "=", "<", "≤", ">", "≥",  "≠", "≪", "≫", ".", ",", ":", ";", "…", "+", "±", "∓", "-", "×", "∙", "∗", "∘", ":", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "(", ")", "[", "]":
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.typedText('" + id + "');", completionHandler: nil)
+        case "'":
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('\\prime');", completionHandler: nil)
+        case "{", "}":
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.typedText(\\'" + id + "');", completionHandler: nil)
+        case "\\":
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('\\setminus');", completionHandler: nil)
+        case "∫":
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('\\int');",
+                completionHandler: nil)
+        case "sqrt":
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('\\sqrt');", completionHandler: nil)
             _ = formulaWebView?.evaluateJavaScript("answerMathField.keystroke('Left');", completionHandler: nil)
+        case "^", "_":
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('" + id + "');", completionHandler: nil)
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.keystroke('Left');", completionHandler: nil)
+        case "^_":
+            NSLog("combined sub+sup is not implemented yet")
+        case "nsqrt":
+            NSLog("nthroot not implemented yet")
+        case "÷":
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('/');", completionHandler: nil)
+            //_ = formulaWebView?.evaluateJavaScript("answerMathField.keystroke('Up');", completionHandler: nil)
+            //_ = formulaWebView?.evaluateJavaScript("answerMathField.keystroke('Left');", completionHandler: nil)
+        case "Left", "Right", "Up", "Down":
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.keystroke('" + id + "');", completionHandler: nil)
+            
+        case "Delete":
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.keystroke('Backspace')", completionHandler: nil)
+            
+        case "Copy":
+            copyFormulaImage()
+            
+        default:
+            break
         }
-        myTextView.text = ""
+    }
+    
+    
+    func textViewDidChange(_ textView: UITextView) {
+        //let typedSymbol = textView.text
+        //_ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('" + typedSymbol! + "');", completionHandler: nil)
+        //if (typedSymbol! == "\\sqrt") {
+        //    _ = formulaWebView?.evaluateJavaScript("answerMathField.keystroke('Left');", completionHandler: nil)
+        //}
+        //myTextView.text = ""
     }
     
     override func didReceiveMemoryWarning() {
@@ -212,72 +573,8 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate, BHKeybo
         // The app is about to change the document's contents. Perform any preparation here.
     }
     
-    //override func textDidChange(_ textInput: UITextInput?) {
-    //    // The app has just changed the document's contents, the document context has been updated.
-    //}
     
-    @IBAction func buttonTap(button: BHKeyboardButton!) { // to be removed
-        if let char = button.input {
-            if char == "Left" {
-                _ = formulaWebView?.evaluateJavaScript("answerMathField.keystroke('Left');", completionHandler: nil)
-            } else if char == "Right" {
-                _ = formulaWebView?.evaluateJavaScript("answerMathField.keystroke('Right');", completionHandler: nil)
-            } else if char == "Up" {
-                _ = formulaWebView?.evaluateJavaScript("answerMathField.keystroke('Up');", completionHandler: nil)
-            } else if char == "Down" {
-                _ = formulaWebView?.evaluateJavaScript("answerMathField.keystroke('Down');", completionHandler: nil)
-            } else if char == "Back" {
-                _ = formulaWebView?.evaluateJavaScript("answerMathField.keystroke('Backspace');", completionHandler: nil)
-            } else if char == "√" {
-                _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('\\sqrt');", completionHandler: nil)
-            } else if char == "0" {
-                _ = formulaWebView?.evaluateJavaScript("answerMathField.typedText('0');", completionHandler: nil)
-                
-            } else if char == "1" {
-                _ = formulaWebView?.evaluateJavaScript("answerMathField.typedText('1');", completionHandler: nil)
-                
-            } else if char == "2" {
-                _ = formulaWebView?.evaluateJavaScript("answerMathField.typedText('2');", completionHandler: nil)
-                
-            } else if char == "3" {
-                _ = formulaWebView?.evaluateJavaScript("answerMathField.typedText('3');", completionHandler: nil)
-                
-            } else if char == "4" {
-                _ = formulaWebView?.evaluateJavaScript("answerMathField.typedText('4');", completionHandler: nil)
-                
-            } else if char == "5" {
-                _ = formulaWebView?.evaluateJavaScript("answerMathField.typedText('5');", completionHandler: nil)
-                
-            } else if char == "6" {
-                _ = formulaWebView?.evaluateJavaScript("answerMathField.typedText('6');", completionHandler: nil)
-                
-            } else if char == "7" {
-                _ = formulaWebView?.evaluateJavaScript("answerMathField.typedText('7');", completionHandler: nil)
-                
-            } else if char == "8" {
-                _ = formulaWebView?.evaluateJavaScript("answerMathField.typedText('8');", completionHandler: nil)
-                
-            } else if char == "9" {
-                _ = formulaWebView?.evaluateJavaScript("answerMathField.typedText('9');", completionHandler: nil)
-                
-            } else if char == "+" {
-                _ = formulaWebView?.evaluateJavaScript("answerMathField.typedText('+');", completionHandler: nil)
-                
-            } else if char == "–" {
-                _ = formulaWebView?.evaluateJavaScript("answerMathField.typedText('-');", completionHandler: nil)
-                
-            } else if char == "*" {
-                _ = formulaWebView?.evaluateJavaScript("answerMathField.typedText('*');", completionHandler: nil)
-                
-            } else if char == "/" {
-                _ = formulaWebView?.evaluateJavaScript("answerMathField.typedText('/');", completionHandler: nil)
-            }
-        }
-        
-    }
-    
-    
-    func buttonPressed(inputIdentifier: String) {
+    func inputSelected(inputIdentifier: String) {
         NSLog(inputIdentifier)
     }
     
@@ -303,6 +600,7 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate, BHKeybo
     @IBAction func copyFormulaImage() {
         formulaWebView?.evaluateJavaScript("answerMathField.blur();", completionHandler: nil)
         self.perform(#selector(grabWebView), with: nil, afterDelay: 0.5)
+        formulaWebView?.evaluateJavaScript("answerMathField.focus();", completionHandler: nil)
     }
     
     func grabWebView() {
@@ -310,7 +608,6 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate, BHKeybo
         let imageData = UIImagePNGRepresentation(formulaImage)
         let pasteBoard = UIPasteboard.general
         pasteBoard.setData(imageData!, forPasteboardType:"public.image")
-        formulaWebView?.evaluateJavaScript("answerMathField.focus();", completionHandler: nil)
         
         if self.isOpenAccessGranted() {
             print("open access")
@@ -321,13 +618,18 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate, BHKeybo
     
     func image() -> UIImage {
         
+        formulaWebView?.layer.borderWidth = 0.0
         UIGraphicsBeginImageContextWithOptions((formulaWebView?.frame.size)!,false, UIScreen.main.scale)
         let ctx = UIGraphicsGetCurrentContext()
         formulaWebView?.layer.render(in: ctx!)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         
+        formulaWebView?.layer.borderWidth = 1.0
+        
         let trimmedImage = (image?.trim())!
-        return trimmedImage
+        let squaredImage = trimmedImage.padToSquare()//.imageWithColor(newColor: UIColor(red: 1.0, green: 1.0, blue: 0.9, alpha: 0.5))!
+        
+        return squaredImage
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {

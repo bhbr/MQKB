@@ -9,7 +9,7 @@
 //  CYRKeyboardButton.h
 //
 //  Created by Illya Busigin on 7/19/14.
-//  Copyright (c) 2014 Cyrillian, Inc.
+//  Copyright (c) 2014 CYRillian, Inc.
 //  Portions Copyright (c) 2013 Nigel Timothy Barber (TurtleBezierPath)
 //
 //  Distributed under MIT license.
@@ -19,7 +19,7 @@
 //
 // The MIT License (MIT)
 //
-// Copyright (c) 2014 Cyrillian, Inc.
+// Copyright (c) 2014 CYRillian, Inc.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy of
 // this software and associated documentation files (the "Software"), to deal in
@@ -53,7 +53,10 @@ enum CYRKeyboardButtonPosition {
 }
 
 
-
+enum CYRKeyboardButtonDisplayType {
+    case Label
+    case Image
+}
 
 
 /**
@@ -63,6 +66,12 @@ enum CYRKeyboardButtonPosition {
 enum CYRKeyboardButtonStyle {
     case Phone
     case Tablet
+}
+
+
+// Delegate that handles button press
+protocol CYRKeyboardButtonDelegate {
+    func inputSelected(inputIdentifier: String)
 }
 
 /**
@@ -76,6 +85,24 @@ extension Notification.Name {
         static let buttonKeyPressedKey = Notification.Name("CYRKeyboardButtonKeyPressedKey")
 }
 
+
+
+extension UIImage {
+    
+    func inverted() -> UIImage? {
+        guard let cgImage = self.cgImage else { return nil }
+        let ciImage = CoreImage.CIImage(cgImage: cgImage)
+        guard let filter = CIFilter(name: "CIColorInvert") else { return nil }
+        filter.setDefaults()
+        filter.setValue(ciImage, forKey: kCIInputImageKey)
+        let context = CIContext(options: nil)
+        guard let outputImage = filter.outputImage else { return nil }
+        //guard let outputImageCopy = context.createCGImage(outputImage, from: outputImage.extent) else { return nil }
+        //return UIImage(cgImage: outputImageCopy)
+        return self
+    }
+    
+}
 
 
 
@@ -140,7 +167,7 @@ class CYRKeyboardButton: UIControl, UIGestureRecognizerDelegate {
         }
     }
     
-    
+    var showDetail: Bool = true // false for special buttons
     
     var _inputOptions: Array<String>? = []
     var inputOptions: Array<String>? {
@@ -161,6 +188,44 @@ class CYRKeyboardButton: UIControl, UIGestureRecognizerDelegate {
         }
     }
     
+    
+    var _inputOptionsImages: Array<UIImage>? = []
+    var inputOptionsImages: Array<UIImage>? {
+        
+        get {
+            return _inputOptionsImages
+        }
+        
+        set(newInputOptionsImages) {
+            willChangeValue(forKey: "_inputOptionsImages")
+            _inputOptionsImages = newInputOptionsImages
+            didChangeValue(forKey: "_inputOptionsImages")
+            
+            // automatically save inverted images
+            selectedInputOptionsImages = []
+            for inputOptionImage: UIImage in newInputOptionsImages! {
+                //let idx: NSInteger = (newInputOptionsImages?.index(of: inputOptionImage))!
+                selectedInputOptionsImages?.append(inputOptionImage.inverted()!)
+            }
+        }
+    }
+    
+    var _selectedInputOptionsImages: Array<UIImage>? = []
+    var selectedInputOptionsImages: Array<UIImage>? {
+        
+        get {
+            return _selectedInputOptionsImages
+        }
+        
+        set(newSelectedInputOptionsImages) {
+            willChangeValue(forKey: "_selectedInputOptionsImages")
+            _selectedInputOptionsImages = newSelectedInputOptionsImages
+            didChangeValue(forKey: "_selectedInputOptionsImages")
+        }
+    }
+    
+    
+    
     weak var _textInput: UITextInput? = nil
     var textInput: UITextInput? {
         
@@ -172,7 +237,7 @@ class CYRKeyboardButton: UIControl, UIGestureRecognizerDelegate {
             if let _ = newTextInput as UITextInput? {
                 // nothing to see here
             } else {
-                NSLog("<CYRKeyboardButton> The text input object must conform to the UITextInput protocol!")
+                ("<CYRKeyboardButton> The text input object must conform to the UITextInput protocol!")
             }
             willChangeValue(forKey: "_textInput")
             _textInput = newTextInput
@@ -207,8 +272,11 @@ class CYRKeyboardButton: UIControl, UIGestureRecognizerDelegate {
     lazy var keyCornerRadius: CGFloat = 0.0
     
     var inputLabel = UILabel()
-    
-    
+
+    var inputImageView = UIImageView()
+    var displayType = CYRKeyboardButtonDisplayType.Label
+    var rowCounts: Array<Int> = [1] // for multi-row input options
+    var delegate: CYRKeyboardButtonDelegate? // KeyboardVC
     
     
     init() {
@@ -277,7 +345,25 @@ class CYRKeyboardButton: UIControl, UIGestureRecognizerDelegate {
         
         self.addSubview(newInputLabel)
         
+        
         updateDisplayStyle()
+    
+        // Input image
+        let newInputImage = UIImage()
+        let newInputImageView = UIImageView(frame: CGRect(x: 0.0, y: 0.0, width: frame.width, height: frame.height))
+        newInputImageView.image = newInputImage
+        newInputImageView.contentMode = .center
+        newInputImageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        newInputImageView.isUserInteractionEnabled = false
+        newInputImageView.backgroundColor = .clear
+        
+        self.inputImageView = newInputImageView
+        self.addSubview(newInputImageView)
+        self.inputImageView.isHidden = true
+        
+        // use label by default
+        displayType = .Label
+    
     }
     
     
@@ -408,15 +494,19 @@ class CYRKeyboardButton: UIControl, UIGestureRecognizerDelegate {
         
         // Determine the button's position state based on the superview padding
         let leftPadding = frame.minX
-        let rightPadding = (superview?.frame.maxX)! - frame.maxX
-        let minimumClearance = frame.width * 0.5 + 8.0
-        
-        if (leftPadding >= minimumClearance && rightPadding >= minimumClearance) {
-            position = .Inner
-        } else if (leftPadding > rightPadding) {
-            position = .Left
-        } else {
-            position = .Right
+        if let sv = superview {
+            
+            let rightPadding = sv.frame.maxX - frame.maxX
+
+            let minimumClearance = frame.width * 0.5 + 8.0
+            
+            if (leftPadding >= minimumClearance && rightPadding >= minimumClearance) {
+                position = .Inner
+            } else if (leftPadding > rightPadding) {
+                position = .Left
+            } else {
+                position = .Right
+            }
         }
     }
     
@@ -424,7 +514,7 @@ class CYRKeyboardButton: UIControl, UIGestureRecognizerDelegate {
         
         tearDownInputOptionsConfiguration()
         
-        if ((inputOptions?.count)! > 0) {
+        if ((inputOptions?.count)! > 0) { // then showDetail should be false anyway
             
             let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(showExpandedInputView(recognizer:)))
             longPressGestureRecognizer.minimumPressDuration = 0.3
@@ -447,11 +537,17 @@ class CYRKeyboardButton: UIControl, UIGestureRecognizerDelegate {
     
     func handleTouchDown() {
         UIDevice.current.playInputClick()
-        showInputView()
+        if showDetail {
+            showInputView()
+        }
     }
     
     func handleTouchUpInside() {
-        insertText(text: input!)
+        if delegate != nil {
+            delegate?.inputSelected(inputIdentifier: input!)
+        } else {
+            insertText(text: input!)
+        }
         hideInputView()
         hideExpandedInputView()
     }
@@ -459,9 +555,17 @@ class CYRKeyboardButton: UIControl, UIGestureRecognizerDelegate {
     func _handlePanning(recognizer: UIPanGestureRecognizer) {
         
         if (recognizer.state == .ended || recognizer.state == .cancelled) {
-            if expandedButtonView?.selectedInputIndex != NSNotFound {
-                let inputOption = inputOptions?[(expandedButtonView?.selectedInputIndex)!]
-                insertText(text: inputOption!)
+            if let idx = expandedButtonView?.selectedInputIndex {
+                if idx != NSNotFound {
+                    let inputOption = inputOptions?[idx]
+                    if (delegate != nil) {
+                        delegate?.inputSelected(inputIdentifier: inputOption!)
+                    } else {
+                        insertText(text: inputOption!)
+                    }
+                }
+            } else { // short panning just on button
+                handleTouchUpInside()
             }
         
             hideExpandedInputView()
@@ -483,6 +587,19 @@ class CYRKeyboardButton: UIControl, UIGestureRecognizerDelegate {
     }
     
     override func draw(_ rect: CGRect) {
+        
+        switch displayType {
+        case .Label:
+            inputLabel.isHidden = false
+            inputImageView.isHidden = true
+            break
+        case .Image:
+            inputLabel.isHidden = true
+            inputImageView.isHidden = false
+            break
+        }
+        
+        
         let context = UIGraphicsGetCurrentContext()
         var color = keyColor
         if (style == .Tablet && state == .highlighted) {
@@ -501,6 +618,9 @@ class CYRKeyboardButton: UIControl, UIGestureRecognizerDelegate {
     }
     
     
+    func setImage(_ image: UIImage?) {
+        self.inputImageView.image = image
+    }
     
 }
 

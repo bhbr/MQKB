@@ -7,7 +7,7 @@
 //  CYRKeyboardButton.h
 //
 //  Created by Illya Busigin on 7/19/14.
-//  Copyright (c) 2014 Cyrillian, Inc.
+//  Copyright (c) 2014 CYRillian, Inc.
 //  Portions Copyright (c) 2013 Nigel Timothy Barber (TurtleBezierPath)
 //
 //  Distributed under MIT license.
@@ -17,7 +17,7 @@
 //
 // The MIT License (MIT)
 //
-// Copyright (c) 2014 Cyrillian, Inc.
+// Copyright (c) 2014 CYRillian, Inc.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy of
 // this software and associated documentation files (the "Software"), to deal in
@@ -40,6 +40,7 @@
 
 
 import UIKit
+import AVFoundation
 
 enum CYRKeyboardButtonViewType {
     case Input
@@ -111,6 +112,10 @@ class CYRKeyboardButtonView: UIView {
             self.selectedInputIndex = selectedInputIndex
             setNeedsDisplay()
         }
+        
+        if (self.selectedInputIndex == 2) {
+            
+        }
     }
     
     
@@ -174,13 +179,32 @@ class CYRKeyboardButtonView: UIView {
         roundedRectanglePath.fill()
         context?.restoreGState()
         
-        // Text drawing
-        let stringColor = button?.keyTextColor
-        let stringRect = bezierPath.bounds
-        let p = NSMutableParagraphStyle.init()
-        p.alignment = NSTextAlignment.center
-        let attributedString = NSAttributedString.init(string: inputString!, attributes: [NSFontAttributeName: UIFont.init(name: "HelveticaNeue-Light", size: 44) ?? UIFont.systemFont(ofSize: 44), NSForegroundColorAttributeName: stringColor!, NSParagraphStyleAttributeName: p])
-        attributedString.draw(in: stringRect)
+        switch (button?.displayType)! {
+        case .Label:
+            // Text drawing
+            let stringColor = button?.keyTextColor
+            let stringRect = bezierPath.bounds
+            let p = NSMutableParagraphStyle.init()
+            p.alignment = NSTextAlignment.center
+            let attributedString = NSAttributedString.init(string: inputString!, attributes: [NSFontAttributeName: UIFont.init(name: "HelveticaNeue-Light", size: 44) ?? UIFont.systemFont(ofSize: 44), NSForegroundColorAttributeName: stringColor!, NSParagraphStyleAttributeName: p])
+            attributedString.draw(in: stringRect)
+            
+        case .Image:
+            // Image drawing
+            let image = button!.inputImageView.image
+            let imageView = UIImageView(image: image)
+            
+            imageView.contentMode = .center
+            imageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            imageView.isUserInteractionEnabled = false
+            imageView.backgroundColor = .clear
+            
+            imageView.frame.origin = bezierPath.bounds.origin
+            imageView.frame.origin.x += (bezierPath.bounds.width - imageView.frame.width) * 0.5
+            
+            self.addSubview(imageView)
+            setNeedsDisplay()
+        }
         
     }
     
@@ -253,30 +277,61 @@ class CYRKeyboardButtonView: UIView {
         context?.setShadow(offset: CGSize.zero, blur: 0, color: UIColor.clear.cgColor)
         context?.saveGState()
         
-        let inputOptions = button?.inputOptions
-        for optionString: String in inputOptions! {
+        switch (button?.displayType)! {
             
-            let idx: NSInteger = (inputOptions?.index(of: optionString))!
-            let optionRect: CGRect = (inputOptionsRects?[idx])!
-            let selected = (idx == selectedInputIndex)
+        case .Label:
             
-            if (selected) {
-                // Draw selection background
-                let roundedRectanglePath = UIBezierPath(roundedRect: optionRect, cornerRadius: 4.0)
-                tintColor.setFill()
-                roundedRectanglePath.fill()
+            let inputOptions = button?.inputOptions
+            for optionString: String in inputOptions! {
+                
+                let idx: NSInteger = (inputOptions?.index(of: optionString))!
+                let optionRect: CGRect = (inputOptionsRects?[idx])!
+                let selected = (idx == selectedInputIndex)
+                
+                if (selected) {
+                    // Draw selection background
+                    let roundedRectanglePath = UIBezierPath(roundedRect: optionRect, cornerRadius: 4.0)
+                    tintColor.setFill()
+                    roundedRectanglePath.fill()
+                }
+                
+                // Draw the text
+                let stringColor = (selected ? UIColor.white : button?.keyTextColor)
+                let stringSize = optionString.size(attributes: [NSFontAttributeName: (button?.inputOptionsFont)!])
+                let stringRect = CGRect(x: optionRect.midX - stringSize.width * 0.5, y: optionRect.midY - stringSize.height * 0.5, width: stringSize.width, height: stringSize.height)
+                let p = NSMutableParagraphStyle()
+                p.alignment = NSTextAlignment.center
+                let attributedString = NSAttributedString.init(string: optionString, attributes: [NSFontAttributeName: (button?.inputOptionsFont)!, NSForegroundColorAttributeName: stringColor!, NSParagraphStyleAttributeName: p])
+                attributedString.draw(in: stringRect)
+                
             }
             
-            // Draw the text
-            let stringColor = (selected ? UIColor.white : button?.keyTextColor)
-            let stringSize = optionString.size(attributes: [NSFontAttributeName: (button?.inputOptionsFont)!])
-            let stringRect = CGRect(x: optionRect.midX - stringSize.width * 0.5, y: optionRect.midY - stringSize.height * 0.5, width: stringSize.width, height: stringSize.height)
-            let p = NSMutableParagraphStyle()
-            p.alignment = NSTextAlignment.center
-            let attributedString = NSAttributedString.init(string: optionString, attributes: [NSFontAttributeName: (button?.inputOptionsFont)!, NSForegroundColorAttributeName: stringColor!, NSParagraphStyleAttributeName: p])
-            attributedString.draw(in: stringRect)
+        case .Image:
+            
+            let inputOptionsImages = button?.inputOptionsImages
+            for optionImage: UIImage in inputOptionsImages! {
+                
+                let idx: NSInteger = (inputOptionsImages?.index(of: optionImage))!
+                let optionRect: CGRect = (inputOptionsRects?[idx])!
+                let selectedOptionImage: UIImage = (button?.selectedInputOptionsImages?[idx])!
+                let selected = (idx == selectedInputIndex)
+                let aspectRatioPreservingRect = AVMakeRect(aspectRatio: selectedOptionImage.size, insideRect: optionRect)
+               
+                if (selected) {
+                    // Draw selection background
+                    let roundedRectanglePath = UIBezierPath(roundedRect: optionRect, cornerRadius: 4.0)
+                    tintColor.setFill()
+                    roundedRectanglePath.fill()
+                    selectedOptionImage.draw(in: aspectRatioPreservingRect)
+                } else {
+                    optionImage.draw(in: aspectRatioPreservingRect)
+                }
+                
+            }
             
         }
+        
+             
         
         context?.restoreGState()
     }
@@ -508,9 +563,6 @@ class CYRKeyboardButtonView: UIView {
                 return path
             }
             
-            break
-            
-            
         default:
             break
         }
@@ -525,6 +577,10 @@ class CYRKeyboardButtonView: UIView {
     func determineExpandedKeyGeometries() {
         
         let keyRect = convert((button?.frame)!, from: button?.superview)
+        
+        // trying to better match iPad expanded key size
+        //keyRect.size = CGSize(width:47, height:45)
+        
         var inputOptionsRects = Array<CGRect>()
         inputOptionsRects.reserveCapacity((button?.inputOptions?.count)!)
         
@@ -543,28 +599,58 @@ class CYRKeyboardButtonView: UIView {
             
         case .Tablet:
             spacing = 0.0
+            //optionRect = keyRect.offsetBy(dx: 0.0, dy: -(keyRect.height + 3.0))
+//            optionRect = keyRect.insetBy(dx: 6.0, dy: 6.5).offsetBy(dx: 0.0, dy: -(keyRect.height + 3.0))
             optionRect = keyRect.insetBy(dx: 6.0, dy: 6.5).offsetBy(dx: 0.0, dy: -(keyRect.height + 3.0))
-            offset =  optionRect.width
+            offset = optionRect.width
             break
         }
 
+        let nbRows = button!.rowCounts.count
         
         
-        for _ in (button?.inputOptions)! {
+        
+        for inputOption in (button?.inputOptions)! {
+            NSLog("===================================================")
+            // determine position indices
+            let nsidx = (button?.inputOptions?.index(of: inputOption))! as NSInteger
+            let idx = Int(nsidx)
+            NSLog("idx is %@", idx)
+            var i: Int = 0
+            var rowNb: Int = 0
+            var posInRow: Int = 0
+            for rowCount in (button?.rowCounts)! {
+                NSLog("    rowCount is %@", rowCount)
+                NSLog("    i = %@", i)
+                if (i + rowCount > Int(idx)) {
+                    NSLog("    i + rowCount > Int(idx), so we set")
+                    posInRow = Int(idx) - i
+                    NSLog("        posInRow = Int(idx) - i = %@", posInRow)
+                    break
+                } else {
+                    NSLog("    i + rowCount <= Int(idx), so we set")
+                    i += rowCount
+                    NSLog("        i += rowCount = %@", i)
+                    rowNb += 1
+                }
+            }
+            NSLog("****************************************************")
+            NSLog("Final result: rowNb = %@ ,posInRow = %@", rowNb, posInRow)
             
-            inputOptionsRects.append(optionRect)
             
+            var shiftedOptionRect = CGRect.zero
             // Offset the option rect
             switch expandedPosition {
             case .Right:
-                optionRect = optionRect.offsetBy(dx: offset + spacing, dy: 0.0)
+                shiftedOptionRect = optionRect.offsetBy(dx: spacing + CGFloat(posInRow) * offset, dy: CGFloat(rowNb) * offset)
                 break
             case .Left:
-                optionRect = optionRect.offsetBy(dx: -offset - spacing, dy: 0.0)
+                shiftedOptionRect = optionRect.offsetBy(dx: -spacing - CGFloat(posInRow) * offset, dy: CGFloat(rowNb) * offset)
                 break
             default:
                 break
             }
+            inputOptionsRects.append(shiftedOptionRect)
             
         }
         
