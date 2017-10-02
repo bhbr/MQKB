@@ -34,38 +34,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MathQuillKeyboard/KeyboardViewController.swift"
-            timestampString = "510689233.236893"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "640"
-            endingLineNumber = "640"
-            landmarkName = "interrupt()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MathQuillKeyboard/KeyboardViewController.swift"
-            timestampString = "510689233.236893"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "250"
-            endingLineNumber = "250"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -85,12 +53,156 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MathQuillKeyboard/KeyboardViewController.swift"
-            timestampString = "510689233.236893"
+            filePath = "../MuFuKeyboardButton/MuFuKeyboardButtonDetailView.swift"
+            timestampString = "528649872.963315"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "517"
-            endingLineNumber = "517"
+            startingLineNumber = "239"
+            endingLineNumber = "239"
+            landmarkName = "layoutSubviews()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../MuFuKeyboardButton/MuFuKeyboardButtonDetailView.swift"
+            timestampString = "528649872.963637"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "displayType"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MathQuillKeyboard/KeyboardViewController.swift"
+            timestampString = "528650387.322991"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "UIImage"
+            landmarkType = "21">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../MuFuKeyboardButton/MuFuKeyboardButtonDetailView.swift"
+            timestampString = "528649872.964555"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "551"
+            endingLineNumber = "551"
+            landmarkName = "inputOptionsViewPath()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MathQuillKeyboard.MuFuKeyboardButtonDetailView.inputOptionsViewPath () -&gt; __ObjC.UIBezierPath"
+                  moduleName = "MathQuillKeyboard"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Ben/Developer/MuFuKeyboardButton/MuFuKeyboardButtonDetailView.swift"
+                  timestampString = "527609755.921119"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "544"
+                  endingLineNumber = "544"
+                  offsetFromSymbolStart = "1729">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MathQuillKeyboard.MuFuKeyboardButtonDetailView.inputOptionsViewPath () -&gt; __ObjC.UIBezierPath"
+                  moduleName = "MathQuillKeyboard"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Ben/Developer/MuFuKeyboardButton/MuFuKeyboardButtonDetailView.swift"
+                  timestampString = "527609755.924472"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "544"
+                  endingLineNumber = "544"
+                  offsetFromSymbolStart = "12530">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../MuFuKeyboardButton/MuFuKeyboardButtonDetailView.swift"
+            timestampString = "528649872.964633"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "378"
+            endingLineNumber = "378"
+            landmarkName = "drawInputOptionsView()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MathQuillKeyboard.MuFuKeyboardButtonDetailView.drawInputOptionsView () -&gt; ()"
+                  moduleName = "MathQuillKeyboard"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Ben/Developer/MuFuKeyboardButton/MuFuKeyboardButtonDetailView.swift"
+                  timestampString = "527678781.177737"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "375"
+                  endingLineNumber = "375"
+                  offsetFromSymbolStart = "372">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MathQuillKeyboard.MuFuKeyboardButtonDetailView.drawInputOptionsView () -&gt; ()"
+                  moduleName = "MathQuillKeyboard"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Ben/Developer/MuFuKeyboardButton/MuFuKeyboardButtonDetailView.swift"
+                  timestampString = "527678781.181047"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "375"
+                  endingLineNumber = "375"
+                  offsetFromSymbolStart = "7552">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MathQuillKeyboard/KeyboardViewController.swift"
+            timestampString = "528650387.323514"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1273"
+            endingLineNumber = "1273"
             landmarkName = "handleKeyboardEvent(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -102,28 +214,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../MuFuKeyboardButton/MuFuKeyboardButtonDetailView.swift"
-            timestampString = "510677497.095136"
+            timestampString = "528649872.965228"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "215"
-            endingLineNumber = "215"
-            landmarkName = "layoutSubviews()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MathQuillKeyboard/KeyboardViewController.swift"
-            timestampString = "510689233.236893"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "378"
-            endingLineNumber = "378"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "733"
+            endingLineNumber = "733"
+            landmarkName = "determineInputOptionsGeometries()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -134,13 +230,61 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../MuFuKeyboardButton/MuFuKeyboardButtonDetailView.swift"
-            timestampString = "510675013.34574"
+            timestampString = "528649872.965294"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
-            landmarkName = "MuFuKeyboardButtonDetailView"
-            landmarkType = "3">
+            startingLineNumber = "745"
+            endingLineNumber = "745"
+            landmarkName = "determineInputOptionsGeometries()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MathQuillKeyboard.MuFuKeyboardButtonDetailView.determineInputOptionsGeometries() -&gt; ()"
+                  moduleName = "MathQuillKeyboard"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Ben/Developer/MuFuKeyboardButton/MuFuKeyboardButtonDetailView.swift"
+                  timestampString = "528424709.625406"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "746"
+                  endingLineNumber = "746"
+                  offsetFromSymbolStart = "1340">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MathQuillKeyboard.MuFuKeyboardButtonDetailView.determineInputOptionsGeometries() -&gt; ()"
+                  moduleName = "MathQuillKeyboard"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Ben/Developer/MuFuKeyboardButton/MuFuKeyboardButtonDetailView.swift"
+                  timestampString = "528424709.627578"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "746"
+                  endingLineNumber = "746"
+                  offsetFromSymbolStart = "7944">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../MuFuKeyboardButton/MuFuKeyboardButton.swift"
+            timestampString = "528649872.965379"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "649"
+            endingLineNumber = "649"
+            landmarkName = "updateDisplayStyle()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -150,12 +294,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MathQuillKeyboard/KeyboardViewController.swift"
-            timestampString = "510689233.236893"
+            timestampString = "528650387.323888"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "631"
-            endingLineNumber = "631"
-            landmarkName = "image()"
+            startingLineNumber = "1079"
+            endingLineNumber = "1079"
+            landmarkName = "handleKeyboardEvent(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../MuFuKeyboardButton/MuFuKeyboardButtonDetailView.swift"
+            timestampString = "528649872.966166"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "782"
+            endingLineNumber = "782"
+            landmarkName = "determineInputOptionsGeometries()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

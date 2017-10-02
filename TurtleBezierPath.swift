@@ -70,7 +70,7 @@ class TurtleBezierPath: UIBezierPath {
     
     
     func radians(_ degrees: CGFloat) -> CGFloat {
-        return degrees * CGFloat(M_PI) / 180.0
+        return degrees * CGFloat.pi / 180.0
     }
     
     func toCartesian(_ radius: CGFloat, bearing: CGFloat, origin: CGPoint) -> CGPoint {
