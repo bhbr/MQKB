@@ -104,6 +104,16 @@
 		B59A0D541DFC77BB0004F6E7 /* MQKBView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MQKBView.xib; sourceTree = "<group>"; };
 		B59A0D561DFC77EE0004F6E7 /* mystyle.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = mystyle.css; sourceTree = "<group>"; };
 		B59A0D581DFC78160004F6E7 /* test.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = test.html; sourceTree = "<group>"; };
+		B5C120E71F850711007B8298 /* Symbola-basic.eot */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Symbola-basic.eot"; sourceTree = "<group>"; };
+		B5C120E81F850711007B8298 /* Symbola-basic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Symbola-basic.ttf"; sourceTree = "<group>"; };
+		B5C120E91F850711007B8298 /* Symbola-basic.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Symbola-basic.woff"; sourceTree = "<group>"; };
+		B5C120EA1F850711007B8298 /* Symbola-basic.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Symbola-basic.woff2"; sourceTree = "<group>"; };
+		B5C120EB1F850711007B8298 /* Symbola.eot */ = {isa = PBXFileReference; lastKnownFileType = file; path = Symbola.eot; sourceTree = "<group>"; };
+		B5C120EC1F850711007B8298 /* Symbola.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Symbola.svg; sourceTree = "<group>"; };
+		B5C120ED1F850711007B8298 /* Symbola.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Symbola.ttf; sourceTree = "<group>"; };
+		B5C120EE1F850711007B8298 /* Symbola.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = Symbola.woff; sourceTree = "<group>"; };
+		B5C120EF1F850711007B8298 /* Symbola.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Symbola.woff2; sourceTree = "<group>"; };
+		B5C120F01F8509CB007B8298 /* Symbola.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Symbola.otf; sourceTree = "<group>"; };
 		B5CF16DC1E6DC2C70063D1A9 /* MuFuKeyboardButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MuFuKeyboardButton.swift; path = ../MuFuKeyboardButton/MuFuKeyboardButton.swift; sourceTree = "<group>"; };
 		B5CF16DD1E6DC2C70063D1A9 /* MuFuKeyboardButtonDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MuFuKeyboardButtonDetailView.swift; path = ../MuFuKeyboardButton/MuFuKeyboardButtonDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -200,17 +210,35 @@
 		B59A0D471DFC77530004F6E7 /* MathQuillKeyboard */ = {
 			isa = PBXGroup;
 			children = (
+				B5C120E61F850711007B8298 /* fonts */,
 				B58AE0881F7FC07600325F86 /* jquery-1.7.2.js */,
 				B58AE0861F7FC07600325F86 /* mathquill.css */,
 				B58AE0871F7FC07600325F86 /* mathquill.js */,
 				B511B7CC1E4A2579002B8280 /* MathQuillKeyboard.entitlements */,
-				B59A0D481DFC77530004F6E7 /* KeyboardViewController.swift */,
 				B59A0D561DFC77EE0004F6E7 /* mystyle.css */,
 				B59A0D581DFC78160004F6E7 /* test.html */,
 				B59A0D541DFC77BB0004F6E7 /* MQKBView.xib */,
+				B59A0D481DFC77530004F6E7 /* KeyboardViewController.swift */,
 				B59A0D4A1DFC77530004F6E7 /* Info.plist */,
 			);
 			path = MathQuillKeyboard;
+			sourceTree = "<group>";
+		};
+		B5C120E61F850711007B8298 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				B5C120F01F8509CB007B8298 /* Symbola.otf */,
+				B5C120E71F850711007B8298 /* Symbola-basic.eot */,
+				B5C120E81F850711007B8298 /* Symbola-basic.ttf */,
+				B5C120E91F850711007B8298 /* Symbola-basic.woff */,
+				B5C120EA1F850711007B8298 /* Symbola-basic.woff2 */,
+				B5C120EB1F850711007B8298 /* Symbola.eot */,
+				B5C120EC1F850711007B8298 /* Symbola.svg */,
+				B5C120ED1F850711007B8298 /* Symbola.ttf */,
+				B5C120EE1F850711007B8298 /* Symbola.woff */,
+				B5C120EF1F850711007B8298 /* Symbola.woff2 */,
+			);
+			path = fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -440,10 +468,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5CF16E11E6DC2C70063D1A9 /* MuFuKeyboardButtonDetailView.swift in Sources */,
-				B59A0D491DFC77530004F6E7 /* KeyboardViewController.swift in Sources */,
 				B503320C1E52E37300F730AE /* TurtleBezierPath.swift in Sources */,
 				B5CF16DF1E6DC2C70063D1A9 /* MuFuKeyboardButton.swift in Sources */,
+				B5CF16E11E6DC2C70063D1A9 /* MuFuKeyboardButtonDetailView.swift in Sources */,
+				B59A0D491DFC77530004F6E7 /* KeyboardViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

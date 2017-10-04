@@ -11,8 +11,9 @@ import WebKit
 import CoreGraphics
 
 let SPECIAL_BUTTON_BG_COLOR: UIColor = UIColor(red: 0.7, green: 0.7, blue: 0.7, alpha: 1.0)
+let SPECIAL_BUTTON_HIGHLIGHT_BG_COLOR: UIColor = .white
 let ARROW_BUTTON_BG_COLOR: UIColor = UIColor(red: 0.4, green: 0.4, blue: 0.4, alpha: 1.0)
-
+let COPY_BUTTON_COLOR: UIColor = UIColor(red: 0.9, green: 0.6, blue: 0.0, alpha: 1.0)
 let IMAGE_PADDING : CGFloat = 50
 
 
@@ -219,6 +220,7 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate, MFKBDel
     var myView : UIView!
     var myTextView: UITextView!
     
+    var bracketTracker: [String] = []
     
 // MARK: - Button Declarations
     
@@ -299,10 +301,9 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate, MFKBDel
         containerView.addSubview(formulaWebView!)
         formulaWebView?.frame = containerView.frame
         formulaWebView?.frame.origin = CGPoint(x: 0, y: 0)
-        formulaWebView?.layer.borderWidth = 1.0
-        formulaWebView?.layer.borderColor = UIColor.black.cgColor
+        containerView?.layer.borderWidth = 1.0
+        containerView?.layer.borderColor = UIColor.black.cgColor
         
-        formulaWebView?.tintColor = .yellow
         
         let localfilePath = Bundle.main.url(forResource: "test", withExtension: "html")
         let myRequest = URLRequest(url: localfilePath!)
@@ -321,9 +322,11 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate, MFKBDel
         let buttonXOffset: CGFloat = 5.0
         let buttonYOffset: CGFloat = 80.0
         
-        let buttonWidth: CGFloat = 35.0
-        let buttonHeight: CGFloat = 45.0
+        let xGap: CGFloat = 3.0
+        let yGap: CGFloat = 3.0
         
+        let buttonWidth: CGFloat = buttonNext.frame.size.width + xGap
+        let buttonHeight: CGFloat = buttonNext.frame.size.height + yGap
         
         /////////////////
         // NEXT BUTTON //
@@ -334,10 +337,16 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate, MFKBDel
         buttonNext.position = .Inner
         buttonNext.frame.size.width = 33.0
         buttonNext.inputID = "Next"
-        buttonNext.displayLabel.text = "🌐"
+        //buttonNext.displayLabel.text = "🌐"
+        buttonNext.displayType = .Image
+        buttonNext.displayImageView.image = UIImage(named: "next")!
+        buttonNext.displayImageView.frame.size.height = 0.6 * buttonNext.frame.size.height
+        buttonNext.displayImageView.contentMode = .scaleAspectFit
+        buttonNext.displayImageView.center.x = 0.5 * buttonNext.frame.size.width
+        buttonNext.displayImageView.center.y = 0.5 * buttonNext.frame.size.height
         buttonNext.showMagnifier = false
         buttonNext.keyColor = SPECIAL_BUTTON_BG_COLOR
-        buttonNext.displayType = .Label
+        //buttonNext.displayType = .Label
         buttonNext.delegate = self
         view.addSubview(buttonNext)
 
@@ -353,18 +362,25 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate, MFKBDel
         buttonDot.position = .Inner
         buttonDot.inputID = "."
         buttonDot.inputOptionsIDs = [".", ",", "'", "…", ":", ";", "!"]
-        buttonDot.optionsRowLengths = [4, 3]
-        buttonDot.optionsRowOffsets = [0.0, 0.5]
+        buttonDot.inputOptionsGlyphs = [".", ",", "'", "…", ":", ";", "!"]
+        
+        //buttonDot.optionsRowLengths = [4, 3]
+        //buttonDot.optionsRowOffsets = [0.0, 0.5]
         buttonDot.displayType = .Label
         buttonDot.delegate = self
+        
+        
+        
+        
 
         
         buttonOps = MuFuKeyboardButton(x: buttonXOffset + 1.0 * buttonWidth, y: buttonYOffset, style: .Phone)
         buttonOps.position = .Inner
         buttonOps.inputID = "+"
         buttonOps.inputOptionsIDs = ["+", "–", "×", "·", "/", ":", "%"]
-        buttonOps.optionsRowLengths = [4, 3]
-        buttonOps.optionsRowOffsets = [0.0, 0.5]
+        buttonOps.inputOptionsGlyphs = ["+", "–", "×", "·", "/", ":", "%"]
+        //buttonOps.optionsRowLengths = [4, 3]
+        //buttonOps.optionsRowOffsets = [0.0, 0.5]
         buttonOps.displayType = .Label
         buttonOps.delegate = self
 
@@ -373,8 +389,9 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate, MFKBDel
         buttonOpsShift.position = .Inner
         buttonOpsShift.inputID = "±"
         buttonOpsShift.inputOptionsIDs = ["±", "∓","∗", "·", "÷", "∘", "°"]
-        buttonOpsShift.optionsRowLengths = [4, 3]
-        buttonOpsShift.optionsRowOffsets = [0.0, 0.5]
+        buttonOpsShift.inputOptionsGlyphs = ["±", "∓","∗", "·", "÷", "∘", "°"]
+        //buttonOpsShift.optionsRowLengths = [4, 3]
+        //buttonOpsShift.optionsRowOffsets = [0.0, 0.5]
         buttonOpsShift.displayType = .Label
         buttonOpsShift.delegate = self
 
@@ -383,8 +400,8 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate, MFKBDel
         buttonOpen = MuFuKeyboardButton(x: buttonXOffset + 2.0 * buttonWidth, y: buttonYOffset, style: .Phone)
         buttonOpen.position = .Inner
         buttonOpen.inputID = "("
-        buttonOpen.inputOptionsIDs = ["(", "[", "{", "〈", "⎣", "⎡", "lvert"]
-        buttonOpen.inputOptionsGlyphs = ["(", "[", "{", "〈", "⎣", "⎡", "|"]
+        buttonOpen.inputOptionsIDs = ["(", "[", "{", "〈", "⎣", "lvert"]
+        buttonOpen.inputOptionsGlyphs = ["(", "[", "{", "〈", "⎣", "|"]
         buttonOpen.displayLabel.text = "("
         buttonOpen.displayType = .Label
         buttonOpen.delegate = self
@@ -394,52 +411,49 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate, MFKBDel
         buttonClose = MuFuKeyboardButton(x: buttonXOffset + 3.0 * buttonWidth, y: buttonYOffset, style: .Phone)
         buttonClose.position = .Inner
         buttonClose.inputID = ")"
-        buttonClose.inputOptionsIDs = [")", "]", "}", "〉", "⎦", "⎤", "rvert"]
-        buttonClose.inputOptionsGlyphs = [")", "]", "}", "〉", "⎦", "⎤"]
+        buttonClose.inputOptionsIDs = [")", "]", "}", "〉", "⎦", "rvert"]
+        buttonClose.inputOptionsGlyphs = [")", "]", "}", "〉", "⎦", "|"]
         buttonClose.displayLabel.text = ")"
         buttonClose.displayType = .Label
         buttonClose.delegate = self
 
 
 
-        buttonBlackboard = MuFuKeyboardButton(x: buttonXOffset + 4.0 * buttonWidth, y: buttonYOffset, style: .Phone)
-        buttonBlackboard.position = .Left
-        buttonBlackboard.inputID = "ℕ"
-        buttonBlackboard.inputOptionsIDs = ["ℕ", "ℤ", "ℚ", "ℝ", "ℂ", "ℍ", "ℙ", "ℵ"]
-        buttonBlackboard.inputOptionsGlyphs = ["ℕ", "ℤ", "ℚ", "ℝ", "ℂ", "ℍ", "ℙ", "ℵ"]
-        buttonBlackboard.optionsRowLengths = [4, 4]
-        buttonBlackboard.optionsRowOffsets = [0.0, 0.0]
-        buttonBlackboard.displayType = .Label
-        buttonBlackboard.font? = .systemFont(ofSize: 14.0)
-        buttonBlackboard.showMagnifier = false
-        buttonBlackboard.optionsViewDelay = 0.0
-        buttonBlackboard.delegate = self
+
+        
+        
 
 
 
-        buttonSets = MuFuKeyboardButton(x: buttonXOffset + 5.0 * buttonWidth, y: buttonYOffset, style: .Phone)
-        buttonSets.position = .Inner
-        buttonSets.inputID = "element"
-        buttonSets.inputOptionsIDs = ["∈", "∅", "∪", "∩", "\\", "|", "⊂", "⊃"]
-        buttonSets.inputOptionsGlyphs = ["∈", "∅", "∪", "∩", "\\", "|", "⊂", "⊃"]
-        buttonSets.optionsRowLengths = [4, 4]
-        buttonSets.optionsRowOffsets = [0.0, 0.0]
-        buttonSets.displayType = .Label
-        buttonSets.displayLabel.text = "∈"
-        buttonSets.delegate = self
-
-
-        buttonSetsShift = MuFuKeyboardButton(x: buttonXOffset + 5.0 * buttonWidth, y: buttonYOffset, style: .Phone)
-        buttonSetsShift.position = .Inner
-        buttonSetsShift.inputID = "nelement"
-        buttonSetsShift.inputOptionsIDs = ["∉", "∅", "∪", "∩", "\\", "|", "⊆", "⊇"]
-        buttonSetsShift.inputOptionsGlyphs = ["∉", "∅", "∪", "∩", "\\", "|", "⊆", "⊇"]
-        buttonSetsShift.optionsRowLengths = [4, 4]
-        buttonSetsShift.optionsRowOffsets = [0.0, 0.0]
-        buttonSetsShift.displayType = .Label
-        buttonSetsShift.displayLabel.text = "∉"
-        buttonSetsShift.delegate = self
-
+        
+        buttonSqrt = MuFuKeyboardButton(x: buttonXOffset + 4.0 * buttonWidth, y: buttonYOffset, style: .Phone)
+        buttonSqrt.position = .Inner
+        buttonSqrt.inputID = "sqrt"
+        let sqrtImage = UIImage(named: "sqrt")!
+        let csqrtImage = UIImage(named: "csqrt")!
+        let nsqrtImage = UIImage(named: "nsqrt")!
+        buttonSqrt.displayImageView.image = sqrtImage
+        buttonSqrt.magnifiedDisplayImageView.image = sqrtImage
+        buttonSqrt.inputOptionsIDs = ["sqrt", "csqrt", "nsqrt"]
+        buttonSqrt.inputOptionsImages = [sqrtImage, csqrtImage, nsqrtImage]
+        buttonSqrt.displayType = .Image
+        buttonSqrt.labelIsPersistent = false
+        buttonSqrt.delegate = self
+        
+        
+        
+        
+        buttonFrac = MuFuKeyboardButton(x: buttonXOffset + 5.0 * buttonWidth, y: buttonYOffset, style: .Phone)
+        buttonFrac.position = .Inner
+        buttonFrac.inputID = "frac"
+        let fracImage = UIImage(named: "frac")
+        let binomImage = UIImage(named: "frac")
+        buttonFrac.displayImageView.image = fracImage
+        buttonFrac.inputOptionsIDs = ["frac", "binom"]
+        buttonFrac.inputOptionsImages = [fracImage!, binomImage!]
+        buttonFrac.displayType = .Image
+        buttonSqrt.labelIsPersistent = false
+        buttonFrac.delegate = self
 
 
         buttonShift = MuFuKeyboardButton(x: buttonXOffset + 6.0 * buttonWidth, y: buttonYOffset, style: .Phone)
@@ -449,6 +463,8 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate, MFKBDel
         buttonShift.displayLabel.text = "⇧"
         buttonShift.showMagnifier = false
         buttonShift.keyColor = SPECIAL_BUTTON_BG_COLOR
+        //buttonShift.keyHighlightedColor = SPECIAL_BUTTON_HIGHLIGHT_BG_COLOR
+            // highlighting is for iPad only (darker color instead of magnifier)
         buttonShift.displayType = .Label
         buttonShift.delegate = self
 
@@ -468,7 +484,10 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate, MFKBDel
         //buttonDelete.frame.size.width = 40.0
         buttonDelete.position = .Inner
         buttonDelete.inputID = "Delete"
-        buttonDelete.displayImageView.image = UIImage(named:"backspace_key")
+        buttonDelete.displayImageView.image = UIImage(named:"backspace")
+        buttonNext.displayImageView.contentMode = .scaleAspectFit
+        buttonNext.displayImageView.center.x = 0.5 * buttonNext.frame.size.width
+        buttonNext.displayImageView.center.y = 0.5 * buttonNext.frame.size.height
         buttonDelete.showMagnifier = false
         buttonDelete.keyColor = SPECIAL_BUTTON_BG_COLOR
         buttonDelete.displayType = .Image
@@ -508,7 +527,6 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate, MFKBDel
         buttonDigit.font? = .systemFont(ofSize: 14.0)
         buttonDigit.showMagnifier = false
         buttonDigit.optionsViewDelay = 0.0
-        buttonDigit.displayImageView.image = UIImage(named: "digit_key")
         buttonDigit.delegate = self
 
 
@@ -517,6 +535,7 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate, MFKBDel
         buttonEquals.position = .Inner
         buttonEquals.inputID = "="
         buttonEquals.inputOptionsIDs = ["=", "<", ">", "∼", "≃", "≡", "∝"]
+        buttonEquals.inputOptionsGlyphs = ["=", "<", ">", "∼", "≃", "≡", "∝"]
         buttonEquals.labelIsPersistent = false
         buttonEquals.displayType = .Label
         buttonEquals.delegate = self
@@ -527,6 +546,7 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate, MFKBDel
         buttonEqualsShift.position = .Inner
         buttonEqualsShift.inputID = "≠"
         buttonEqualsShift.inputOptionsIDs = ["≠", "≤", "≥", "≪", "≫", "≢"]
+        buttonEqualsShift.inputOptionsGlyphs = ["≠", "≤", "≥", "≪", "≫", "≢"]
         buttonEqualsShift.labelIsPersistent = false
         buttonEqualsShift.displayType = .Label
         buttonEqualsShift.delegate = self
@@ -534,43 +554,51 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate, MFKBDel
 
 
 
+        buttonBlackboard = MuFuKeyboardButton(x: buttonXOffset + 2.0 * buttonWidth, y: buttonYOffset + 1.0 * buttonHeight, style: .Phone)
+        buttonBlackboard.position = .Inner
+        buttonBlackboard.inputID = "ℕ"
+        buttonBlackboard.inputOptionsIDs = ["ℕ", "ℤ", "ℚ", "ℝ", "ℂ", "ℍ", "ℙ", "ℵ"]
+        buttonBlackboard.inputOptionsGlyphs = ["ℕ", "ℤ", "ℚ", "ℝ", "ℂ", "ℍ", "ℙ", "ℵ"]
+        buttonBlackboard.optionsRowLengths = [4, 4]
+        buttonBlackboard.optionsRowOffsets = [0.0, 0.0]
+        buttonBlackboard.displayType = .Label
+        //buttonBlackboard.font? = .systemFont(ofSize: 14.0)
+        buttonBlackboard.showMagnifier = false
+        buttonBlackboard.optionsViewDelay = 0.0
+        buttonBlackboard.delegate = self
 
 
-
-        buttonSqrt = MuFuKeyboardButton(x: buttonXOffset + 2.0 * buttonWidth, y: buttonYOffset + 1.0 * buttonHeight, style: .Phone)
-        buttonSqrt.position = .Inner
-        buttonSqrt.inputID = "sqrt"
-        buttonSqrt.displayImageView.image = UIImage(named: "sqrt_key")
-        buttonSqrt.magnifiedDisplayImageView.image = UIImage(named: "sqrt_key")
-        buttonSqrt.inputOptionsIDs = ["csqrt", "nsqrt"]
-        let csqrtImage = UIImage(named: "nsqrt_key")!
-        let nsqrtImage = UIImage(named: "nsqrt_key")!
-        buttonSqrt.inputOptionsImages = [csqrtImage,nsqrtImage]
-        buttonSqrt.displayType = .Image
-        buttonSqrt.labelIsPersistent = false
-        buttonSqrt.delegate = self
-
-
-
-
-        buttonFrac = MuFuKeyboardButton(x: buttonXOffset + 3.0 * buttonWidth, y: buttonYOffset + 1.0 * buttonHeight, style: .Phone)
-        buttonFrac.position = .Inner
-        buttonFrac.inputID = "frac"
-        let fracImage = UIImage(named: "frac_key")
-        let binomImage = UIImage(named: "frac_key")
-        buttonFrac.displayImageView.image = fracImage
-        buttonFrac.inputOptionsIDs = ["frac", "binom"]
-        buttonFrac.inputOptionsImages = [fracImage!, binomImage!]
-        buttonFrac.displayType = .Image
-        buttonFrac.delegate = self
+        
+        buttonSets = MuFuKeyboardButton(x: buttonXOffset + 3.0 * buttonWidth, y: buttonYOffset + 1.0 * buttonHeight, style: .Phone)
+        buttonSets.position = .Inner
+        buttonSets.inputID = "∈"
+        buttonSets.inputOptionsIDs = ["∈", "∅", "∪", "∩", "setminus", "mid", "⊂", "⊃"]
+        buttonSets.inputOptionsGlyphs = ["∈", "∅", "∪", "∩", "\\", "|", "⊂", "⊃"]
+        buttonSets.optionsRowLengths = [4, 4]
+        buttonSets.optionsRowOffsets = [0.0, 0.0]
+        buttonSets.displayType = .Label
+        buttonSets.displayLabel.text = "∈"
+        buttonSets.delegate = self
+        
+        
+        buttonSetsShift = MuFuKeyboardButton(x: buttonXOffset + 3.0 * buttonWidth, y: buttonYOffset + 1.0 * buttonHeight, style: .Phone)
+        buttonSetsShift.position = .Inner
+        buttonSetsShift.inputID = "∉"
+        buttonSetsShift.inputOptionsIDs = ["∉", "⊆", "⊇"]
+        buttonSetsShift.inputOptionsGlyphs = ["∉", "⊆", "⊇"]
+        buttonSetsShift.displayType = .Label
+        buttonSetsShift.displayLabel.text = "∉"
+        buttonSetsShift.delegate = self
 
 
         buttonArrows = MuFuKeyboardButton(x: buttonXOffset + 4.0 * buttonWidth, y: buttonYOffset + 1.0 * buttonHeight, style: .Phone)
         buttonArrows.position = .Inner
         buttonArrows.inputID = "→"
-        buttonArrows.inputOptionsIDs = ["←", "→", "↑", "↓", "↔︎", "↕︎", "↦"]
-        buttonArrows.inputOptionsGlyphs = ["←", "→", "↑", "↓", "↔︎", "↕︎", "↦"]
+        buttonArrows.inputOptionsIDs = ["↔︎", "↑", "↦", "←", "↓", "→"]
+        buttonArrows.inputOptionsGlyphs = ["↔︎", "↑", "↦", "←", "↓", "→"]
         buttonArrows.displayType = .Label
+        buttonArrows.optionsRowLengths = [3, 3]
+        buttonArrows.optionsRowOffsets = [0.0, 0.0]
         buttonArrows.displayLabel.text = "→"
         buttonArrows.labelIsPersistent = false
         buttonArrows.delegate = self
@@ -578,11 +606,13 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate, MFKBDel
 
         buttonDoubleArrows = MuFuKeyboardButton(x: buttonXOffset + 4.0 * buttonWidth, y: buttonYOffset + 1.0 * buttonHeight, style: .Phone)
         buttonDoubleArrows.position = .Inner
-        buttonDoubleArrows.inputID = "Rightarrow"
-        buttonDoubleArrows.inputOptionsIDs = ["Leftarrow", "Rightarrow", "Uparrow", "Downarrow", "Leftrightarrow", "Updownarrow"]
-        buttonDoubleArrows.inputOptionsGlyphs = ["⇐", "⇒", "⇑", "⇓", "⇔", "⇕"]
+        buttonDoubleArrows.inputID = "⇒"
+        buttonDoubleArrows.inputOptionsIDs = ["⇔", "⇑", "↪", "⇐", "⇓", "⇒"]
+        buttonDoubleArrows.inputOptionsGlyphs = ["⇔", "⇑", "\u{21aa}\u{fe0e}", "⇐", "⇓", "⇒"]
         buttonDoubleArrows.displayType = .Label
-        buttonDoubleArrows.displayLabel.text = "→"
+        buttonDoubleArrows.optionsRowLengths = [3, 3]
+        buttonDoubleArrows.optionsRowOffsets = [0.0, 0.0]
+        buttonDoubleArrows.displayLabel.text = "⇒"
         buttonDoubleArrows.labelIsPersistent = false
         buttonDoubleArrows.delegate = self
 
@@ -591,13 +621,13 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate, MFKBDel
 
         buttonLogGeom = MuFuKeyboardButton(x: buttonXOffset + 5.0 * buttonWidth, y: buttonYOffset + 1.0 * buttonHeight, style: .Phone)
         buttonLogGeom.position = .Inner
-        buttonLogGeom.inputID = "forall"
-        buttonLogGeom.inputOptionsIDs = ["forall", "exists", "not", "wedge", "vee", "perp", "angle", "mangle", "pipe", "parallel"]
-        buttonLogGeom.inputOptionsGlyphs = ["∃", "∀", "¬", "∧", "∨", "⊥", "∠", "∡", "|", "∥"]
-        buttonLogGeom.optionsRowLengths = [5, 5]
+        buttonLogGeom.inputID = "∃"
+        buttonLogGeom.inputOptionsIDs = ["∃", "∀", "∧", "∨", "⊥", "∠", "|", "∥"]
+        buttonLogGeom.inputOptionsGlyphs = ["∃", "∀", "∧", "∨", "⊥", "∠", "|", "∥"]
+        buttonLogGeom.optionsRowLengths = [4, 4]
         buttonLogGeom.optionsRowOffsets = [0.0, 0.0]
         buttonLogGeom.displayType = .Label
-        buttonLogGeom.displayLabel.text = "∀"
+        buttonLogGeom.displayLabel.text = "∃"
         buttonLogGeom.labelIsPersistent = false
         buttonLogGeom.delegate = self
 
@@ -605,11 +635,9 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate, MFKBDel
 
         buttonLogGeomShift = MuFuKeyboardButton(x: buttonXOffset + 5.0 * buttonWidth, y: buttonYOffset + 1.0 * buttonHeight, style: .Phone)
         buttonLogGeomShift.position = .Inner
-        buttonLogGeomShift.inputID = "forall"
-        buttonLogGeomShift.inputOptionsIDs = ["forall", "nexists", "not", "wedge", "vee", "perp", "angle", "mangle", "npipe", "nparallel"]
-        buttonLogGeomShift.inputOptionsGlyphs = ["∄", "∀", "¬", "∧", "∨", "⊥", "∠", "∡", "∤", "∦"]
-        buttonLogGeomShift.optionsRowLengths = [5, 5]
-        buttonLogGeomShift.optionsRowOffsets = [0.0, 0.0]
+        buttonLogGeomShift.inputID = "∄"
+        buttonLogGeomShift.inputOptionsIDs = ["∄", "¬", "∡", "∤", "∦"]
+        buttonLogGeomShift.inputOptionsGlyphs = ["∄", "¬", "∡", "∤", "∦"]
         buttonLogGeomShift.displayType = .Label
         buttonLogGeomShift.displayLabel.text = "∄"
         buttonLogGeomShift.labelIsPersistent = false
@@ -710,14 +738,14 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate, MFKBDel
 
         buttonUpperGreek = MuFuKeyboardButton(x: buttonXOffset + 1.0 * buttonWidth, y: buttonYOffset + 2.0 * buttonHeight, style: .Phone)
         buttonUpperGreek.position = .Right
-        buttonUpperGreek.inputID = "\\Alpha"
-        buttonUpperGreek.inputOptionsIDs = ["\\Alpha", "\\Beta", "\\Gamma", "\\Delta", "\\Epsilon", "\\Zeta", "\\Eta", "\\Theta", "\\Iota", "\\Kappa", "\\Lambda", "\\Mu", "\\Nu", "\\Xi", "\\Omicron", "\\Pi", "\\Rho", "\\Sigma", "\\Tau", "\\Upsilon", "\\Phi", "\\Chi", "\\Psi", "\\Omega"]
-        buttonUpperGreek.inputOptionsGlyphs = ["Α", "Β", "Γ", "Δ", "Ε", "Ζ", "Η", "Θ", "Ι", "Κ", "Λ", "Μ", "Ν", "Ξ", "Ο", "Π", "Ρ", "Σ", "Τ", "Υ", "Φ", "Χ", "Ψ", "Ω"]
-        buttonUpperGreek.inputOptionsFont = UIFont.italicSystemFont(ofSize: 22.0)
-        buttonUpperGreek.optionsRowLengths = [9, 8, 7]
-        buttonUpperGreek.optionsRowOffsets = [0.0, 10.0, 20.0]
-        buttonUpperGreek.displayLabel.text = "Α"
-        buttonUpperGreek.displayLabel.font = UIFont.italicSystemFont(ofSize: 22.0)
+        buttonUpperGreek.inputID = "\\Gamma"
+        buttonUpperGreek.inputOptionsIDs = ["\\Gamma", "\\Delta", "\\Theta", "\\Lambda", "\\Xi", "\\Pi", "\\Sigma", "\\Upsilon", "\\Phi", "\\Psi", "\\Omega"]
+        buttonUpperGreek.inputOptionsGlyphs = ["Γ", "Δ", "Θ", "Λ", "Ξ", "Π", "Σ", "Υ", "Φ", "Ψ", "Ω"]
+        buttonUpperGreek.inputOptionsFont = UIFont.systemFont(ofSize: 22.0)
+        buttonUpperGreek.optionsRowLengths = [4,3,4]
+        buttonUpperGreek.optionsRowOffsets = [0.0, 10.0, 0.0]
+        buttonUpperGreek.displayLabel.text = "Γ"
+        buttonUpperGreek.displayLabel.font = UIFont.systemFont(ofSize: 22.0)
         buttonUpperGreek.displayType = .Label
         buttonUpperGreek.delegate = self
 
@@ -761,30 +789,33 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate, MFKBDel
         buttonExponent = MuFuKeyboardButton(x: buttonXOffset + 3.0 * buttonWidth, y: buttonYOffset + 2.0 * buttonHeight, style: .Phone)
         buttonExponent.position = .Inner
         buttonExponent.inputID = "^"
-        buttonExponent.inputOptionsIDs = ["_", "^2", "^3", "^-1", "^_"]
+        buttonExponent.inputOptionsIDs = ["^", "^2", "^3", "^-1", "^_"]
         buttonExponent.displayImageView.image = UIImage(named:"exponent")
-        buttonExponent.inputOptionsImages = [UIImage(named:"sub")!, UIImage(named:"subsup")!]
+        buttonExponent.inputOptionsImages = [UIImage(named:"exponent")!, UIImage(named:"exponent2")!, UIImage(named:"exponent3")!, UIImage(named:"exponent-1")!, UIImage(named:"subsup")!]
         buttonExponent.displayType = .Image
+        buttonExponent.labelIsPersistent = false
         buttonExponent.delegate = self
 
 
         buttonSubScript = MuFuKeyboardButton(x: buttonXOffset + 3.0 * buttonWidth, y: buttonYOffset + 2.0 * buttonHeight, style: .Phone)
         buttonSubScript.position = .Inner
-        buttonSubScript.inputID = "^"
-        buttonSubScript.inputOptionsIDs = ["_", "^2", "^3", "^-1", "^_"]
-        buttonSubScript.displayImageView.image = UIImage(named:"exponent")
-        buttonSubScript.inputOptionsImages = [UIImage(named:"sub")!, UIImage(named:"subsup")!]
+        buttonSubScript.inputID = "_"
+        buttonSubScript.inputOptionsIDs = ["_", "_0", "_1", "_2", "^_"]
+        buttonSubScript.displayImageView.image = UIImage(named:"sub")
+        buttonSubScript.inputOptionsImages = [UIImage(named:"sub")!, UIImage(named:"sub0")!, UIImage(named:"sub1")!, UIImage(named:"sub2")!, UIImage(named:"subsup")!]
         buttonSubScript.displayType = .Image
+        buttonSubScript.labelIsPersistent = false
         buttonSubScript.delegate = self
 
 
         buttonOver = MuFuKeyboardButton(x: buttonXOffset + 4.0 * buttonWidth, y: buttonYOffset + 2.0 * buttonHeight, style: .Phone)
         buttonOver.position = .Inner
         buttonOver.inputID = "overline"
-        buttonOver.inputOptionsIDs = ["overline", "overarrow", "underline"]
-        buttonOver.inputOptionsGlyphs = ["¯", " ⃗", "_"]
-        buttonOver.displayType = .Label
-        buttonOver.displayLabel.text = "¯"
+        buttonOver.inputOptionsIDs = ["overline", "vec", "underline"]
+        buttonOver.inputOptionsImages = [UIImage(named:"overline")!, UIImage(named:"vec")!, UIImage(named:"underline")!]
+        buttonOver.displayType = .Image
+        buttonOver.displayImageView.image = UIImage(named:"overline")!
+        buttonOver.labelIsPersistent = false
         buttonOver.delegate = self
 
 
@@ -796,19 +827,19 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate, MFKBDel
 
         buttonCalc = MuFuKeyboardButton(x: buttonXOffset + 5.0 * buttonWidth, y: buttonYOffset + 2.0 * buttonHeight, style: .Phone)
         buttonCalc.position = .Inner
-        buttonCalc.inputID = "partial"
-        buttonCalc.inputOptionsIDs = ["partial", "nabla", "sum", "prod", "infty", "int", "int_bounds", "oint"]
-        buttonCalc.inputOptionsGlyphs = ["∂", "∇", "Σ", "Π", "∞", "∫", "∫'", "∮"]
+        buttonCalc.inputID = "∫"
+        buttonCalc.inputOptionsIDs = ["∫", "∮", "∂", "∇", "Σ", "Π", "∞"]
+        buttonCalc.inputOptionsGlyphs = ["∫", "∮", "∂", "∇", "Σ", "Π", "∞"]
         buttonCalc.displayType = .Label
-        buttonCalc.displayLabel.text = "∂"
+        buttonCalc.displayLabel.text = "∫"
         buttonCalc.delegate = self
 
 
 
         buttonCalcShift = MuFuKeyboardButton(x: buttonXOffset + 5.0 * buttonWidth, y: buttonYOffset + 2.0 * buttonHeight, style: .Phone)
         buttonCalcShift.position = .Inner
-        buttonCalcShift.inputID = "oplus"
-        buttonCalcShift.inputOptionsIDs = ["oplus", "otimes", "odot", "amalg", "dagger", "hbar"]
+        buttonCalcShift.inputID = "⊕"
+        buttonCalcShift.inputOptionsIDs = ["⊕", "⊗", "⊙", "⨿", "†", "ℏ"]
         buttonCalcShift.inputOptionsGlyphs = ["⊕", "⊗", "⊙", "⨿", "†", "ℏ"]
         buttonCalcShift.displayType = .Label
         buttonCalcShift.displayLabel.text = "⊕"
@@ -821,23 +852,16 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate, MFKBDel
         buttonTrig = MuFuKeyboardButton(x: buttonXOffset + 6.0 * buttonWidth, y: buttonYOffset + 2.0 * buttonHeight, style: .Phone)
         buttonTrig.position = .Inner
         buttonTrig.inputID = "sin"
-        buttonTrig.inputOptionsIDs = ["sin", "cos", "tan"]
+        buttonTrig.inputOptionsIDs = ["sin", "cos", "tan", "exp", "log"]
+        buttonTrig.inputOptionsGlyphs = ["sin", "cos", "tan", "exp", "log"]
         buttonTrig.displayType = .Label
         buttonTrig.displayLabel.text = "sin"
-        buttonTrig.displayLabel.font? = .systemFont(ofSize: 10.0)
+        buttonTrig.displayLabel.font? = .systemFont(ofSize: 22.0)
+        buttonTrig.inputOptionsFont = .systemFont(ofSize: 22.0)
+        buttonTrig.magnifiedDisplayLabelFont = .systemFont(ofSize: 24.0)
         buttonTrig.delegate = self
 
 
-
-
-        buttonTrigShift = MuFuKeyboardButton(x: buttonXOffset + 6.0 * buttonWidth, y: buttonYOffset + 2.0 * buttonHeight, style: .Phone)
-        buttonTrigShift.position = .Inner
-        buttonTrigShift.inputID = "sin⁻¹"
-        buttonTrigShift.inputOptionsIDs = ["sin⁻¹", "cos⁻¹", "tan⁻¹"]
-        buttonTrigShift.displayType = .Label
-        buttonTrigShift.displayLabel.text = "sin⁻¹"
-        buttonTrigShift.displayLabel.font? = .systemFont(ofSize: 10.0)
-        buttonTrigShift.delegate = self
 
 
 
@@ -845,14 +869,19 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate, MFKBDel
 
 
         buttonCopy = MuFuKeyboardButton(x: buttonXOffset + 7.0 * buttonWidth, y: buttonYOffset + 2.0 * buttonHeight, style: .Phone)
-        buttonCopy.frame.size.width = 65.0
+        buttonCopy.frame.size.width = 2.0 * buttonWidth - xGap
         buttonCopy.position = .Inner
         buttonCopy.inputID = "Copy"
-        buttonCopy.displayLabel.text = "Copy"
+        buttonCopy.displayType = .Image
+        buttonCopy.displayImageView.image = UIImage(named: "copy")!
+        buttonCopy.displayImageView.frame.size.height = 0.75 * buttonNext.frame.size.height
+        buttonCopy.displayImageView.contentMode = .scaleAspectFit
+        buttonCopy.displayImageView.center.x = 0.5 * buttonCopy.frame.size.width
+        buttonCopy.displayImageView.center.y = 0.5 * buttonCopy.frame.size.height
         buttonCopy.showMagnifier = false
-        buttonCopy.keyColor = UIColor(red: 0.5, green: 0.7, blue: 1.0, alpha: 1.0)
+        buttonCopy.keyColor = COPY_BUTTON_COLOR
         buttonCopy.displayLabel.textColor = .white
-        buttonCopy.displayType = .Label
+        //buttonCopy.displayType = .Label
         buttonCopy.delegate = self
         
         
@@ -864,9 +893,9 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate, MFKBDel
         
         
         view.addSubview(buttonDot)
+        view.addSubview(buttonBlackboard)
         view.addSubview(buttonOpen)
         view.addSubview(buttonClose)
-        view.addSubview(buttonBlackboard)
         view.addSubview(buttonShift)
         view.addSubview(buttonUp)
         view.addSubview(buttonDelete)
@@ -895,7 +924,12 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate, MFKBDel
     
     func toggleButtons() {
         
+        
         if shiftToggle {
+            
+            buttonShift.keyColor = SPECIAL_BUTTON_HIGHLIGHT_BG_COLOR
+            buttonShift.displayLabel.text = "⬆︎"
+            buttonShift.setNeedsDisplay()
             
             view.willRemoveSubview(buttonOps)
             view.willRemoveSubview(buttonSets)
@@ -919,9 +953,11 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate, MFKBDel
             view.addSubview(buttonUpperRoman)
             view.addSubview(buttonSubScript)
             view.addSubview(buttonCalcShift)
-            view.addSubview(buttonTrigShift)
             
         } else {
+            
+            buttonShift.keyColor = SPECIAL_BUTTON_BG_COLOR
+            buttonShift.displayLabel.text = "⇧"
             
             view.willRemoveSubview(buttonOpsShift)
             view.willRemoveSubview(buttonSetsShift)
@@ -933,7 +969,6 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate, MFKBDel
             view.willRemoveSubview(buttonUpperRoman)
             view.willRemoveSubview(buttonSubScript)
             view.willRemoveSubview(buttonCalcShift)
-            view.willRemoveSubview(buttonTrigShift)
 
             view.addSubview(buttonOps)
             view.addSubview(buttonSets)
@@ -958,113 +993,405 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate, MFKBDel
             _ = formulaWebView?.evaluateJavaScript("answerMathField.typedText('" + id + "');", completionHandler: nil)
             buttonDot.inputID = id
             shiftToggle = false
+            toggleButtons()
             
             
         case "+", "–", "×", "∙", "/", "%":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.typedText('" + id + "');", completionHandler: nil)
             buttonOps.inputID = id
-            shiftToggle = false
 
             
         case "±", "∓", "∗", "⋆", "÷", "∘", "°":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.typedText('" + id + "');", completionHandler: nil)
             buttonOpsShift.inputID = id
-            shiftToggle = true
+            shiftToggle = false
+            toggleButtons()
 
             
             
             
-        case "(", ")":
+        case "(":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.typedText('" + id + "');", completionHandler: nil)
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.keystroke('Left');", completionHandler: nil)
             buttonOpen.inputID = "("
             buttonClose.inputID = ")"
-        case "[", "]":
+            bracketTracker.append("(")
+            shiftToggle = false
+            toggleButtons()
+            
+        case ")":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.typedText('" + id + "');", completionHandler: nil)
-            buttonOpen.inputID = "]"
+            popBracketLabels()
+            shiftToggle = false
+            toggleButtons()
+            
+        case "[":
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.typedText('" + id + "');", completionHandler: nil)
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.keystroke('Left');", completionHandler: nil)
+            bracketTracker.append("[")
+            buttonOpen.inputID = "["
             buttonClose.inputID = "]"
-        case "{", "}":
+            shiftToggle = false
+            toggleButtons()
+            
+        case "]":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.typedText('" + id + "');", completionHandler: nil)
+            popBracketLabels()
+            shiftToggle = false
+            toggleButtons()
+
+        case "{":
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.typedText('" + id + "');", completionHandler: nil)
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.keystroke('Left');", completionHandler: nil)
+            shiftToggle = false
+            toggleButtons()
+            bracketTracker.append("{")
             buttonOpen.inputID = "{"
             buttonClose.inputID = "}"
-        case "〈", "〉":
+            
+        case "}":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.typedText('" + id + "');", completionHandler: nil)
+            popBracketLabels()
+            shiftToggle = false
+            toggleButtons()
+            
+        case "〈":
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.typedText('" + id + "');", completionHandler: nil)
+            shiftToggle = false
+            toggleButtons()
+            bracketTracker.append("〈")
             buttonOpen.inputID = "〈"
             buttonClose.inputID = "〉"
-        case "⎣", "⎦":
+            
+        case "〉":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.typedText('" + id + "');", completionHandler: nil)
+            _ = popBracketLabels()
+            shiftToggle = false
+            toggleButtons()
+            
+        case "⎣":
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.typedText('" + id + "');", completionHandler: nil)
+            shiftToggle = false
+            toggleButtons()
+            bracketTracker.append("⎣")
             buttonOpen.inputID = "⎣"
             buttonClose.inputID = "⎦"
-        case "⎡", "⎤":
+            
+        case "⎦":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.typedText('" + id + "');", completionHandler: nil)
+            shiftToggle = false
+            toggleButtons()
+            popBracketLabels()
+            buttonOpen.inputID = "⎣"
+            buttonClose.inputID = "⎦"
+            
+        case "⎡":
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.typedText('" + id + "');", completionHandler: nil)
+            shiftToggle = false
+            toggleButtons()
+            bracketTracker.append("⎡")
             buttonOpen.inputID = "⎡"
             buttonClose.inputID = "⎤"
-        case "lvert", "rvert":
+            
+        case "⎤":
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.typedText('" + id + "');", completionHandler: nil)
+            shiftToggle = false
+            toggleButtons()
+            popBracketLabels()
+            buttonOpen.inputID = "⎡"
+            buttonClose.inputID = "⎤"
+            
+        case "lvert":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('" + id + "');", completionHandler: nil)
+            shiftToggle = false
+            toggleButtons()
+            bracketTracker.append("|")
             buttonOpen.inputID = "lvert"
             buttonClose.inputID = "rvert"
+            buttonOpen.displayLabel.text = "|"
+            buttonClose.displayLabel.text = "|"
+            
+        case "rvert":
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('" + id + "');", completionHandler: nil)
+            shiftToggle = false
+            toggleButtons()
+            popBracketLabels()
+            buttonOpen.inputID = "lvert"
+            buttonClose.inputID = "rvert"
+            buttonOpen.displayLabel.text = "|"
+            buttonClose.displayLabel.text = "|"
+            
+            
+            
+            
+        case "sqrt":
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('sqrt');", completionHandler: nil)
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.keystroke('Left');", completionHandler: nil)
+            buttonSqrt.inputID = id
+            buttonSqrt.displayImageView.image = UIImage(named: "sqrt")
+            shiftToggle = false
+            toggleButtons()
+            
+        case "csqrt":
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('nthroot');", completionHandler: nil)
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.keystroke('Left');", completionHandler: nil)
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.keystroke('Left');", completionHandler: nil)
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.typedText('3');", completionHandler: nil)
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.keystroke('Right');", completionHandler: nil)
+            buttonSqrt.inputID = id
+            buttonSqrt.displayImageView.image = UIImage(named: "csqrt")
+            shiftToggle = false
+            toggleButtons()
+            
+        case "nsqrt":
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('nthroot');", completionHandler: nil)
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.keystroke('Left');", completionHandler: nil)
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.keystroke('Left');", completionHandler: nil)
+            buttonSqrt.inputID = id
+            buttonSqrt.displayImageView.image = UIImage(named: "nsqrt")
+            shiftToggle = false
+            toggleButtons()
+            
+        case "frac":
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('/');", completionHandler: nil)
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.keystroke('Left');", completionHandler: nil)
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.keystroke('Up');", completionHandler: nil)
+            buttonFrac.inputID = id
+            buttonFrac.displayImageView.image = UIImage(named: "frac")
+            shiftToggle = false
+            toggleButtons()
+            
+            
+        case "binom":
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('binom');", completionHandler: nil)
+            buttonFrac.inputID = id
+            buttonFrac.displayImageView.image = UIImage(named: "binom")
+            shiftToggle = false
+            toggleButtons()
+            
+            
+            
+        case "Shift":
+            
+            if !shiftToggle {
+                buttonShift.backgroundColor = SPECIAL_BUTTON_HIGHLIGHT_BG_COLOR
+                buttonShift.displayLabel.text = "⬆︎"
+            } else {
+                buttonShift.backgroundColor = SPECIAL_BUTTON_BG_COLOR
+                buttonShift.displayLabel.text = "⇧"
+            }
+            
+            shiftToggle = !shiftToggle
+            toggleButtons()
+            buttonShift.setNeedsDisplay()
+            
+            
+            
+        case "0", "1", "2", "3", "4", "5", "6", "7", "8", "9":
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.typedText('" + id + "');", completionHandler: nil)
+            shiftToggle = false
+            toggleButtons()
+
+            
+
+        case "=", "<", ">", "∼", "≃", "≡", "∝":
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.typedText('" + id + "');", completionHandler: nil)
+            buttonEquals.inputID = id
+            
+        case "≠", "≤", "≥", "≪", "≫", "≢":
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.typedText('" + id + "');", completionHandler: nil)
+            buttonEqualsShift.inputID = id
+            shiftToggle = false
+            toggleButtons()
+            
+            
+            
             
         case "ℕ", "ℤ", "ℚ", "ℝ", "ℂ", "ℍ", "ℙ", "ℵ":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.typedText('" + id + "');", completionHandler: nil)
             buttonBlackboard.inputID = id
             shiftToggle = false
-
+            toggleButtons()
             
-        case "∈", "∅", "∪", "∩", "|", "⊂", "⊃":
+            
+        case "∅", "∪", "∩", "⊂", "⊃":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.typedText('" + id + "');", completionHandler: nil)
             buttonSets.inputID = id
-            shiftToggle = false
-
-        case "∉", "∅", "∪", "∩", "\\", "|", "⊆", "⊇":
+            
+        case "∈":
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('in');", completionHandler: nil)
+            buttonSets.inputID = id
+            
+        case "setminus":
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.typedText('∖');", completionHandler: nil)
+            buttonSets.inputID = id
+            buttonSets.displayLabel.text = "∖"
+            
+        case "mid":
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('mid');", completionHandler: nil)
+            buttonSets.inputID = id
+            buttonSets.displayLabel.text = "|"
+            
+        case "⊆", "⊇":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.typedText('" + id + "');", completionHandler: nil)
             buttonSetsShift.inputID = id
             shiftToggle = false
+            toggleButtons()
             
+        case "∉":
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('notin');", completionHandler: nil)
+            buttonSetsShift.inputID = id
+            shiftToggle = false
+            toggleButtons()
             
-            
-        case "\\":
-            _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('\\setminus');", completionHandler: nil)
-        case "∫":
-            _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('\\int');",
-                                                   completionHandler: nil)
-        case "sqrt":
-            _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('\\sqrt');", completionHandler: nil)
-            _ = formulaWebView?.evaluateJavaScript("answerMathField.keystroke('Left');", completionHandler: nil)
-        case "^", "_":
-            _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('" + id + "');", completionHandler: nil)
-            _ = formulaWebView?.evaluateJavaScript("answerMathField.keystroke('Left');", completionHandler: nil)
-        case "^_":
-            NSLog("combined sub+sup is not implemented yet")
-        case "nsqrt":
-            NSLog("nthroot not implemented yet")
-        case "frac":
-            _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('/');", completionHandler: nil)
-            //_ = formulaWebView?.evaluateJavaScript("answerMathField.keystroke('Up');", completionHandler: nil)
-            //_ = formulaWebView?.evaluateJavaScript("answerMathField.keystroke('Left');", completionHandler: nil)
-            
-            
-            
-            
-        case "=", "<", ">", "≤", "≥", "≪", "≫":
+          
+        case "←", "→", "↑", "↓", "↔︎", "↕︎", "↦":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.typedText('" + id + "');", completionHandler: nil)
-            buttonEquals.inputID = id
+            buttonArrows.inputID = id
+            
+            
+        case "⇐", "⇒", "⇑", "⇓", "⇔":
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.typedText('" + id + "');", completionHandler: nil)
+            buttonDoubleArrows.inputID = id
+            shiftToggle = false
+            toggleButtons()
+
+        case "↪":
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('hookrightarrow');", completionHandler: nil)
+            buttonDoubleArrows.inputID = id
+            buttonDoubleArrows.displayLabel.text = "\u{21aa}\u{fe0e}"
+            shiftToggle = false
+            toggleButtons()
+            
+            
+        case "∃", "∀", "¬", "∧", "∨", "⊥", "∠", "∡", "|", "∥":
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.typedText('" + id + "');", completionHandler: nil)
+            buttonLogGeom.inputID = id
+            
+            
+        case "∄", "∀", "¬", "∧", "∨", "⊥", "∠", "∡", "∤", "∦":
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.typedText('" + id + "');", completionHandler: nil)
+            buttonLogGeomShift.inputID = id
+            shiftToggle = false
+            toggleButtons()
+
+            
             
             
         case "Left", "Right", "Up", "Down":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.keystroke('" + id + "');", completionHandler: nil)
+            shiftToggle = false
+            toggleButtons()
+            
+            
+        case "^", "_":
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('" + id + "');", completionHandler: nil)
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.keystroke('Left');", completionHandler: nil)
+
+        case "^_":
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.write('^{}_{}');", completionHandler: nil)
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.keystroke('Left');", completionHandler: nil)
+            
+        case "^2":
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.write('^2');", completionHandler: nil)
+            
+        case "^3":
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.write('^3');", completionHandler: nil)
+            
+        case "^-1":
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.write('^{-1}');", completionHandler: nil)
+            
+        case "_0":
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.write('_0');", completionHandler: nil)
+            
+        case "_1":
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.write('_1');", completionHandler: nil)
+            
+        case "_2":
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.write('_2');", completionHandler: nil)
+            
+        case "∃", "∀", "∧", "∨", "⊥", "∠", "|", "∥":
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.typedText('" + id + "');", completionHandler: nil)
+            buttonLogGeom.inputID = id
+            
+            
+        case "∄", "¬", "∡", "∤", "∦":
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.typedText('" + id + "');", completionHandler: nil)
+            buttonLogGeomShift.inputID = id
+            shiftToggle = false
+            toggleButtons()
+
+            
+        case "overline":
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('overline');", completionHandler: nil)
+            buttonOver.inputID = id
+            shiftToggle = false
+            toggleButtons()
+            
+            
+        case "vec":
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('overrightarrow');", completionHandler: nil)
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.keystroke('Left');", completionHandler: nil)
+            shiftToggle = false
+            toggleButtons()
+            
+        case "underline":
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('underline');", completionHandler: nil)
+            buttonOver.inputID = id
+            shiftToggle = false
+            toggleButtons()
+            
+            
+            
+            
+        case "∫":
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('int');", completionHandler: nil)
+            buttonCalc.inputID = id
+            
+            
+            
+        case "∮":
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.write('\\oint_{}');", completionHandler: nil)
+            // don't forget this when ∫ ̻ becomes an image!
+            //            buttonCalc.displayType = .Label
+            buttonCalc.inputID = id
+            
+        case "∂", "∇", "Σ", "Π", "∞":
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.typedText('" + id + "');", completionHandler: nil)
+            // don't forget this when ∫ ̻ becomes an image!
+            //            buttonCalc.displayType = .Label
+            buttonCalc.inputID = id
+            
+            
+            
+        case "⊕", "⊗", "⊙", "⨿", "†", "ℏ":
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.typedText('" + id + "');", completionHandler: nil)
+            // don't forget this when ∫ ̻ becomes an image!
+            //            buttonCalc.displayType = .Label
+            buttonCalcShift.inputID = id
+            
+        
+        case "sin", "cos", "tan", "exp", "log":
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.write('" + id + "');", completionHandler: nil)
+            buttonTrig.inputID = id
+            shiftToggle = false
+            toggleButtons()
+            
+            
+            
             
         case "Delete":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.keystroke('Backspace')", completionHandler: nil)
+            shiftToggle = false
+            toggleButtons()
+
             
         case "Copy":
             copyFormulaImage()
-            
-        case "Shift":
-            shiftToggle = !shiftToggle
+            shiftToggle = false
             toggleButtons()
+
             
-        case "0", "1", "2", "3", "4", "5", "6", "7", "8", "9":
-            _ = formulaWebView?.evaluateJavaScript("answerMathField.typedText('" + id + "');", completionHandler: nil)
-         
         
         ////////////////////
         // ITALIC LETTERS //
@@ -1073,13 +1400,11 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate, MFKBDel
         case "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.typedText('" + id + "');", completionHandler: nil)
             buttonLower.inputID = id
+            shiftToggle = false
+            toggleButtons()
+
             
-            
-        case "vec":
-            _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd(\"overrightarrow\");", completionHandler: nil)
-            _ = formulaWebView?.evaluateJavaScript("answerMathField.keystroke(\"Left\");", completionHandler: nil)
-            _ = formulaWebView?.evaluateJavaScript("answerMathField.write(\"u\");", completionHandler: nil)
-            
+
             
         case "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.typedText('" + id + "');", completionHandler: nil)
@@ -1097,132 +1422,192 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate, MFKBDel
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd(\"alpha\");", completionHandler: nil)
             buttonLowerGreek.inputID = id
             buttonLowerGreek.displayLabel.text = "α"
+            shiftToggle = false
+            toggleButtons()
+
             
         case  "\\beta":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd(\"beta\");", completionHandler: nil)
             buttonLowerGreek.inputID = id
             buttonLowerGreek.displayLabel.text = "β"
+            shiftToggle = false
+            toggleButtons()
+
             
         case "\\gamma":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd(\"gamma\");", completionHandler: nil)
             buttonLowerGreek.inputID = id
             buttonLowerGreek.displayLabel.text = "γ"
+            shiftToggle = false
+            toggleButtons()
+
             
         case "\\delta":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd(\"delta\");", completionHandler: nil)
             buttonLowerGreek.inputID = id
             buttonLowerGreek.displayLabel.text = "δ"
+            shiftToggle = false
+            toggleButtons()
+
             
         case "\\epsilon":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd(\"epsilon\");", completionHandler: nil)
             buttonLowerGreek.inputID = id
             buttonLowerGreek.displayLabel.text = "ε"
+            shiftToggle = false
+            toggleButtons()
+
             
         case "\\zeta":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd(\"zeta\");", completionHandler: nil)
             buttonLowerGreek.inputID = id
             buttonLowerGreek.displayLabel.text = "ζ"
+            shiftToggle = false
+            toggleButtons()
+
             
         case "\\eta":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd(\"eta\");", completionHandler: nil)
             buttonLowerGreek.inputID = id
             buttonLowerGreek.displayLabel.text = "η"
+            shiftToggle = false
+            toggleButtons()
+
             
         case "\\theta":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd(\"theta\");", completionHandler: nil)
             buttonLowerGreek.inputID = id
             buttonLowerGreek.displayLabel.text = "θ"
+            shiftToggle = false
+            toggleButtons()
+
             
         case "\\iota":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd(\"iota\");", completionHandler: nil)
             buttonLowerGreek.inputID = id
             buttonLowerGreek.displayLabel.text = "ι"
+            shiftToggle = false
+            toggleButtons()
+
             
         case "\\kappa":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd(\"kappa\");", completionHandler: nil)
             buttonLowerGreek.inputID = id
             buttonLowerGreek.displayLabel.text = "κ"
+            shiftToggle = false
+            toggleButtons()
+
             
         case "\\lambda":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd(\"lambda\");", completionHandler: nil)
             buttonLowerGreek.inputID = id
             buttonLowerGreek.displayLabel.text = "λ"
+            shiftToggle = false
+            toggleButtons()
+
             
         case "\\mu":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd(\"mu\");", completionHandler: nil)
             buttonLowerGreek.inputID = id
             buttonLowerGreek.displayLabel.text = "μ"
+            shiftToggle = false
+            toggleButtons()
+
             
         case "\\nu":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd(\"nu\");", completionHandler: nil)
             buttonLowerGreek.inputID = id
             buttonLowerGreek.displayLabel.text = "ν"
+            shiftToggle = false
+            toggleButtons()
+
             
         case "\\xi":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd(\"xi\");", completionHandler: nil)
             buttonLowerGreek.inputID = id
             buttonLowerGreek.displayLabel.text = "ξ"
-            
-        case "\\omicron":
-            _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd(\"omicron\");", completionHandler: nil)
-            buttonLowerGreek.inputID = id
-            buttonLowerGreek.displayLabel.text = "ο"
+            shiftToggle = false
+            toggleButtons()
+
             
         case "\\pi":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd(\"pi\");", completionHandler: nil)
             buttonLowerGreek.inputID = id
             buttonLowerGreek.displayLabel.text = "π"
+            shiftToggle = false
+            toggleButtons()
+
             
         case "\\rho":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd(\"rho\");", completionHandler: nil)
             buttonLowerGreek.inputID = id
             buttonLowerGreek.displayLabel.text = "ρ"
-            
+            shiftToggle = false
+            toggleButtons()
+
         case "\\sigma":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd(\"sigma\");", completionHandler: nil)
             buttonLowerGreek.inputID = id
             buttonLowerGreek.displayLabel.text = "σ"
-            
+            shiftToggle = false
+            toggleButtons()
+
         case "\\varsigma":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd(\"varsigma\");", completionHandler: nil)
             buttonLowerGreek.inputID = id
             buttonLowerGreek.displayLabel.text = "ς"
-            
+            shiftToggle = false
+            toggleButtons()
+
         case "\\tau":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd(\"tau\");", completionHandler: nil)
             buttonLowerGreek.inputID = id
             buttonLowerGreek.displayLabel.text = "τ"
-            
+            shiftToggle = false
+            toggleButtons()
+
         case "\\upsilon":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd(\"upsilon\");", completionHandler: nil)
             buttonLowerGreek.inputID = id
             buttonLowerGreek.displayLabel.text = "υ"
-            
+            shiftToggle = false
+            toggleButtons()
+
         case "\\phi":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd(\"phi\");", completionHandler: nil)
             buttonLowerGreek.inputID = id
             buttonLowerGreek.displayLabel.text = "φ"
-            
+            shiftToggle = false
+            toggleButtons()
+
         case "\\varphi":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd(\"varphi\");", completionHandler: nil)
             buttonLowerGreek.inputID = id
             buttonLowerGreek.displayLabel.text = "ϕ"
-            
+            shiftToggle = false
+            toggleButtons()
+
         case "\\chi":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd(\"chi\");", completionHandler: nil)
             buttonLowerGreek.inputID = id
             buttonLowerGreek.displayLabel.text = "χ"
-            
+            shiftToggle = false
+            toggleButtons()
+
         case "\\psi":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd(\"psi\");", completionHandler: nil)
             buttonLowerGreek.inputID = id
             buttonLowerGreek.displayLabel.text = "ψ"
-            
+            shiftToggle = false
+            toggleButtons()
+
         case "\\omega":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd(\"omega\");", completionHandler: nil)
             buttonLowerGreek.inputID = id
             buttonLowerGreek.displayLabel.text = "ω"
-            
+            shiftToggle = false
+            toggleButtons()
+
 
         /////////////////////////////
         // UPPERCASE GREEK LETTERS //
@@ -1230,173 +1615,80 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate, MFKBDel
             
             
             
-        case "\\Alpha":
-            _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd(\"Alpha\");", completionHandler: nil)
-            buttonLowerGreek.inputID = id
-            buttonLowerGreek.displayLabel.text = "Α"
-            shiftToggle = false
-            toggleButtons()
-            shiftToggle = false
-            toggleButtons()
-            
-        case  "\\Beta":
-            _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd(\"Beta\");", completionHandler: nil)
-            buttonLowerGreek.inputID = id
-            buttonLowerGreek.displayLabel.text = "Β"
-            shiftToggle = false
-            toggleButtons()
-            
         case "\\Gamma":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd(\"Gamma\");", completionHandler: nil)
-            buttonLowerGreek.inputID = id
-            buttonLowerGreek.displayLabel.text = "Γ"
+            buttonUpperGreek.inputID = id
+            buttonUpperGreek.displayLabel.text = "Γ"
             shiftToggle = false
             toggleButtons()
             
         case "\\Delta":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd(\"Delta\");", completionHandler: nil)
-            buttonLowerGreek.inputID = id
-            buttonLowerGreek.displayLabel.text = "Δ"
-            shiftToggle = false
-            toggleButtons()
-            
-        case "\\Epsilon":
-            _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd(\"Epsilon\");", completionHandler: nil)
-            buttonLowerGreek.inputID = id
-            buttonLowerGreek.displayLabel.text = "Ε"
-            shiftToggle = false
-            toggleButtons()
-            
-        case "\\Zeta":
-            _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd(\"Zeta\");", completionHandler: nil)
-            buttonLowerGreek.inputID = id
-            buttonLowerGreek.displayLabel.text = "Ζ"
-            shiftToggle = false
-            toggleButtons()
-            
-        case "\\Eta":
-            _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd(\"Eta\");", completionHandler: nil)
-            buttonLowerGreek.inputID = id
-            buttonLowerGreek.displayLabel.text = "Η"
+            buttonUpperGreek.inputID = id
+            buttonUpperGreek.displayLabel.text = "Δ"
             shiftToggle = false
             toggleButtons()
             
         case "\\Theta":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd(\"Theta\");", completionHandler: nil)
-            buttonLowerGreek.inputID = id
-            buttonLowerGreek.displayLabel.text = "Θ"
-            shiftToggle = false
-            toggleButtons()
-            
-        case "\\Iota":
-            _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd(\"Iota\");", completionHandler: nil)
-            buttonLowerGreek.inputID = id
-            buttonLowerGreek.displayLabel.text = "Ι"
-            shiftToggle = false
-            toggleButtons()
-            
-        case "\\Kappa":
-            _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd(\"Kappa\");", completionHandler: nil)
-            buttonLowerGreek.inputID = id
-            buttonLowerGreek.displayLabel.text = "Κ"
+            buttonUpperGreek.inputID = id
+            buttonUpperGreek.displayLabel.text = "Θ"
             shiftToggle = false
             toggleButtons()
             
         case "\\Lambda":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd(\"Lambda\");", completionHandler: nil)
-            buttonLowerGreek.inputID = id
-            buttonLowerGreek.displayLabel.text = "Λ"
-            shiftToggle = false
-            toggleButtons()
-            
-        case "\\Mu":
-            _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd(\"Mu\");", completionHandler: nil)
-            buttonLowerGreek.inputID = id
-            buttonLowerGreek.displayLabel.text = "Μ"
-            shiftToggle = false
-            toggleButtons()
-            
-        case "\\Nu":
-            _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd(\"Nu\");", completionHandler: nil)
-            buttonLowerGreek.inputID = id
-            buttonLowerGreek.displayLabel.text = "Ν"
+            buttonUpperGreek.inputID = id
+            buttonUpperGreek.displayLabel.text = "Λ"
             shiftToggle = false
             toggleButtons()
             
         case "\\Xi":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd(\"Xi\");", completionHandler: nil)
-            buttonLowerGreek.inputID = id
-            buttonLowerGreek.displayLabel.text = "Ξ"
-            shiftToggle = false
-            toggleButtons()
-            
-        case "\\Omicron":
-            _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd(\"Omicron\");", completionHandler: nil)
-            buttonLowerGreek.inputID = id
-            buttonLowerGreek.displayLabel.text = "Ο"
+            buttonUpperGreek.inputID = id
+            buttonUpperGreek.displayLabel.text = "Ξ"
             shiftToggle = false
             toggleButtons()
             
         case "\\Pi":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd(\"Pi\");", completionHandler: nil)
-            buttonLowerGreek.inputID = id
-            buttonLowerGreek.displayLabel.text = "Π"
-            shiftToggle = false
-            toggleButtons()
-            
-        case "\\Rho":
-            _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd(\"Rho\");", completionHandler: nil)
-            buttonLowerGreek.inputID = id
-            buttonLowerGreek.displayLabel.text = "Ρ"
+            buttonUpperGreek.inputID = id
+            buttonUpperGreek.displayLabel.text = "Π"
             shiftToggle = false
             toggleButtons()
             
         case "\\Sigma":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd(\"Sigma\");", completionHandler: nil)
-            buttonLowerGreek.inputID = id
-            buttonLowerGreek.displayLabel.text = "Σ"
-            shiftToggle = false
-            toggleButtons()
-            
-        case "\\Tau":
-            _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd(\"Tau\");", completionHandler: nil)
-            buttonLowerGreek.inputID = id
-            buttonLowerGreek.displayLabel.text = "Τ"
+            buttonUpperGreek.inputID = id
+            buttonUpperGreek.displayLabel.text = "Σ"
             shiftToggle = false
             toggleButtons()
             
         case "\\Upsilon":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd(\"Upsilon\");", completionHandler: nil)
-            buttonLowerGreek.inputID = id
-            buttonLowerGreek.displayLabel.text = "Υ"
+            buttonUpperGreek.inputID = id
+            buttonUpperGreek.displayLabel.text = "Υ"
             shiftToggle = false
             toggleButtons()
             
         case "\\Phi":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd(\"Phi\");", completionHandler: nil)
-            buttonLowerGreek.inputID = id
-            buttonLowerGreek.displayLabel.text = "Φ"
-            shiftToggle = false
-            toggleButtons()
-            
-        case "\\Chi":
-            _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd(\"Chi\");", completionHandler: nil)
-            buttonLowerGreek.inputID = id
-            buttonLowerGreek.displayLabel.text = "Χ"
+            buttonUpperGreek.inputID = id
+            buttonUpperGreek.displayLabel.text = "Φ"
             shiftToggle = false
             toggleButtons()
             
         case "\\Psi":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd(\"Psi\");", completionHandler: nil)
-            buttonLowerGreek.inputID = id
-            buttonLowerGreek.displayLabel.text = "Ψ"
+            buttonUpperGreek.inputID = id
+            buttonUpperGreek.displayLabel.text = "Ψ"
             shiftToggle = false
             toggleButtons()
             
         case "\\Omega":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd(\"Omega\");", completionHandler: nil)
-            buttonLowerGreek.inputID = id
-            buttonLowerGreek.displayLabel.text = "Ω"
+            buttonUpperGreek.inputID = id
+            buttonUpperGreek.displayLabel.text = "Ω"
             shiftToggle = false
             toggleButtons()
             
@@ -1411,57 +1703,109 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate, MFKBDel
             
         case "romanq":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('\\tq');", completionHandler: nil)
+            shiftToggle = false
+            toggleButtons()
         case "romanw":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('\\tw');", completionHandler: nil)
+            shiftToggle = false
+            toggleButtons()
         case "romane":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('\\te');", completionHandler: nil)
+            shiftToggle = false
+            toggleButtons()
         case "romanr":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('\\tr');", completionHandler: nil)
+            shiftToggle = false
+            toggleButtons()
         case "romant":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('\\tt');", completionHandler: nil)
+            shiftToggle = false
+            toggleButtons()
         case "romany":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('\\ty');", completionHandler: nil)
+            shiftToggle = false
+            toggleButtons()
         case "romanu":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('\\tu');", completionHandler: nil)
+            shiftToggle = false
+            toggleButtons()
         case "romani":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('\\ti');", completionHandler: nil)
+            shiftToggle = false
+            toggleButtons()
         case "romano":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('\\to');", completionHandler: nil)
+            shiftToggle = false
+            toggleButtons()
         case "romanp":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('\\tp');", completionHandler: nil)
+            shiftToggle = false
+            toggleButtons()
         case "romana":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('\\ta');", completionHandler: nil)
+            shiftToggle = false
+            toggleButtons()
         case "romans":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('\\ts');", completionHandler: nil)
+            shiftToggle = false
+            toggleButtons()
         case "romand":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('\\td');", completionHandler: nil)
+            shiftToggle = false
+            toggleButtons()
         case "romanf":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('\\tf');", completionHandler: nil)
+            shiftToggle = false
+            toggleButtons()
         case "romang":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('\\tg');", completionHandler: nil)
+            shiftToggle = false
+            toggleButtons()
         case "romanh":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('\\th');", completionHandler: nil)
+            shiftToggle = false
+            toggleButtons()
         case "romanj":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('\\tj');", completionHandler: nil)
+            shiftToggle = false
+            toggleButtons()
         case "romank":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('\\tk');", completionHandler: nil)
+            shiftToggle = false
+            toggleButtons()
         case "romanl":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('\\tl');", completionHandler: nil)
+            shiftToggle = false
+            toggleButtons()
         case "romanz":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('\\tz');", completionHandler: nil)
+            shiftToggle = false
+            toggleButtons()
         case "romanx":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('\\tx');", completionHandler: nil)
+            shiftToggle = false
+            toggleButtons()
         case "romanc":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('\\tc');", completionHandler: nil)
+            shiftToggle = false
+            toggleButtons()
         case "romanv":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('\\tv');", completionHandler: nil)
+            shiftToggle = false
+            toggleButtons()
         case "romanb":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('\\tb');", completionHandler: nil)
+            shiftToggle = false
+            toggleButtons()
         case "romann":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('\\tn');", completionHandler: nil)
+            shiftToggle = false
+            toggleButtons()
         case "romanm":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('\\tm');", completionHandler: nil)
-            
+            shiftToggle = false
+            toggleButtons()
+
             
             
             
@@ -1639,6 +1983,54 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate, MFKBDel
         }
     }
     
+    
+    
+    
+    func popBracketLabels() {
+        
+        _ = bracketTracker.popLast()
+        if let currentBracketType = bracketTracker.last {
+            
+            switch currentBracketType {
+                
+            case "(":
+                buttonOpen.inputID = "("
+                buttonClose.inputID = ")"
+                
+            case "[":
+                buttonOpen.inputID = "["
+                buttonClose.inputID = "]"
+                
+            case "{":
+                buttonOpen.inputID = "{"
+                buttonClose.inputID = "}"
+                
+            case "〈":
+                buttonOpen.inputID = "〈"
+                buttonClose.inputID = "〉"
+                
+            case "⎣":
+                buttonOpen.inputID = "⎣"
+                buttonClose.inputID = "⎦"
+                
+            case "⎡":
+                buttonOpen.inputID = "⎡"
+                buttonClose.inputID = "⎤"
+                
+            case "|":
+                buttonOpen.inputID = "lvert"
+                buttonClose.inputID = "rvert"
+                buttonOpen.displayLabel.text = "|"
+                buttonClose.displayLabel.text = "|"
+                
+            default:
+                NSLog("unrecognized bracket type")
+
+            }
+            
+        }
+        
+    }
     
     
     

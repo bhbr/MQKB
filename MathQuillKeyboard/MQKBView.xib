@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KeyboardViewController" customModule="MathQuillKeyboard" customModuleProvider="target">
             <connections>
-                <outlet property="containerView" destination="RnM-21-70V" id="Kpd-TJ-cbe"/>
+                <outlet property="containerView" destination="RnM-21-70V" id="kjk-M8-fe7"/>
                 <outlet property="view" destination="iN0-l3-epB" id="qRg-zU-dbo"/>
             </connections>
         </placeholder>
@@ -22,7 +22,7 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RnM-21-70V">
                     <rect key="frame" x="45" y="1" width="293" height="75"/>
-                    <color key="backgroundColor" red="1" green="0.98149815287851849" blue="0.84064918776408848" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="75" id="B4c-vP-jVT"/>
                     </constraints>
@@ -30,9 +30,9 @@
             </subviews>
             <color key="backgroundColor" red="0.82352941176470584" green="0.83529411764705885" blue="0.85882352941176465" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="RnM-21-70V" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="45" id="7qp-SP-vT0"/>
-                <constraint firstItem="RnM-21-70V" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="1" id="Rks-vT-h7B"/>
-                <constraint firstAttribute="trailing" secondItem="RnM-21-70V" secondAttribute="trailing" constant="1" id="nqX-V6-xqA"/>
+                <constraint firstItem="RnM-21-70V" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="45" id="5zP-bE-Zkd"/>
+                <constraint firstItem="RnM-21-70V" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="1" id="QIt-mc-bzX"/>
+                <constraint firstAttribute="trailing" secondItem="RnM-21-70V" secondAttribute="trailing" constant="1" id="zzY-cr-m6v"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
