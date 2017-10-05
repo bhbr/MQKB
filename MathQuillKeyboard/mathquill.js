@@ -4213,6 +4213,14 @@ LatexCmds.int = P(SummationNotation, function(_, super_) {
   _.createLeftOf = MathCommand.p.createLeftOf;
 });
 
+
+                                          
+/* EDIT BEN */
+                                          
+LatexCmds.int2 = bind(VanillaSymbol, '\\int2 ', '<big>&int;</big>');
+                                          
+/* END EDIT BEN */
+
 // TODO: These CUMULATIVE_OPERATORS_EXTENDED should probably be merged with
 // CUMULATIVE_OPERATORS at some point. For now, keep them separate so we 
 // can keep them as Symbol for backward compatibility

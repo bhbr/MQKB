@@ -299,11 +299,14 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate, MFKBDel
         formulaWebView?.backgroundColor = .clear //UIColor(red: 1.0, green: 1.0, blue: 0.9, alpha: 1.0)
         
         containerView.addSubview(formulaWebView!)
-        formulaWebView?.frame = containerView.frame
+        formulaWebView?.frame.size = containerView.frame.size
         formulaWebView?.frame.origin = CGPoint(x: 0, y: 0)
         containerView?.layer.borderWidth = 1.0
         containerView?.layer.borderColor = UIColor.black.cgColor
         
+        //containerView.clipsToBounds = false
+        //formulaWebView?.clipsToBounds = false
+        //formulaWebView?.scrollView.clipsToBounds = false
         
         let localfilePath = Bundle.main.url(forResource: "test", withExtension: "html")
         let myRequest = URLRequest(url: localfilePath!)
@@ -727,8 +730,9 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate, MFKBDel
         buttonLowerGreek.inputOptionsIDs = ["\\alpha", "\\beta", "\\gamma", "\\delta", "\\epsilon", "\\zeta", "\\eta", "\\theta", "\\iota", "\\kappa", "\\lambda", "\\mu", "\\nu", "\\xi", "\\omicron", "\\pi", "\\rho", "\\sigma", "\\varsigma", "\\tau", "\\upsilon", "\\phi", "\\varphi", "\\chi", "\\psi", "\\omega"]
         buttonLowerGreek.inputOptionsGlyphs = ["α", "β", "γ", "δ", "ε", "ζ", "η", "θ", "ι", "κ", "λ", "μ", "ν", "ξ", "ο", "π", "ρ", "σ", "ς", "τ", "υ", "ϕ", "φ", "χ", "ψ", "ω"]
         buttonLowerGreek.inputOptionsFont = UIFont.italicSystemFont(ofSize: 22.0)
-        buttonLowerGreek.optionsRowLengths = [10, 9, 7]
-        buttonLowerGreek.optionsRowOffsets = [0.0, 10.0, 20.0]
+        buttonLowerGreek.optionsRowLengths = [9, 8, 9]
+        buttonLowerGreek.optionsRowOffsets = [0.0, 10.0, 0.0]
+        //buttonLowerGreek.optionsRectWidth = 18.0
         buttonLowerGreek.displayLabel.text = "α"
         buttonLowerGreek.displayLabel.font = UIFont.italicSystemFont(ofSize: 22.0)
         buttonLowerGreek.displayType = .Label
@@ -828,11 +832,14 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate, MFKBDel
         buttonCalc = MuFuKeyboardButton(x: buttonXOffset + 5.0 * buttonWidth, y: buttonYOffset + 2.0 * buttonHeight, style: .Phone)
         buttonCalc.position = .Inner
         buttonCalc.inputID = "∫"
-        buttonCalc.inputOptionsIDs = ["∫", "∮", "∂", "∇", "Σ", "Π", "∞"]
-        buttonCalc.inputOptionsGlyphs = ["∫", "∮", "∂", "∇", "Σ", "Π", "∞"]
+        buttonCalc.inputOptionsIDs = ["∫", "∫ ̻", "∬", "∮", "∂", "∇", "sum", "prod", "∞"]
+        buttonCalc.inputOptionsGlyphs = ["∫", "∫ ̻", "∬", "∮", "∂", "∇", "Σ", "Π", "∞"]
+        buttonCalc.optionsRowLengths = [4, 5]
+        buttonCalc.optionsRowOffsets = [0.5, 0.0]
         buttonCalc.displayType = .Label
         buttonCalc.displayLabel.text = "∫"
         buttonCalc.delegate = self
+        buttonCalc.magnifiedDisplayLabelFont = .systemFont(ofSize: 30.0)
 
 
 
@@ -1345,24 +1352,45 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate, MFKBDel
             
             
         case "∫":
-            _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('int');", completionHandler: nil)
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('intop');", completionHandler: nil)
             buttonCalc.inputID = id
+            
+            
+        case "∫ ̻":
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('int');", completionHandler: nil)
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.keystroke('Left');", completionHandler: nil)
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.keystroke('Left');", completionHandler: nil)
+            buttonCalc.inputID = id
+            
+            
+        case "∬":
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('iint');", completionHandler: nil)
+            buttonCalc.inputID = id
+            
             
             
             
         case "∮":
-            _ = formulaWebView?.evaluateJavaScript("answerMathField.write('\\oint_{}');", completionHandler: nil)
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('oint');", completionHandler: nil)
             // don't forget this when ∫ ̻ becomes an image!
             //            buttonCalc.displayType = .Label
             buttonCalc.inputID = id
             
-        case "∂", "∇", "Σ", "Π", "∞":
+        case "∂", "∇", "∞":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.typedText('" + id + "');", completionHandler: nil)
             // don't forget this when ∫ ̻ becomes an image!
             //            buttonCalc.displayType = .Label
             buttonCalc.inputID = id
+        
+        case "sum":
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('sum');", completionHandler: nil)
+            buttonCalc.inputID = "sum"
+            buttonCalc.displayLabel.text = "Σ"
             
-            
+        case "prod":
+            _ = formulaWebView?.evaluateJavaScript("answerMathField.cmd('prod');", completionHandler: nil)
+            buttonCalc.inputID = "prod"
+            buttonCalc.displayLabel.text = "Π"
             
         case "⊕", "⊗", "⊙", "⨿", "†", "ℏ":
             _ = formulaWebView?.evaluateJavaScript("answerMathField.typedText('" + id + "');", completionHandler: nil)
@@ -2097,18 +2125,41 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate, MFKBDel
     
     func image() -> UIImage {
         
-        formulaWebView?.layer.borderWidth = 0.0
         UIGraphicsBeginImageContextWithOptions((formulaWebView?.frame.size)!,false, UIScreen.main.scale)
         let ctx = UIGraphicsGetCurrentContext()
+        ctx?.setFillColor(UIColor.white.cgColor)
         formulaWebView?.layer.render(in: ctx!)
         let image = UIGraphicsGetImageFromCurrentImageContext()
-        
-        formulaWebView?.layer.borderWidth = 1.0
         
         let trimmedImage = (image?.trim())!
         let squaredImage = trimmedImage.padToSquare()//.imageWithColor(newColor: UIColor(red: 1.0, green: 1.0, blue: 0.9, alpha: 0.5))!
         
         return squaredImage
+    }
+    
+    
+    func snapshot() -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(view.frame.size, true, 0) //formulaWebView!.scrollView.contentSize, true, 0)
+        var renderingFrame = formulaWebView!.scrollView.frame
+        renderingFrame.size = formulaWebView!.scrollView.contentSize
+        formulaWebView!.drawHierarchy(in: renderingFrame, afterScreenUpdates: true)
+        let snapshotImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        //UIImageWriteToSavedPhotosAlbum(snapshotImage, nil, nil, nil)
+        
+        return snapshotImage!
+    }
+    
+    func snapshot2() -> UIImage {
+    
+        let renderer = UIGraphicsImageRenderer(size: view.bounds.size)
+        formulaWebView?.clipsToBounds = false
+        let image = renderer.image { ctx in
+            formulaWebView?.drawHierarchy(in: view.bounds, afterScreenUpdates: true)
+        }
+        formulaWebView?.clipsToBounds = true
+        return image
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {

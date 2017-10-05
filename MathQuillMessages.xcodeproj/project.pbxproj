@@ -12,6 +12,26 @@
 		B511B7CD1E4A25FB002B8280 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B59A0D1B1DFC76E10004F6E7 /* Assets.xcassets */; };
 		B511B7CE1E4A25FB002B8280 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B59A0D1B1DFC76E10004F6E7 /* Assets.xcassets */; };
 		B511B7CF1E4A25FC002B8280 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B59A0D1B1DFC76E10004F6E7 /* Assets.xcassets */; };
+		B55DD2251F8523B00012934F /* Symbola-basic.eot in Resources */ = {isa = PBXBuildFile; fileRef = B55DD2231F8523AD0012934F /* Symbola-basic.eot */; };
+		B55DD2261F8523B00012934F /* Symbola-basic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B55DD21B1F8523AC0012934F /* Symbola-basic.ttf */; };
+		B55DD2271F8523B00012934F /* Symbola-basic.woff in Resources */ = {isa = PBXBuildFile; fileRef = B55DD2221F8523AD0012934F /* Symbola-basic.woff */; };
+		B55DD2281F8523B00012934F /* Symbola-basic.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = B55DD21F1F8523AC0012934F /* Symbola-basic.woff2 */; };
+		B55DD2291F8523B00012934F /* Symbola.eot in Resources */ = {isa = PBXBuildFile; fileRef = B55DD2241F8523AD0012934F /* Symbola.eot */; };
+		B55DD22A1F8523B00012934F /* Symbola.otf in Resources */ = {isa = PBXBuildFile; fileRef = B55DD21D1F8523AC0012934F /* Symbola.otf */; };
+		B55DD22B1F8523B00012934F /* Symbola.svg in Resources */ = {isa = PBXBuildFile; fileRef = B55DD21E1F8523AC0012934F /* Symbola.svg */; };
+		B55DD22C1F8523B00012934F /* Symbola.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B55DD2201F8523AC0012934F /* Symbola.ttf */; };
+		B55DD22D1F8523B00012934F /* Symbola.woff in Resources */ = {isa = PBXBuildFile; fileRef = B55DD21C1F8523AC0012934F /* Symbola.woff */; };
+		B55DD22E1F8523B00012934F /* Symbola.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = B55DD2211F8523AD0012934F /* Symbola.woff2 */; };
+		B55DD22F1F8523B20012934F /* Symbola-basic.eot in Resources */ = {isa = PBXBuildFile; fileRef = B55DD2231F8523AD0012934F /* Symbola-basic.eot */; };
+		B55DD2301F8523B20012934F /* Symbola-basic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B55DD21B1F8523AC0012934F /* Symbola-basic.ttf */; };
+		B55DD2311F8523B20012934F /* Symbola-basic.woff in Resources */ = {isa = PBXBuildFile; fileRef = B55DD2221F8523AD0012934F /* Symbola-basic.woff */; };
+		B55DD2321F8523B20012934F /* Symbola-basic.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = B55DD21F1F8523AC0012934F /* Symbola-basic.woff2 */; };
+		B55DD2331F8523B20012934F /* Symbola.eot in Resources */ = {isa = PBXBuildFile; fileRef = B55DD2241F8523AD0012934F /* Symbola.eot */; };
+		B55DD2341F8523B20012934F /* Symbola.otf in Resources */ = {isa = PBXBuildFile; fileRef = B55DD21D1F8523AC0012934F /* Symbola.otf */; };
+		B55DD2351F8523B20012934F /* Symbola.svg in Resources */ = {isa = PBXBuildFile; fileRef = B55DD21E1F8523AC0012934F /* Symbola.svg */; };
+		B55DD2361F8523B20012934F /* Symbola.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B55DD2201F8523AC0012934F /* Symbola.ttf */; };
+		B55DD2371F8523B20012934F /* Symbola.woff in Resources */ = {isa = PBXBuildFile; fileRef = B55DD21C1F8523AC0012934F /* Symbola.woff */; };
+		B55DD2381F8523B20012934F /* Symbola.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = B55DD2211F8523AD0012934F /* Symbola.woff2 */; };
 		B563D0AE1E51EB0B00B85B32 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59A0D481DFC77530004F6E7 /* KeyboardViewController.swift */; };
 		B59A0D151DFC76E10004F6E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59A0D141DFC76E10004F6E7 /* AppDelegate.swift */; };
 		B59A0D171DFC76E10004F6E7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59A0D161DFC76E10004F6E7 /* ViewController.swift */; };
@@ -28,6 +48,7 @@
 		B59A0D5A1DFC78160004F6E7 /* test.html in Resources */ = {isa = PBXBuildFile; fileRef = B59A0D581DFC78160004F6E7 /* test.html */; };
 		B59A0D5B1DFC78160004F6E7 /* test.html in Resources */ = {isa = PBXBuildFile; fileRef = B59A0D581DFC78160004F6E7 /* test.html */; };
 		B59A0D5C1DFC78160004F6E7 /* test.html in Resources */ = {isa = PBXBuildFile; fileRef = B59A0D581DFC78160004F6E7 /* test.html */; };
+		B5C121051F851C11007B8298 /* mystyle.css in Resources */ = {isa = PBXBuildFile; fileRef = B59A0D561DFC77EE0004F6E7 /* mystyle.css */; };
 		B5CA74A01F7FF555004DB391 /* jquery-1.7.2.js in Resources */ = {isa = PBXBuildFile; fileRef = B58AE0881F7FC07600325F86 /* jquery-1.7.2.js */; };
 		B5CA74A11F7FF555004DB391 /* mathquill.css in Resources */ = {isa = PBXBuildFile; fileRef = B58AE0861F7FC07600325F86 /* mathquill.css */; };
 		B5CA74A21F7FF555004DB391 /* mathquill.js in Resources */ = {isa = PBXBuildFile; fileRef = B58AE0871F7FC07600325F86 /* mathquill.js */; };
@@ -82,6 +103,36 @@
 		B503320A1E52E37300F730AE /* TurtleBezierPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurtleBezierPath.swift; sourceTree = "<group>"; };
 		B511B7CB1E4A254E002B8280 /* MathQuillMessages.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MathQuillMessages.entitlements; sourceTree = "<group>"; };
 		B511B7CC1E4A2579002B8280 /* MathQuillKeyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MathQuillKeyboard.entitlements; sourceTree = "<group>"; };
+		B55DD21B1F8523AC0012934F /* Symbola-basic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Symbola-basic.ttf"; sourceTree = "<group>"; };
+		B55DD21C1F8523AC0012934F /* Symbola.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = Symbola.woff; sourceTree = "<group>"; };
+		B55DD21D1F8523AC0012934F /* Symbola.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Symbola.otf; sourceTree = "<group>"; };
+		B55DD21E1F8523AC0012934F /* Symbola.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Symbola.svg; sourceTree = "<group>"; };
+		B55DD21F1F8523AC0012934F /* Symbola-basic.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Symbola-basic.woff2"; sourceTree = "<group>"; };
+		B55DD2201F8523AC0012934F /* Symbola.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Symbola.ttf; sourceTree = "<group>"; };
+		B55DD2211F8523AD0012934F /* Symbola.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Symbola.woff2; sourceTree = "<group>"; };
+		B55DD2221F8523AD0012934F /* Symbola-basic.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Symbola-basic.woff"; sourceTree = "<group>"; };
+		B55DD2231F8523AD0012934F /* Symbola-basic.eot */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Symbola-basic.eot"; sourceTree = "<group>"; };
+		B55DD2241F8523AD0012934F /* Symbola.eot */ = {isa = PBXFileReference; lastKnownFileType = file; path = Symbola.eot; sourceTree = "<group>"; };
+		B55DD23A1F8523F70012934F /* Symbola-basic.eot */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Symbola-basic.eot"; sourceTree = "<group>"; };
+		B55DD23B1F8523F70012934F /* Symbola-basic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Symbola-basic.ttf"; sourceTree = "<group>"; };
+		B55DD23C1F8523F70012934F /* Symbola-basic.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Symbola-basic.woff"; sourceTree = "<group>"; };
+		B55DD23D1F8523F70012934F /* Symbola-basic.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Symbola-basic.woff2"; sourceTree = "<group>"; };
+		B55DD23E1F8523F70012934F /* Symbola.eot */ = {isa = PBXFileReference; lastKnownFileType = file; path = Symbola.eot; sourceTree = "<group>"; };
+		B55DD23F1F8523F70012934F /* Symbola.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Symbola.otf; sourceTree = "<group>"; };
+		B55DD2401F8523F70012934F /* Symbola.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Symbola.svg; sourceTree = "<group>"; };
+		B55DD2411F8523F70012934F /* Symbola.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Symbola.ttf; sourceTree = "<group>"; };
+		B55DD2421F8523F70012934F /* Symbola.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = Symbola.woff; sourceTree = "<group>"; };
+		B55DD2431F8523F70012934F /* Symbola.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Symbola.woff2; sourceTree = "<group>"; };
+		B55DD2441F8524540012934F /* Symbola.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Symbola.ttf; path = fonts/Symbola.ttf; sourceTree = SOURCE_ROOT; };
+		B55DD2451F8524540012934F /* Symbola-basic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Symbola-basic.ttf"; path = "fonts/Symbola-basic.ttf"; sourceTree = SOURCE_ROOT; };
+		B55DD2461F8524540012934F /* Symbola.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = Symbola.svg; path = fonts/Symbola.svg; sourceTree = SOURCE_ROOT; };
+		B55DD2471F8524550012934F /* Symbola-basic.woff */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Symbola-basic.woff"; path = "fonts/Symbola-basic.woff"; sourceTree = SOURCE_ROOT; };
+		B55DD2481F8524550012934F /* Symbola.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = Symbola.woff2; path = fonts/Symbola.woff2; sourceTree = SOURCE_ROOT; };
+		B55DD2491F8524550012934F /* Symbola.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Symbola.otf; path = fonts/Symbola.otf; sourceTree = SOURCE_ROOT; };
+		B55DD24A1F8524550012934F /* Symbola-basic.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Symbola-basic.woff2"; path = "fonts/Symbola-basic.woff2"; sourceTree = SOURCE_ROOT; };
+		B55DD24B1F8524560012934F /* Symbola-basic.eot */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Symbola-basic.eot"; path = "fonts/Symbola-basic.eot"; sourceTree = SOURCE_ROOT; };
+		B55DD24C1F8524560012934F /* Symbola.eot */ = {isa = PBXFileReference; lastKnownFileType = file; name = Symbola.eot; path = fonts/Symbola.eot; sourceTree = SOURCE_ROOT; };
+		B55DD24D1F8524560012934F /* Symbola.woff */ = {isa = PBXFileReference; lastKnownFileType = file; name = Symbola.woff; path = fonts/Symbola.woff; sourceTree = SOURCE_ROOT; };
 		B58AE0861F7FC07600325F86 /* mathquill.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = mathquill.css; sourceTree = "<group>"; };
 		B58AE0871F7FC07600325F86 /* mathquill.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = mathquill.js; sourceTree = "<group>"; };
 		B58AE0881F7FC07600325F86 /* jquery-1.7.2.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "jquery-1.7.2.js"; sourceTree = "<group>"; };
@@ -104,16 +155,6 @@
 		B59A0D541DFC77BB0004F6E7 /* MQKBView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MQKBView.xib; sourceTree = "<group>"; };
 		B59A0D561DFC77EE0004F6E7 /* mystyle.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = mystyle.css; sourceTree = "<group>"; };
 		B59A0D581DFC78160004F6E7 /* test.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = test.html; sourceTree = "<group>"; };
-		B5C120E71F850711007B8298 /* Symbola-basic.eot */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Symbola-basic.eot"; sourceTree = "<group>"; };
-		B5C120E81F850711007B8298 /* Symbola-basic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Symbola-basic.ttf"; sourceTree = "<group>"; };
-		B5C120E91F850711007B8298 /* Symbola-basic.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Symbola-basic.woff"; sourceTree = "<group>"; };
-		B5C120EA1F850711007B8298 /* Symbola-basic.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Symbola-basic.woff2"; sourceTree = "<group>"; };
-		B5C120EB1F850711007B8298 /* Symbola.eot */ = {isa = PBXFileReference; lastKnownFileType = file; path = Symbola.eot; sourceTree = "<group>"; };
-		B5C120EC1F850711007B8298 /* Symbola.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Symbola.svg; sourceTree = "<group>"; };
-		B5C120ED1F850711007B8298 /* Symbola.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Symbola.ttf; sourceTree = "<group>"; };
-		B5C120EE1F850711007B8298 /* Symbola.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = Symbola.woff; sourceTree = "<group>"; };
-		B5C120EF1F850711007B8298 /* Symbola.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Symbola.woff2; sourceTree = "<group>"; };
-		B5C120F01F8509CB007B8298 /* Symbola.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Symbola.otf; sourceTree = "<group>"; };
 		B5CF16DC1E6DC2C70063D1A9 /* MuFuKeyboardButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MuFuKeyboardButton.swift; path = ../MuFuKeyboardButton/MuFuKeyboardButton.swift; sourceTree = "<group>"; };
 		B5CF16DD1E6DC2C70063D1A9 /* MuFuKeyboardButtonDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MuFuKeyboardButtonDetailView.swift; path = ../MuFuKeyboardButton/MuFuKeyboardButtonDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -150,9 +191,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B55DD21A1F8523960012934F /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				B55DD2231F8523AD0012934F /* Symbola-basic.eot */,
+				B55DD21B1F8523AC0012934F /* Symbola-basic.ttf */,
+				B55DD2221F8523AD0012934F /* Symbola-basic.woff */,
+				B55DD21F1F8523AC0012934F /* Symbola-basic.woff2 */,
+				B55DD2241F8523AD0012934F /* Symbola.eot */,
+				B55DD21D1F8523AC0012934F /* Symbola.otf */,
+				B55DD21E1F8523AC0012934F /* Symbola.svg */,
+				B55DD2201F8523AC0012934F /* Symbola.ttf */,
+				B55DD21C1F8523AC0012934F /* Symbola.woff */,
+				B55DD2211F8523AD0012934F /* Symbola.woff2 */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
+		B55DD2391F8523F70012934F /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				B55DD23A1F8523F70012934F /* Symbola-basic.eot */,
+				B55DD23B1F8523F70012934F /* Symbola-basic.ttf */,
+				B55DD23C1F8523F70012934F /* Symbola-basic.woff */,
+				B55DD23D1F8523F70012934F /* Symbola-basic.woff2 */,
+				B55DD23E1F8523F70012934F /* Symbola.eot */,
+				B55DD23F1F8523F70012934F /* Symbola.otf */,
+				B55DD2401F8523F70012934F /* Symbola.svg */,
+				B55DD2411F8523F70012934F /* Symbola.ttf */,
+				B55DD2421F8523F70012934F /* Symbola.woff */,
+				B55DD2431F8523F70012934F /* Symbola.woff2 */,
+			);
+			path = fonts;
+			sourceTree = SOURCE_ROOT;
+		};
 		B59A0D081DFC76E10004F6E7 = {
 			isa = PBXGroup;
 			children = (
+				B55DD21A1F8523960012934F /* fonts */,
 				B503320A1E52E37300F730AE /* TurtleBezierPath.swift */,
 				B5CF16DC1E6DC2C70063D1A9 /* MuFuKeyboardButton.swift */,
 				B5CF16DD1E6DC2C70063D1A9 /* MuFuKeyboardButtonDetailView.swift */,
@@ -210,7 +286,17 @@
 		B59A0D471DFC77530004F6E7 /* MathQuillKeyboard */ = {
 			isa = PBXGroup;
 			children = (
-				B5C120E61F850711007B8298 /* fonts */,
+				B55DD24B1F8524560012934F /* Symbola-basic.eot */,
+				B55DD2451F8524540012934F /* Symbola-basic.ttf */,
+				B55DD2471F8524550012934F /* Symbola-basic.woff */,
+				B55DD24A1F8524550012934F /* Symbola-basic.woff2 */,
+				B55DD24C1F8524560012934F /* Symbola.eot */,
+				B55DD2491F8524550012934F /* Symbola.otf */,
+				B55DD2461F8524540012934F /* Symbola.svg */,
+				B55DD2441F8524540012934F /* Symbola.ttf */,
+				B55DD24D1F8524560012934F /* Symbola.woff */,
+				B55DD2481F8524550012934F /* Symbola.woff2 */,
+				B55DD2391F8523F70012934F /* fonts */,
 				B58AE0881F7FC07600325F86 /* jquery-1.7.2.js */,
 				B58AE0861F7FC07600325F86 /* mathquill.css */,
 				B58AE0871F7FC07600325F86 /* mathquill.js */,
@@ -222,23 +308,6 @@
 				B59A0D4A1DFC77530004F6E7 /* Info.plist */,
 			);
 			path = MathQuillKeyboard;
-			sourceTree = "<group>";
-		};
-		B5C120E61F850711007B8298 /* fonts */ = {
-			isa = PBXGroup;
-			children = (
-				B5C120F01F8509CB007B8298 /* Symbola.otf */,
-				B5C120E71F850711007B8298 /* Symbola-basic.eot */,
-				B5C120E81F850711007B8298 /* Symbola-basic.ttf */,
-				B5C120E91F850711007B8298 /* Symbola-basic.woff */,
-				B5C120EA1F850711007B8298 /* Symbola-basic.woff2 */,
-				B5C120EB1F850711007B8298 /* Symbola.eot */,
-				B5C120EC1F850711007B8298 /* Symbola.svg */,
-				B5C120ED1F850711007B8298 /* Symbola.ttf */,
-				B5C120EE1F850711007B8298 /* Symbola.woff */,
-				B5C120EF1F850711007B8298 /* Symbola.woff2 */,
-			);
-			path = fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -390,13 +459,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B55DD22E1F8523B00012934F /* Symbola.woff2 in Resources */,
+				B55DD2271F8523B00012934F /* Symbola-basic.woff in Resources */,
 				B5CA74A21F7FF555004DB391 /* mathquill.js in Resources */,
+				B5C121051F851C11007B8298 /* mystyle.css in Resources */,
+				B55DD2291F8523B00012934F /* Symbola.eot in Resources */,
 				B59A0D1F1DFC76E10004F6E7 /* LaunchScreen.storyboard in Resources */,
 				B59A0D1C1DFC76E10004F6E7 /* Assets.xcassets in Resources */,
 				B59A0D1A1DFC76E10004F6E7 /* Main.storyboard in Resources */,
+				B55DD22A1F8523B00012934F /* Symbola.otf in Resources */,
 				B59A0D591DFC78160004F6E7 /* test.html in Resources */,
+				B55DD2281F8523B00012934F /* Symbola-basic.woff2 in Resources */,
 				B5CA74A01F7FF555004DB391 /* jquery-1.7.2.js in Resources */,
+				B55DD2251F8523B00012934F /* Symbola-basic.eot in Resources */,
 				B5CA74A11F7FF555004DB391 /* mathquill.css in Resources */,
+				B55DD2261F8523B00012934F /* Symbola-basic.ttf in Resources */,
+				B55DD22D1F8523B00012934F /* Symbola.woff in Resources */,
+				B55DD22C1F8523B00012934F /* Symbola.ttf in Resources */,
+				B55DD22B1F8523B00012934F /* Symbola.svg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,10 +503,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5CA74A51F7FF556004DB391 /* mathquill.js in Resources */,
+				B55DD2301F8523B20012934F /* Symbola-basic.ttf in Resources */,
+				B55DD2351F8523B20012934F /* Symbola.svg in Resources */,
+				B55DD2371F8523B20012934F /* Symbola.woff in Resources */,
 				B59A0D5C1DFC78160004F6E7 /* test.html in Resources */,
 				B59A0D551DFC77BB0004F6E7 /* MQKBView.xib in Resources */,
+				B55DD2381F8523B20012934F /* Symbola.woff2 in Resources */,
+				B55DD2361F8523B20012934F /* Symbola.ttf in Resources */,
 				B59A0D571DFC77EE0004F6E7 /* mystyle.css in Resources */,
+				B55DD2321F8523B20012934F /* Symbola-basic.woff2 in Resources */,
 				B511B7CF1E4A25FC002B8280 /* Assets.xcassets in Resources */,
+				B55DD2311F8523B20012934F /* Symbola-basic.woff in Resources */,
+				B55DD2331F8523B20012934F /* Symbola.eot in Resources */,
+				B55DD22F1F8523B20012934F /* Symbola-basic.eot in Resources */,
+				B55DD2341F8523B20012934F /* Symbola.otf in Resources */,
 				B5CA74A31F7FF556004DB391 /* jquery-1.7.2.js in Resources */,
 				B5CA74A41F7FF556004DB391 /* mathquill.css in Resources */,
 			);
@@ -634,6 +724,7 @@
 				CODE_SIGN_ENTITLEMENTS = MathQuillMessages/MathQuillMessages.entitlements;
 				DEVELOPMENT_TEAM = 8T6F76KZ56;
 				INFOPLIST_FILE = MathQuillMessages/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = BH.MathQuillMessages;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -642,6 +733,7 @@
 				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -655,6 +747,7 @@
 				CODE_SIGN_ENTITLEMENTS = MathQuillMessages/MathQuillMessages.entitlements;
 				DEVELOPMENT_TEAM = 8T6F76KZ56;
 				INFOPLIST_FILE = MathQuillMessages/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = BH.MathQuillMessages;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -662,6 +755,7 @@
 				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -746,6 +840,7 @@
 				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -767,6 +862,7 @@
 				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
