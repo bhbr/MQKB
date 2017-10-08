@@ -33,16 +33,6 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B59A0D241DFC76E10004F6E7"
-               BuildableName = "MathQuillMessagesTests.xctest"
-               BlueprintName = "MathQuillMessagesTests"
-               ReferencedContainer = "container:MathQuillMessages.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "B59A0D2F1DFC76E10004F6E7"
                BuildableName = "MathQuillMessagesUITests.xctest"
                BlueprintName = "MathQuillMessagesUITests"
