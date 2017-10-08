@@ -17,25 +17,215 @@ let COPY_BUTTON_COLOR: UIColor = UIColor(red: 0.9, green: 0.6, blue: 0.0, alpha:
 let COPY_BUTTON_HIGHLIGHT_COLOR: UIColor = UIColor(red: 0.45, green: 0.3, blue: 0.0, alpha: 1.0)
 let IMAGE_PADDING : CGFloat = 50
 
-let IPHONE_PORTRAIT_BUTTON_X_OFFSET: CGFloat = 7.0
-let IPHONE_PORTRAIT_BUTTON_Y_OFFSET: CGFloat = 110.0
-let IPHONE_PORTRAIT_BUTTON_X_GAP: CGFloat = 3.0
-let IPHONE_PORTRAIT_BUTTON_Y_GAP: CGFloat = 3.0
 
-let IPAD_PORTRAIT_BUTTON_X_OFFSET: CGFloat = 12.0
-let IPAD_PORTRAIT_BUTTON_Y_OFFSET: CGFloat = 120.0
-let IPAD_PORTRAIT_BUTTON_X_GAP: CGFloat = 12.0
-let IPAD_PORTRAIT_BUTTON_Y_GAP: CGFloat = 8.0
 
-let IPHONE_LANDSCAPE_BUTTON_X_OFFSET: CGFloat = 10.0
-let IPHONE_LANDSCAPE_BUTTON_Y_OFFSET: CGFloat = 10.0
-let IPHONE_LANDSCAPE_BUTTON_X_GAP: CGFloat = 3.0
-let IPHONE_LANDSCAPE_BUTTON_Y_GAP: CGFloat = 3.0
 
-let IPAD_LANDSCAPE_BUTTON_X_OFFSET: CGFloat = 12.0
-let IPAD_LANDSCAPE_BUTTON_Y_OFFSET: CGFloat = 120.0
-let IPAD_LANDSCAPE_BUTTON_X_GAP: CGFloat = 12.0
-let IPAD_LANDSCAPE_BUTTON_Y_GAP: CGFloat = 8.0
+
+let IPHONE5_PORTRAIT_BUTTON_X_OFFSET: CGFloat = 5.0
+let IPHONE5_PORTRAIT_BUTTON_Y_OFFSET: CGFloat = 90.0
+let IPHONE5_PORTRAIT_BUTTON_X_GAP: CGFloat = 3.0
+let IPHONE5_PORTRAIT_BUTTON_Y_GAP: CGFloat = 3.0
+
+let IPHONE5_PORTRAIT_FORMULA_X_OFFSET: CGFloat = 45.0
+let IPHONE5_PORTRAIT_FORMULA_Y_OFFSET: CGFloat = 5.0
+let IPHONE5_PORTRAIT_FORMULA_WIDTH: CGFloat = 270.0
+let IPHONE5_PORTRAIT_FORMULA_HEIGHT: CGFloat = 80.0
+
+
+
+let IPHONE5_LANDSCAPE_BUTTON_X_OFFSET: CGFloat = 10.0
+let IPHONE5_LANDSCAPE_BUTTON_Y_OFFSET: CGFloat = 10.0
+let IPHONE5_LANDSCAPE_BUTTON_X_GAP: CGFloat = 3.0
+let IPHONE5_LANDSCAPE_BUTTON_Y_GAP: CGFloat = 3.0
+
+let IPHONE5_LANDSCAPE_FORMULA_X_OFFSET: CGFloat = 45.0
+let IPHONE5_LANDSCAPE_FORMULA_Y_OFFSET: CGFloat = 15.0
+let IPHONE5_LANDSCAPE_FORMULA_WIDTH: CGFloat = 3.0
+let IPHONE5_LANDSCAPE_FORMULA_HEIGHT: CGFloat = 3.0
+
+
+
+
+
+
+
+
+
+
+
+let IPHONE6_PORTRAIT_BUTTON_X_OFFSET: CGFloat = 5.0
+let IPHONE6_PORTRAIT_BUTTON_Y_OFFSET: CGFloat = 90.0
+let IPHONE6_PORTRAIT_BUTTON_X_GAP: CGFloat = 3.0
+let IPHONE6_PORTRAIT_BUTTON_Y_GAP: CGFloat = 3.0
+
+let IPHONE6_PORTRAIT_FORMULA_X_OFFSET: CGFloat = 45.0
+let IPHONE6_PORTRAIT_FORMULA_Y_OFFSET: CGFloat = 5.0
+let IPHONE6_PORTRAIT_FORMULA_WIDTH: CGFloat = 325.0
+let IPHONE6_PORTRAIT_FORMULA_HEIGHT: CGFloat = 80.0
+
+
+let IPHONE6_LANDSCAPE_BUTTON_X_OFFSET: CGFloat = 10.0
+let IPHONE6_LANDSCAPE_BUTTON_Y_OFFSET: CGFloat = 10.0
+let IPHONE6_LANDSCAPE_BUTTON_X_GAP: CGFloat = 3.0
+let IPHONE6_LANDSCAPE_BUTTON_Y_GAP: CGFloat = 3.0
+
+let IPHONE6_LANDSCAPE_FORMULA_X_OFFSET: CGFloat = 7.0
+let IPHONE6_LANDSCAPE_FORMULA_Y_OFFSET: CGFloat = 110.0
+let IPHONE6_LANDSCAPE_FORMULA_WIDTH: CGFloat = 3.0
+let IPHONE6_LANDSCAPE_FORMULA_HEIGHT: CGFloat = 3.0
+
+
+
+
+
+
+
+
+
+
+
+
+
+let IPHONE6P_PORTRAIT_BUTTON_X_OFFSET: CGFloat = 5.0
+let IPHONE6P_PORTRAIT_BUTTON_Y_OFFSET: CGFloat = 100.0
+let IPHONE6P_PORTRAIT_BUTTON_X_GAP: CGFloat = 3.0
+let IPHONE6P_PORTRAIT_BUTTON_Y_GAP: CGFloat = 3.0
+
+let IPHONE6P_PORTRAIT_FORMULA_X_OFFSET: CGFloat = 50.0
+let IPHONE6P_PORTRAIT_FORMULA_Y_OFFSET: CGFloat = 5.0
+let IPHONE6P_PORTRAIT_FORMULA_WIDTH: CGFloat = 360.0
+let IPHONE6P_PORTRAIT_FORMULA_HEIGHT: CGFloat = 90.0
+
+
+
+let IPHONE6P_LANDSCAPE_BUTTON_X_OFFSET: CGFloat = 10.0
+let IPHONE6P_LANDSCAPE_BUTTON_Y_OFFSET: CGFloat = 10.0
+let IPHONE6P_LANDSCAPE_BUTTON_X_GAP: CGFloat = 3.0
+let IPHONE6P_LANDSCAPE_BUTTON_Y_GAP: CGFloat = 3.0
+
+let IPHONE6P_LANDSCAPE_FORMULA_X_OFFSET: CGFloat = 7.0
+let IPHONE6P_LANDSCAPE_FORMULA_Y_OFFSET: CGFloat = 110.0
+let IPHONE6P_LANDSCAPE_FORMULA_WIDTH: CGFloat = 3.0
+let IPHONE6P_LANDSCAPE_FORMULA_HEIGHT: CGFloat = 3.0
+
+
+
+
+
+
+
+
+
+
+let IPHONEX_PORTRAIT_BUTTON_X_OFFSET: CGFloat = 5.0
+let IPHONEX_PORTRAIT_BUTTON_Y_OFFSET: CGFloat = 100.0
+let IPHONEX_PORTRAIT_BUTTON_X_GAP: CGFloat = 3.0
+let IPHONEX_PORTRAIT_BUTTON_Y_GAP: CGFloat = 3.0
+
+let IPHONEX_PORTRAIT_FORMULA_X_OFFSET: CGFloat = 50.0
+let IPHONEX_PORTRAIT_FORMULA_Y_OFFSET: CGFloat = 5.0
+let IPHONEX_PORTRAIT_FORMULA_WIDTH: CGFloat = 360.0
+let IPHONEX_PORTRAIT_FORMULA_HEIGHT: CGFloat = 90.0
+
+
+
+let IPHONEX_LANDSCAPE_BUTTON_X_OFFSET: CGFloat = 10.0
+let IPHONEX_LANDSCAPE_BUTTON_Y_OFFSET: CGFloat = 10.0
+let IPHONEX_LANDSCAPE_BUTTON_X_GAP: CGFloat = 3.0
+let IPHONEX_LANDSCAPE_BUTTON_Y_GAP: CGFloat = 3.0
+
+let IPHONEX_LANDSCAPE_FORMULA_X_OFFSET: CGFloat = 7.0
+let IPHONEX_LANDSCAPE_FORMULA_Y_OFFSET: CGFloat = 110.0
+let IPHONEX_LANDSCAPE_FORMULA_WIDTH: CGFloat = 3.0
+let IPHONEX_LANDSCAPE_FORMULA_HEIGHT: CGFloat = 3.0
+
+
+
+
+
+
+let IPAD_AIR_PORTRAIT_BUTTON_X_OFFSET: CGFloat = 7.0
+let IPAD_AIR_PORTRAIT_BUTTON_Y_OFFSET: CGFloat = 110.0
+let IPAD_AIR_PORTRAIT_BUTTON_X_GAP: CGFloat = 3.0
+let IPAD_AIR_PORTRAIT_BUTTON_Y_GAP: CGFloat = 3.0
+
+let IPAD_AIR_PORTRAIT_FORMULA_X_OFFSET: CGFloat = 100.0
+let IPAD_AIR_PORTRAIT_FORMULA_Y_OFFSET: CGFloat = 5.0
+let IPAD_AIR_PORTRAIT_FORMULA_WIDTH: CGFloat = 660.0
+let IPAD_AIR_PORTRAIT_FORMULA_HEIGHT: CGFloat = 110.0
+
+
+
+let IPAD_AIR_LANDSCAPE_BUTTON_X_OFFSET: CGFloat = 10.0
+let IPAD_AIR_LANDSCAPE_BUTTON_Y_OFFSET: CGFloat = 10.0
+let IPAD_AIR_LANDSCAPE_BUTTON_X_GAP: CGFloat = 3.0
+let IPAD_AIR_LANDSCAPE_BUTTON_Y_GAP: CGFloat = 3.0
+
+let IPAD_AIR_LANDSCAPE_FORMULA_X_OFFSET: CGFloat = 7.0
+let IPAD_AIR_LANDSCAPE_FORMULA_Y_OFFSET: CGFloat = 110.0
+let IPAD_AIR_LANDSCAPE_FORMULA_WIDTH: CGFloat = 3.0
+let IPAD_AIR_LANDSCAPE_FORMULA_HEIGHT: CGFloat = 3.0
+
+
+
+
+
+
+
+
+
+let IPAD_PRO10_PORTRAIT_BUTTON_X_OFFSET: CGFloat = 7.0
+let IPAD_PRO10_PORTRAIT_BUTTON_Y_OFFSET: CGFloat = 110.0
+let IPAD_PRO10_PORTRAIT_BUTTON_X_GAP: CGFloat = 3.0
+let IPAD_PRO10_PORTRAIT_BUTTON_Y_GAP: CGFloat = 3.0
+
+let IPAD_PRO10_PORTRAIT_FORMULA_X_OFFSET: CGFloat = 7.0
+let IPAD_PRO10_PORTRAIT_FORMULA_Y_OFFSET: CGFloat = 110.0
+let IPAD_PRO10_PORTRAIT_FORMULA_WIDTH: CGFloat = 3.0
+let IPAD_PRO10_PORTRAIT_FORMULA_HEIGHT: CGFloat = 3.0
+
+
+
+let IPAD_PRO10_LANDSCAPE_BUTTON_X_OFFSET: CGFloat = 10.0
+let IPAD_PRO10_LANDSCAPE_BUTTON_Y_OFFSET: CGFloat = 10.0
+let IPAD_PRO10_LANDSCAPE_BUTTON_X_GAP: CGFloat = 3.0
+let IPAD_PRO10_LANDSCAPE_BUTTON_Y_GAP: CGFloat = 3.0
+
+let IPAD_PRO10_LANDSCAPE_FORMULA_X_OFFSET: CGFloat = 7.0
+let IPAD_PRO10_LANDSCAPE_FORMULA_Y_OFFSET: CGFloat = 110.0
+let IPAD_PRO10_LANDSCAPE_FORMULA_WIDTH: CGFloat = 3.0
+let IPAD_PRO10_LANDSCAPE_FORMULA_HEIGHT: CGFloat = 3.0
+
+
+
+
+
+
+
+
+let IPAD_PRO12_PORTRAIT_BUTTON_X_OFFSET: CGFloat = 7.0
+let IPAD_PRO12_PORTRAIT_BUTTON_Y_OFFSET: CGFloat = 110.0
+let IPAD_PRO12_PORTRAIT_BUTTON_X_GAP: CGFloat = 3.0
+let IPAD_PRO12_PORTRAIT_BUTTON_Y_GAP: CGFloat = 3.0
+
+let IPAD_PRO12_PORTRAIT_FORMULA_X_OFFSET: CGFloat = 7.0
+let IPAD_PRO12_PORTRAIT_FORMULA_Y_OFFSET: CGFloat = 110.0
+let IPAD_PRO12_PORTRAIT_FORMULA_WIDTH: CGFloat = 3.0
+let IPAD_PRO12_PORTRAIT_FORMULA_HEIGHT: CGFloat = 3.0
+
+
+
+let IPAD_PRO12_LANDSCAPE_BUTTON_X_OFFSET: CGFloat = 10.0
+let IPAD_PRO12_LANDSCAPE_BUTTON_Y_OFFSET: CGFloat = 10.0
+let IPAD_PRO12_LANDSCAPE_BUTTON_X_GAP: CGFloat = 3.0
+let IPAD_PRO12_LANDSCAPE_BUTTON_Y_GAP: CGFloat = 3.0
+
+let IPAD_PRO12_LANDSCAPE_FORMULA_X_OFFSET: CGFloat = 7.0
+let IPAD_PRO12_LANDSCAPE_FORMULA_Y_OFFSET: CGFloat = 110.0
+let IPAD_PRO12_LANDSCAPE_FORMULA_WIDTH: CGFloat = 3.0
+let IPAD_PRO12_LANDSCAPE_FORMULA_HEIGHT: CGFloat = 3.0
+
+
 
 
 // MARK: UIImage
@@ -315,7 +505,7 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate, MFKBDel
     var buttonCopy: MuFuKeyboardButton = MuFuKeyboardButton()
 
 
-    func setupButtonGeometry() {
+    func setupGeometry() {
         
         let screenSize = max(UIScreen.main.bounds.width,UIScreen.main.bounds.height)
         
@@ -324,122 +514,178 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate, MFKBDel
         switch (UIDevice.current.userInterfaceIdiom, screenSize, myTrue) { //UIDevice.current.orientation.isPortrait) {
             
         case (.phone, 568.0,true): // iPhone 5,5C,5S,SE Portrait
-            buttonXOffset = IPHONE_PORTRAIT_BUTTON_X_OFFSET
-            buttonYOffset = IPHONE_PORTRAIT_BUTTON_Y_OFFSET
-            xGap = IPHONE_PORTRAIT_BUTTON_X_GAP
-            yGap = IPHONE_PORTRAIT_BUTTON_Y_GAP
+            buttonXOffset = IPHONE5_PORTRAIT_BUTTON_X_OFFSET
+            buttonYOffset = IPHONE5_PORTRAIT_BUTTON_Y_OFFSET
+            xGap = IPHONE5_PORTRAIT_BUTTON_X_GAP
+            yGap = IPHONE5_PORTRAIT_BUTTON_Y_GAP
             buttonWidth = IPHONE5_PORTRAIT_BUTTON_WIDTH
             buttonHeight = IPHONE5_PORTRAIT_BUTTON_HEIGHT
-
+            formulaWebView?.frame = CGRect(x: IPHONE5_PORTRAIT_FORMULA_X_OFFSET,
+                                           y: IPHONE5_PORTRAIT_FORMULA_Y_OFFSET,
+                                           width: IPHONE5_PORTRAIT_FORMULA_WIDTH,
+                                           height: IPHONE5_PORTRAIT_FORMULA_HEIGHT)
+            
         case (.phone, 568.0,false): // iPhone 5,5C,5S,SE Landscape
-            buttonXOffset = IPHONE_LANDSCAPE_BUTTON_X_OFFSET
-            buttonYOffset = IPHONE_LANDSCAPE_BUTTON_Y_OFFSET
-            xGap = IPHONE_LANDSCAPE_BUTTON_X_GAP
-            yGap = IPHONE_LANDSCAPE_BUTTON_Y_GAP
+            buttonXOffset = IPHONE5_LANDSCAPE_BUTTON_X_OFFSET
+            buttonYOffset = IPHONE5_LANDSCAPE_BUTTON_Y_OFFSET
+            xGap = IPHONE5_LANDSCAPE_BUTTON_X_GAP
+            yGap = IPHONE5_LANDSCAPE_BUTTON_Y_GAP
             buttonWidth = IPHONE5_LANDSCAPE_BUTTON_WIDTH
             buttonHeight = IPHONE5_LANDSCAPE_BUTTON_HEIGHT
+            formulaWebView?.frame = CGRect(x: IPHONE5_LANDSCAPE_FORMULA_X_OFFSET,
+                                           y: IPHONE5_LANDSCAPE_FORMULA_Y_OFFSET,
+                                           width: IPHONE5_LANDSCAPE_FORMULA_WIDTH,
+                                           height: IPHONE5_LANDSCAPE_FORMULA_HEIGHT)
+            
 
         case (.phone, 667.0, true): // iPhone 6,6S,7,8 Portrait
-            buttonXOffset = IPHONE_PORTRAIT_BUTTON_X_OFFSET
-            buttonYOffset = IPHONE_PORTRAIT_BUTTON_Y_OFFSET
-            xGap = IPHONE_PORTRAIT_BUTTON_X_GAP
-            yGap = IPHONE_PORTRAIT_BUTTON_Y_GAP
+            buttonXOffset = IPHONE6_PORTRAIT_BUTTON_X_OFFSET
+            buttonYOffset = IPHONE6_PORTRAIT_BUTTON_Y_OFFSET
+            xGap = IPHONE6_PORTRAIT_BUTTON_X_GAP
+            yGap = IPHONE6_PORTRAIT_BUTTON_Y_GAP
             buttonWidth = IPHONE6_PORTRAIT_BUTTON_WIDTH
             buttonHeight = IPHONE6_PORTRAIT_BUTTON_HEIGHT
-
+            formulaWebView?.frame = CGRect(x: IPHONE6_PORTRAIT_FORMULA_X_OFFSET,
+                                           y: IPHONE6_PORTRAIT_FORMULA_Y_OFFSET,
+                                           width: IPHONE6_PORTRAIT_FORMULA_WIDTH,
+                                           height: IPHONE6_PORTRAIT_FORMULA_HEIGHT)
 
         case (.phone, 667.0, false): // iPhone 6,6S,7,8 Landscape
-            buttonXOffset = IPHONE_LANDSCAPE_BUTTON_X_OFFSET
-            buttonYOffset = IPHONE_LANDSCAPE_BUTTON_Y_OFFSET
-            xGap = IPHONE_LANDSCAPE_BUTTON_X_GAP
-            yGap = IPHONE_LANDSCAPE_BUTTON_Y_GAP
+            buttonXOffset = IPHONE6_LANDSCAPE_BUTTON_X_OFFSET
+            buttonYOffset = IPHONE6_LANDSCAPE_BUTTON_Y_OFFSET
+            xGap = IPHONE6_LANDSCAPE_BUTTON_X_GAP
+            yGap = IPHONE6_LANDSCAPE_BUTTON_Y_GAP
             buttonWidth = IPHONE6_LANDSCAPE_BUTTON_WIDTH
             buttonHeight = IPHONE6_LANDSCAPE_BUTTON_HEIGHT
+            formulaWebView?.frame = CGRect(x: IPHONE6_LANDSCAPE_FORMULA_X_OFFSET,
+                                           y: IPHONE6_LANDSCAPE_FORMULA_Y_OFFSET,
+                                           width: IPHONE6_LANDSCAPE_FORMULA_WIDTH,
+                                           height: IPHONE6_LANDSCAPE_FORMULA_HEIGHT)
 
         case (.phone, 736.0,true): // iPhone 6+,6S+,7+,8+ Portrait
-            buttonXOffset = IPHONE_PORTRAIT_BUTTON_X_OFFSET
-            buttonYOffset = IPHONE_PORTRAIT_BUTTON_Y_OFFSET
-            xGap = IPHONE_PORTRAIT_BUTTON_X_GAP
-            yGap = IPHONE_PORTRAIT_BUTTON_Y_GAP
+            buttonXOffset = IPHONE6P_PORTRAIT_BUTTON_X_OFFSET
+            buttonYOffset = IPHONE6P_PORTRAIT_BUTTON_Y_OFFSET
+            xGap = IPHONE6P_PORTRAIT_BUTTON_X_GAP
+            yGap = IPHONE6P_PORTRAIT_BUTTON_Y_GAP
             buttonWidth = IPHONE6P_PORTRAIT_BUTTON_WIDTH
             buttonHeight = IPHONE6P_PORTRAIT_BUTTON_HEIGHT
+            formulaWebView?.frame = CGRect(x: IPHONE6P_PORTRAIT_FORMULA_X_OFFSET,
+                                           y: IPHONE6P_PORTRAIT_FORMULA_Y_OFFSET,
+                                           width: IPHONE6P_PORTRAIT_FORMULA_WIDTH,
+                                           height: IPHONE6P_PORTRAIT_FORMULA_HEIGHT)
 
 
         case (.phone,736.0,false): // iPhone 6+,6S+,7+,8+ Landscape
-            buttonXOffset = IPHONE_LANDSCAPE_BUTTON_X_OFFSET
-            buttonYOffset = IPHONE_LANDSCAPE_BUTTON_Y_OFFSET
-            xGap = IPHONE_LANDSCAPE_BUTTON_X_GAP
-            yGap = IPHONE_LANDSCAPE_BUTTON_Y_GAP
+            buttonXOffset = IPHONE6P_LANDSCAPE_BUTTON_X_OFFSET
+            buttonYOffset = IPHONE6P_LANDSCAPE_BUTTON_Y_OFFSET
+            xGap = IPHONE6P_LANDSCAPE_BUTTON_X_GAP
+            yGap = IPHONE6P_LANDSCAPE_BUTTON_Y_GAP
             buttonWidth = IPHONE6P_LANDSCAPE_BUTTON_WIDTH
             buttonHeight = IPHONE6P_LANDSCAPE_BUTTON_HEIGHT
+            formulaWebView?.frame = CGRect(x: IPHONE6P_LANDSCAPE_FORMULA_X_OFFSET,
+                                           y: IPHONE6P_LANDSCAPE_FORMULA_Y_OFFSET,
+                                           width: IPHONE6P_LANDSCAPE_FORMULA_WIDTH,
+                                           height: IPHONE6P_LANDSCAPE_FORMULA_HEIGHT)
 
         case (.phone,812.0,true): // iPhone X Portrait
-            buttonXOffset = IPHONE_PORTRAIT_BUTTON_X_OFFSET
-            buttonYOffset = IPHONE_PORTRAIT_BUTTON_Y_OFFSET
-            xGap = IPHONE_PORTRAIT_BUTTON_X_GAP
-            yGap = IPHONE_PORTRAIT_BUTTON_Y_GAP
+            buttonXOffset = IPHONEX_PORTRAIT_BUTTON_X_OFFSET
+            buttonYOffset = IPHONEX_PORTRAIT_BUTTON_Y_OFFSET
+            xGap = IPHONEX_PORTRAIT_BUTTON_X_GAP
+            yGap = IPHONEX_PORTRAIT_BUTTON_Y_GAP
             buttonWidth = IPHONEX_PORTRAIT_BUTTON_WIDTH
             buttonHeight = IPHONEX_PORTRAIT_BUTTON_HEIGHT
+            formulaWebView?.frame = CGRect(x: IPHONEX_PORTRAIT_FORMULA_X_OFFSET,
+                                           y: IPHONEX_PORTRAIT_FORMULA_Y_OFFSET,
+                                           width: IPHONEX_PORTRAIT_FORMULA_WIDTH,
+                                           height: IPHONEX_PORTRAIT_FORMULA_HEIGHT)
             
         case (.phone,812.0,false): // iPhone X Landscape
-            buttonXOffset = IPHONE_LANDSCAPE_BUTTON_X_OFFSET
-            buttonYOffset = IPHONE_LANDSCAPE_BUTTON_Y_OFFSET
-            xGap = IPHONE_LANDSCAPE_BUTTON_X_GAP
-            yGap = IPHONE_LANDSCAPE_BUTTON_Y_GAP
+            buttonXOffset = IPHONEX_LANDSCAPE_BUTTON_X_OFFSET
+            buttonYOffset = IPHONEX_LANDSCAPE_BUTTON_Y_OFFSET
+            xGap = IPHONEX_LANDSCAPE_BUTTON_X_GAP
+            yGap = IPHONEX_LANDSCAPE_BUTTON_Y_GAP
             buttonWidth = IPHONEX_LANDSCAPE_BUTTON_WIDTH
             buttonHeight = IPHONEX_LANDSCAPE_BUTTON_HEIGHT
+            formulaWebView?.frame = CGRect(x: IPHONEX_LANDSCAPE_FORMULA_X_OFFSET,
+                                           y: IPHONEX_LANDSCAPE_FORMULA_Y_OFFSET,
+                                           width: IPHONEX_LANDSCAPE_FORMULA_WIDTH,
+                                           height: IPHONEX_LANDSCAPE_FORMULA_HEIGHT)
 
 
         
         
             
         case (.pad,1024.0,true): // iPad Air/Mini Portrait
-            buttonXOffset = IPAD_PORTRAIT_BUTTON_X_OFFSET
-            buttonYOffset = IPAD_PORTRAIT_BUTTON_Y_OFFSET
-            xGap = IPAD_PORTRAIT_BUTTON_X_GAP
-            yGap = IPAD_PORTRAIT_BUTTON_Y_GAP
+            buttonXOffset = IPAD_AIR_PORTRAIT_BUTTON_X_OFFSET
+            buttonYOffset = IPAD_AIR_PORTRAIT_BUTTON_Y_OFFSET
+            xGap = IPAD_AIR_PORTRAIT_BUTTON_X_GAP
+            yGap = IPAD_AIR_PORTRAIT_BUTTON_Y_GAP
             buttonWidth = IPAD_AIR_PORTRAIT_BUTTON_WIDTH
             buttonHeight = IPAD_AIR_PORTRAIT_BUTTON_HEIGHT
-
+            formulaWebView?.frame = CGRect(x: IPAD_AIR_PORTRAIT_FORMULA_X_OFFSET,
+                                           y: IPAD_AIR_PORTRAIT_FORMULA_Y_OFFSET,
+                                           width: IPAD_AIR_PORTRAIT_FORMULA_WIDTH,
+                                           height: IPAD_AIR_PORTRAIT_FORMULA_HEIGHT)
+            
         case (.pad,1024.0,false): // iPad Air/Mini Landscape
-            buttonXOffset = IPAD_LANDSCAPE_BUTTON_X_OFFSET
-            buttonYOffset = IPAD_LANDSCAPE_BUTTON_Y_OFFSET
-            xGap = IPAD_LANDSCAPE_BUTTON_X_GAP
-            yGap = IPAD_LANDSCAPE_BUTTON_Y_GAP
+            buttonXOffset = IPAD_AIR_LANDSCAPE_BUTTON_X_OFFSET
+            buttonYOffset = IPAD_AIR_LANDSCAPE_BUTTON_Y_OFFSET
+            xGap = IPAD_AIR_LANDSCAPE_BUTTON_X_GAP
+            yGap = IPAD_AIR_LANDSCAPE_BUTTON_Y_GAP
             buttonWidth = IPAD_AIR_LANDSCAPE_BUTTON_WIDTH
             buttonHeight = IPAD_AIR_LANDSCAPE_BUTTON_HEIGHT
+            formulaWebView?.frame = CGRect(x: IPAD_AIR_LANDSCAPE_FORMULA_X_OFFSET,
+                                           y: IPAD_AIR_LANDSCAPE_FORMULA_Y_OFFSET,
+                                           width: IPAD_AIR_LANDSCAPE_FORMULA_WIDTH,
+                                           height: IPAD_AIR_LANDSCAPE_FORMULA_HEIGHT)
 
         case (.pad,1112.0,true): // iPad Pro 10" Portrait
-            buttonXOffset = IPAD_PORTRAIT_BUTTON_X_OFFSET
-            buttonYOffset = IPAD_PORTRAIT_BUTTON_Y_OFFSET
-            xGap = IPAD_PORTRAIT_BUTTON_X_GAP
-            yGap = IPAD_PORTRAIT_BUTTON_Y_GAP
+            buttonXOffset = IPAD_PRO10_PORTRAIT_BUTTON_X_OFFSET
+            buttonYOffset = IPAD_PRO10_PORTRAIT_BUTTON_Y_OFFSET
+            xGap = IPAD_PRO10_PORTRAIT_BUTTON_X_GAP
+            yGap = IPAD_PRO10_PORTRAIT_BUTTON_Y_GAP
             buttonWidth = IPAD_PRO10_PORTRAIT_BUTTON_WIDTH
             buttonHeight = IPAD_PRO10_PORTRAIT_BUTTON_HEIGHT
+            formulaWebView?.frame = CGRect(x: IPAD_PRO10_PORTRAIT_FORMULA_X_OFFSET,
+                                           y: IPAD_PRO10_PORTRAIT_FORMULA_Y_OFFSET,
+                                           width: IPAD_PRO10_PORTRAIT_FORMULA_WIDTH,
+                                           height: IPAD_PRO10_PORTRAIT_FORMULA_HEIGHT)
 
         case (.pad,1112.0,false): // iPad Pro 10" Landscape
-            buttonXOffset = IPAD_LANDSCAPE_BUTTON_X_OFFSET
-            buttonYOffset = IPAD_LANDSCAPE_BUTTON_Y_OFFSET
-            xGap = IPAD_LANDSCAPE_BUTTON_X_GAP
-            yGap = IPAD_LANDSCAPE_BUTTON_Y_GAP
+            buttonXOffset = IPAD_PRO10_LANDSCAPE_BUTTON_X_OFFSET
+            buttonYOffset = IPAD_PRO10_LANDSCAPE_BUTTON_Y_OFFSET
+            xGap = IPAD_PRO10_LANDSCAPE_BUTTON_X_GAP
+            yGap = IPAD_PRO10_LANDSCAPE_BUTTON_Y_GAP
             buttonWidth = IPAD_PRO10_LANDSCAPE_BUTTON_WIDTH
             buttonHeight = IPAD_PRO10_LANDSCAPE_BUTTON_HEIGHT
+            formulaWebView?.frame = CGRect(x: IPAD_PRO10_LANDSCAPE_FORMULA_X_OFFSET,
+                                           y: IPAD_PRO10_LANDSCAPE_FORMULA_Y_OFFSET,
+                                           width: IPAD_PRO10_LANDSCAPE_FORMULA_WIDTH,
+                                           height: IPAD_PRO10_LANDSCAPE_FORMULA_HEIGHT)
 
         case (.pad,1366.0,true): // iPad Pro 12" Portrait
-            buttonXOffset = IPAD_PORTRAIT_BUTTON_X_OFFSET
-            buttonYOffset = IPAD_PORTRAIT_BUTTON_Y_OFFSET
-            xGap = IPAD_PORTRAIT_BUTTON_X_GAP
-            yGap = IPAD_PORTRAIT_BUTTON_Y_GAP
+            buttonXOffset = IPAD_PRO12_PORTRAIT_BUTTON_X_OFFSET
+            buttonYOffset = IPAD_PRO12_PORTRAIT_BUTTON_Y_OFFSET
+            xGap = IPAD_PRO12_PORTRAIT_BUTTON_X_GAP
+            yGap = IPAD_PRO12_PORTRAIT_BUTTON_Y_GAP
             buttonWidth = IPAD_PRO12_PORTRAIT_BUTTON_WIDTH
             buttonHeight = IPAD_PRO12_PORTRAIT_BUTTON_HEIGHT
+            formulaWebView?.frame = CGRect(x: IPAD_PRO12_PORTRAIT_FORMULA_X_OFFSET,
+                                           y: IPAD_PRO12_PORTRAIT_FORMULA_Y_OFFSET,
+                                           width: IPAD_PRO12_PORTRAIT_FORMULA_WIDTH,
+                                           height: IPAD_PRO12_PORTRAIT_FORMULA_HEIGHT)
 
         case (.pad,1366.0,false): // iPad Pro 12" Landscape
-            buttonXOffset = IPAD_LANDSCAPE_BUTTON_X_OFFSET
-            buttonYOffset = IPAD_LANDSCAPE_BUTTON_Y_OFFSET
-            xGap = IPAD_LANDSCAPE_BUTTON_X_GAP
-            yGap = IPAD_LANDSCAPE_BUTTON_Y_GAP
+            buttonXOffset = IPAD_PRO12_LANDSCAPE_BUTTON_X_OFFSET
+            buttonYOffset = IPAD_PRO12_LANDSCAPE_BUTTON_Y_OFFSET
+            xGap = IPAD_PRO12_LANDSCAPE_BUTTON_X_GAP
+            yGap = IPAD_PRO12_LANDSCAPE_BUTTON_Y_GAP
             buttonWidth = IPAD_PRO12_LANDSCAPE_BUTTON_WIDTH
             buttonHeight = IPAD_PRO12_LANDSCAPE_BUTTON_HEIGHT
+            formulaWebView?.frame = CGRect(x: IPAD_PRO12_LANDSCAPE_FORMULA_X_OFFSET,
+                                           y: IPAD_PRO12_LANDSCAPE_FORMULA_Y_OFFSET,
+                                           width: IPAD_PRO12_LANDSCAPE_FORMULA_WIDTH,
+                                           height: IPAD_PRO12_LANDSCAPE_FORMULA_HEIGHT)
 
             
         default:
@@ -471,14 +717,6 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate, MFKBDel
         formulaWebView?.contentScaleFactor = 1.0
         formulaWebView?.backgroundColor = .clear //UIColor(red: 1.0, green: 1.0, blue: 0.9, alpha: 1.0)
         
-        switch UIDevice.current.userInterfaceIdiom {
-        case .phone:
-            formulaWebView?.frame = CGRect(x: 50, y: 5, width: 320, height: 100)
-        case .pad:
-            formulaWebView?.frame = CGRect(x: 100, y: 5, width: 660, height: 110)
-        default:
-            formulaWebView?.frame = CGRect.zero
-        }
             
         formulaWebView?.layer.borderColor = UIColor.black.cgColor
         formulaWebView?.layer.borderWidth = 1.0
@@ -493,7 +731,7 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate, MFKBDel
         myTextView = UITextView()
         myTextView.delegate = self
         
-        setupButtonGeometry()
+        setupGeometry()
         setupButtons()
         
         view.addSubview(buttonDot)
