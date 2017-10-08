@@ -724,7 +724,7 @@
 				CODE_SIGN_ENTITLEMENTS = MathQuillMessages/MathQuillMessages.entitlements;
 				DEVELOPMENT_TEAM = 8T6F76KZ56;
 				INFOPLIST_FILE = MathQuillMessages/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = BH.MathQuillMessages;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -747,7 +747,7 @@
 				CODE_SIGN_ENTITLEMENTS = MathQuillMessages/MathQuillMessages.entitlements;
 				DEVELOPMENT_TEAM = 8T6F76KZ56;
 				INFOPLIST_FILE = MathQuillMessages/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = BH.MathQuillMessages;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -829,7 +829,7 @@
 				CODE_SIGN_ENTITLEMENTS = MathQuillKeyboard/MathQuillKeyboard.entitlements;
 				DEVELOPMENT_TEAM = 8T6F76KZ56;
 				INFOPLIST_FILE = MathQuillKeyboard/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = BH.MathQuillMessages.MathQuillKeyboard;
@@ -852,7 +852,7 @@
 				CODE_SIGN_ENTITLEMENTS = MathQuillKeyboard/MathQuillKeyboard.entitlements;
 				DEVELOPMENT_TEAM = 8T6F76KZ56;
 				INFOPLIST_FILE = MathQuillKeyboard/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = BH.MathQuillMessages.MathQuillKeyboard;

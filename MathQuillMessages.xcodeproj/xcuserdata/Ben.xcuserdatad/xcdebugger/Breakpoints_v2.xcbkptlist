@@ -38,43 +38,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MathQuillKeyboard/KeyboardViewController.swift"
-            timestampString = "529162858.10314"
+            timestampString = "529168409.1449"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "306"
-            endingLineNumber = "306"
-            landmarkName = "setupButtonGeometry()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MathQuillKeyboard/KeyboardViewController.swift"
-            timestampString = "529162858.103836"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "337"
-            endingLineNumber = "337"
-            landmarkName = "setupButtonGeometry()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MathQuillKeyboard/KeyboardViewController.swift"
-            timestampString = "529162858.104262"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "344"
-            endingLineNumber = "344"
+            startingLineNumber = "323"
+            endingLineNumber = "323"
             landmarkName = "setupButtonGeometry()"
             landmarkType = "7">
          </BreakpointContent>
@@ -86,12 +54,44 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../MuFuKeyboardButton/MuFuKeyboardButtonDetailView.swift"
-            timestampString = "529162858.104596"
+            timestampString = "529168409.145853"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "375"
             endingLineNumber = "375"
             landmarkName = "drawInputOptionsView()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MathQuillKeyboard/KeyboardViewController.swift"
+            timestampString = "529168409.146101"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "2315"
+            endingLineNumber = "2315"
+            landmarkName = "grabWebView()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MathQuillKeyboard/KeyboardViewController.swift"
+            timestampString = "529168409.146454"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "2269"
+            endingLineNumber = "2269"
+            landmarkName = "isOpenAccessGranted()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

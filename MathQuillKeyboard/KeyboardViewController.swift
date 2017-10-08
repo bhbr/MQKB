@@ -14,12 +14,29 @@ let SPECIAL_BUTTON_BG_COLOR: UIColor = UIColor(red: 0.7, green: 0.7, blue: 0.7, 
 let SPECIAL_BUTTON_HIGHLIGHT_BG_COLOR: UIColor = .white
 let ARROW_BUTTON_BG_COLOR: UIColor = UIColor(red: 0.4, green: 0.4, blue: 0.4, alpha: 1.0)
 let COPY_BUTTON_COLOR: UIColor = UIColor(red: 0.9, green: 0.6, blue: 0.0, alpha: 1.0)
+let COPY_BUTTON_HIGHLIGHT_COLOR: UIColor = UIColor(red: 0.45, green: 0.3, blue: 0.0, alpha: 1.0)
 let IMAGE_PADDING : CGFloat = 50
+
+let IPHONE_PORTRAIT_BUTTON_X_OFFSET: CGFloat = 7.0
+let IPHONE_PORTRAIT_BUTTON_Y_OFFSET: CGFloat = 110.0
+let IPHONE_PORTRAIT_BUTTON_X_GAP: CGFloat = 3.0
+let IPHONE_PORTRAIT_BUTTON_Y_GAP: CGFloat = 3.0
 
 let IPAD_PORTRAIT_BUTTON_X_OFFSET: CGFloat = 12.0
 let IPAD_PORTRAIT_BUTTON_Y_OFFSET: CGFloat = 120.0
 let IPAD_PORTRAIT_BUTTON_X_GAP: CGFloat = 12.0
 let IPAD_PORTRAIT_BUTTON_Y_GAP: CGFloat = 8.0
+
+let IPHONE_LANDSCAPE_BUTTON_X_OFFSET: CGFloat = 10.0
+let IPHONE_LANDSCAPE_BUTTON_Y_OFFSET: CGFloat = 10.0
+let IPHONE_LANDSCAPE_BUTTON_X_GAP: CGFloat = 3.0
+let IPHONE_LANDSCAPE_BUTTON_Y_GAP: CGFloat = 3.0
+
+let IPAD_LANDSCAPE_BUTTON_X_OFFSET: CGFloat = 12.0
+let IPAD_LANDSCAPE_BUTTON_Y_OFFSET: CGFloat = 120.0
+let IPAD_LANDSCAPE_BUTTON_X_GAP: CGFloat = 12.0
+let IPAD_LANDSCAPE_BUTTON_Y_GAP: CGFloat = 8.0
+
 
 // MARK: UIImage
 
@@ -307,28 +324,71 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate, MFKBDel
         switch (UIDevice.current.userInterfaceIdiom, screenSize, myTrue) { //UIDevice.current.orientation.isPortrait) {
             
         case (.phone, 568.0,true): // iPhone 5,5C,5S,SE Portrait
-            NSLog("tbd")
+            buttonXOffset = IPHONE_PORTRAIT_BUTTON_X_OFFSET
+            buttonYOffset = IPHONE_PORTRAIT_BUTTON_Y_OFFSET
+            xGap = IPHONE_PORTRAIT_BUTTON_X_GAP
+            yGap = IPHONE_PORTRAIT_BUTTON_Y_GAP
+            buttonWidth = IPHONE5_PORTRAIT_BUTTON_WIDTH
+            buttonHeight = IPHONE5_PORTRAIT_BUTTON_HEIGHT
 
         case (.phone, 568.0,false): // iPhone 5,5C,5S,SE Landscape
-            NSLog("tbd")
+            buttonXOffset = IPHONE_LANDSCAPE_BUTTON_X_OFFSET
+            buttonYOffset = IPHONE_LANDSCAPE_BUTTON_Y_OFFSET
+            xGap = IPHONE_LANDSCAPE_BUTTON_X_GAP
+            yGap = IPHONE_LANDSCAPE_BUTTON_Y_GAP
+            buttonWidth = IPHONE5_LANDSCAPE_BUTTON_WIDTH
+            buttonHeight = IPHONE5_LANDSCAPE_BUTTON_HEIGHT
 
         case (.phone, 667.0, true): // iPhone 6,6S,7,8 Portrait
-            NSLog("tbd")
+            buttonXOffset = IPHONE_PORTRAIT_BUTTON_X_OFFSET
+            buttonYOffset = IPHONE_PORTRAIT_BUTTON_Y_OFFSET
+            xGap = IPHONE_PORTRAIT_BUTTON_X_GAP
+            yGap = IPHONE_PORTRAIT_BUTTON_Y_GAP
+            buttonWidth = IPHONE6_PORTRAIT_BUTTON_WIDTH
+            buttonHeight = IPHONE6_PORTRAIT_BUTTON_HEIGHT
+
 
         case (.phone, 667.0, false): // iPhone 6,6S,7,8 Landscape
-            NSLog("tbd")
+            buttonXOffset = IPHONE_LANDSCAPE_BUTTON_X_OFFSET
+            buttonYOffset = IPHONE_LANDSCAPE_BUTTON_Y_OFFSET
+            xGap = IPHONE_LANDSCAPE_BUTTON_X_GAP
+            yGap = IPHONE_LANDSCAPE_BUTTON_Y_GAP
+            buttonWidth = IPHONE6_LANDSCAPE_BUTTON_WIDTH
+            buttonHeight = IPHONE6_LANDSCAPE_BUTTON_HEIGHT
 
         case (.phone, 736.0,true): // iPhone 6+,6S+,7+,8+ Portrait
-            NSLog("tbd")
+            buttonXOffset = IPHONE_PORTRAIT_BUTTON_X_OFFSET
+            buttonYOffset = IPHONE_PORTRAIT_BUTTON_Y_OFFSET
+            xGap = IPHONE_PORTRAIT_BUTTON_X_GAP
+            yGap = IPHONE_PORTRAIT_BUTTON_Y_GAP
+            buttonWidth = IPHONE6P_PORTRAIT_BUTTON_WIDTH
+            buttonHeight = IPHONE6P_PORTRAIT_BUTTON_HEIGHT
+
 
         case (.phone,736.0,false): // iPhone 6+,6S+,7+,8+ Landscape
-            NSLog("tbd")
+            buttonXOffset = IPHONE_LANDSCAPE_BUTTON_X_OFFSET
+            buttonYOffset = IPHONE_LANDSCAPE_BUTTON_Y_OFFSET
+            xGap = IPHONE_LANDSCAPE_BUTTON_X_GAP
+            yGap = IPHONE_LANDSCAPE_BUTTON_Y_GAP
+            buttonWidth = IPHONE6P_LANDSCAPE_BUTTON_WIDTH
+            buttonHeight = IPHONE6P_LANDSCAPE_BUTTON_HEIGHT
 
         case (.phone,812.0,true): // iPhone X Portrait
-            NSLog("tbd")
-
+            buttonXOffset = IPHONE_PORTRAIT_BUTTON_X_OFFSET
+            buttonYOffset = IPHONE_PORTRAIT_BUTTON_Y_OFFSET
+            xGap = IPHONE_PORTRAIT_BUTTON_X_GAP
+            yGap = IPHONE_PORTRAIT_BUTTON_Y_GAP
+            buttonWidth = IPHONEX_PORTRAIT_BUTTON_WIDTH
+            buttonHeight = IPHONEX_PORTRAIT_BUTTON_HEIGHT
+            
         case (.phone,812.0,false): // iPhone X Landscape
-            NSLog("tbd")
+            buttonXOffset = IPHONE_LANDSCAPE_BUTTON_X_OFFSET
+            buttonYOffset = IPHONE_LANDSCAPE_BUTTON_Y_OFFSET
+            xGap = IPHONE_LANDSCAPE_BUTTON_X_GAP
+            yGap = IPHONE_LANDSCAPE_BUTTON_Y_GAP
+            buttonWidth = IPHONEX_LANDSCAPE_BUTTON_WIDTH
+            buttonHeight = IPHONEX_LANDSCAPE_BUTTON_HEIGHT
+
 
         
         
@@ -338,31 +398,57 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate, MFKBDel
             buttonYOffset = IPAD_PORTRAIT_BUTTON_Y_OFFSET
             xGap = IPAD_PORTRAIT_BUTTON_X_GAP
             yGap = IPAD_PORTRAIT_BUTTON_Y_GAP
-            buttonWidth = IPAD_PORTRAIT_BUTTON_WIDTH
-            buttonHeight = IPAD_PORTRAIT_BUTTON_HEIGHT
-            buttonXShift = buttonWidth + xGap
-            buttonYShift = buttonHeight + yGap
+            buttonWidth = IPAD_AIR_PORTRAIT_BUTTON_WIDTH
+            buttonHeight = IPAD_AIR_PORTRAIT_BUTTON_HEIGHT
 
         case (.pad,1024.0,false): // iPad Air/Mini Landscape
-            NSLog("tbd")
+            buttonXOffset = IPAD_LANDSCAPE_BUTTON_X_OFFSET
+            buttonYOffset = IPAD_LANDSCAPE_BUTTON_Y_OFFSET
+            xGap = IPAD_LANDSCAPE_BUTTON_X_GAP
+            yGap = IPAD_LANDSCAPE_BUTTON_Y_GAP
+            buttonWidth = IPAD_AIR_LANDSCAPE_BUTTON_WIDTH
+            buttonHeight = IPAD_AIR_LANDSCAPE_BUTTON_HEIGHT
 
         case (.pad,1112.0,true): // iPad Pro 10" Portrait
-            NSLog("tbd")
+            buttonXOffset = IPAD_PORTRAIT_BUTTON_X_OFFSET
+            buttonYOffset = IPAD_PORTRAIT_BUTTON_Y_OFFSET
+            xGap = IPAD_PORTRAIT_BUTTON_X_GAP
+            yGap = IPAD_PORTRAIT_BUTTON_Y_GAP
+            buttonWidth = IPAD_PRO10_PORTRAIT_BUTTON_WIDTH
+            buttonHeight = IPAD_PRO10_PORTRAIT_BUTTON_HEIGHT
 
         case (.pad,1112.0,false): // iPad Pro 10" Landscape
-            NSLog("tbd")
+            buttonXOffset = IPAD_LANDSCAPE_BUTTON_X_OFFSET
+            buttonYOffset = IPAD_LANDSCAPE_BUTTON_Y_OFFSET
+            xGap = IPAD_LANDSCAPE_BUTTON_X_GAP
+            yGap = IPAD_LANDSCAPE_BUTTON_Y_GAP
+            buttonWidth = IPAD_PRO10_LANDSCAPE_BUTTON_WIDTH
+            buttonHeight = IPAD_PRO10_LANDSCAPE_BUTTON_HEIGHT
 
         case (.pad,1366.0,true): // iPad Pro 12" Portrait
-            NSLog("tbd")
+            buttonXOffset = IPAD_PORTRAIT_BUTTON_X_OFFSET
+            buttonYOffset = IPAD_PORTRAIT_BUTTON_Y_OFFSET
+            xGap = IPAD_PORTRAIT_BUTTON_X_GAP
+            yGap = IPAD_PORTRAIT_BUTTON_Y_GAP
+            buttonWidth = IPAD_PRO12_PORTRAIT_BUTTON_WIDTH
+            buttonHeight = IPAD_PRO12_PORTRAIT_BUTTON_HEIGHT
 
         case (.pad,1366.0,false): // iPad Pro 12" Landscape
-            NSLog("tbd")
+            buttonXOffset = IPAD_LANDSCAPE_BUTTON_X_OFFSET
+            buttonYOffset = IPAD_LANDSCAPE_BUTTON_Y_OFFSET
+            xGap = IPAD_LANDSCAPE_BUTTON_X_GAP
+            yGap = IPAD_LANDSCAPE_BUTTON_Y_GAP
+            buttonWidth = IPAD_PRO12_LANDSCAPE_BUTTON_WIDTH
+            buttonHeight = IPAD_PRO12_LANDSCAPE_BUTTON_HEIGHT
 
             
         default:
             NSLog("screen size and orientation undetected!")
             break
         }
+        
+        buttonXShift = buttonWidth + xGap
+        buttonYShift = buttonHeight + yGap
     
     }
 
@@ -387,9 +473,9 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate, MFKBDel
         
         switch UIDevice.current.userInterfaceIdiom {
         case .phone:
-            formulaWebView?.frame = CGRect(x: 100, y: 20, width: 300, height: 100)
+            formulaWebView?.frame = CGRect(x: 50, y: 5, width: 320, height: 100)
         case .pad:
-            formulaWebView?.frame = CGRect(x: 100, y: 0, width: 660, height: 110)
+            formulaWebView?.frame = CGRect(x: 100, y: 5, width: 660, height: 110)
         default:
             formulaWebView?.frame = CGRect.zero
         }
@@ -1080,6 +1166,7 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate, MFKBDel
         buttonCopy.displayImageView.center.y = 0.5 * buttonCopy.frame.size.height
         buttonCopy.showMagnifier = false
         buttonCopy.keyColor = COPY_BUTTON_COLOR
+        buttonCopy.keyHighlightedColor = COPY_BUTTON_HIGHLIGHT_COLOR
         buttonCopy.displayLabel.textColor = .white
         //buttonCopy.displayType = .Label
         buttonCopy.delegate = self
@@ -1510,6 +1597,7 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate, MFKBDel
 
 
         case "Copy":
+            NSLog("copying")
             //checkForOpenAccessAlert()
             copyFormulaImage()
             shiftToggle = false
@@ -2180,8 +2268,8 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate, MFKBDel
     func isOpenAccessGranted() -> Bool {
         if #available(iOS 10.0, iOSApplicationExtension 10.0, *) {
             let value = UIPasteboard.general.string
-            UIPasteboard.general.string = "checkOpenedAccess"
-            //UIPasteboard.general.image = image()
+            //UIPasteboard.general.string = "Full Access needs to be enabled"
+            UIPasteboard.general.image = image()
             
             let hasString = UIPasteboard.general.string != nil
             if let _ = value, hasString {
@@ -2210,34 +2298,42 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate, MFKBDel
 //
 //
     func copyFormulaImage() {
+        NSLog(formulaWebView.debugDescription)
         formulaWebView?.evaluateJavaScript("answerMathField.blur();", completionHandler: nil)
         self.perform(#selector(grabWebView), with: nil, afterDelay: 0.5)
-        formulaWebView?.evaluateJavaScript("answerMathField.focus();", completionHandler: nil)
     }
 
     @objc func grabWebView() {
+        NSLog("grabbing web view")
         let formulaImage = image()
         let imageData = UIImagePNGRepresentation(formulaImage)
         let pasteBoard = UIPasteboard.general
         pasteBoard.setData(imageData!, forPasteboardType:"public.image")
 
-        if self.isOpenAccessGranted() {
-            print("open access")
-        } else {
-            print("no open access")
-        }
+        pasteBoard.image = formulaImage
+        
+//        if self.isOpenAccessGranted() {
+//            print("open access")
+//        } else {
+//            print("no open access")
+//        }
     }
 
     func image() -> UIImage {
 
+        
         UIGraphicsBeginImageContextWithOptions((formulaWebView?.frame.size)!,false, UIScreen.main.scale)
         let ctx = UIGraphicsGetCurrentContext()
         ctx?.setFillColor(UIColor.white.cgColor)
+        formulaWebView?.layer.borderWidth = 0.0
         formulaWebView?.layer.render(in: ctx!)
+        formulaWebView?.layer.borderWidth = 1.0
         let image = UIGraphicsGetImageFromCurrentImageContext()
 
         let trimmedImage = (image?.trim())!
         let squaredImage = trimmedImage.padToSquare()//.imageWithColor(newColor: UIColor(red: 1.0, green: 1.0, blue: 0.9, alpha: 0.5))!
+        
+        formulaWebView?.evaluateJavaScript("answerMathField.focus();", completionHandler: nil)
 
         return squaredImage
     }
