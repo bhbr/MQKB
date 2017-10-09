@@ -202,16 +202,15 @@ let IPAD_PRO10_LANDSCAPE_FORMULA_HEIGHT: CGFloat = 3.0
 
 
 
-
 let IPAD_PRO12_PORTRAIT_BUTTON_X_OFFSET: CGFloat = 7.0
-let IPAD_PRO12_PORTRAIT_BUTTON_Y_OFFSET: CGFloat = 195.0
+let IPAD_PRO12_PORTRAIT_BUTTON_Y_OFFSET: CGFloat = 145.0
 let IPAD_PRO12_PORTRAIT_BUTTON_X_GAP: CGFloat = 3.0
 let IPAD_PRO12_PORTRAIT_BUTTON_Y_GAP: CGFloat = 3.0
 
 let IPAD_PRO12_PORTRAIT_FORMULA_X_OFFSET: CGFloat = 120.0
 let IPAD_PRO12_PORTRAIT_FORMULA_Y_OFFSET: CGFloat = 0.0
 let IPAD_PRO12_PORTRAIT_FORMULA_WIDTH: CGFloat = 900.0
-let IPAD_PRO12_PORTRAIT_FORMULA_HEIGHT: CGFloat = 190.0
+let IPAD_PRO12_PORTRAIT_FORMULA_HEIGHT: CGFloat = 140.0
 
 
 
@@ -776,7 +775,7 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate, MFKBDel
         setupButtonShift()
         setupButtonUp()
         setupButtonDelete()
-        
+
     // middle row
         setupButtonDigits()
         setupButtonEquals()
@@ -791,7 +790,7 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate, MFKBDel
         setupButtonLeft()
         setupButtonDown()
         setupButtonRight()
-        
+
     // lower row
         setupButtonLower()
         setupButtonUpper()
@@ -1358,7 +1357,9 @@ class KeyboardViewController: UIInputViewController, UITextViewDelegate, MFKBDel
         buttonCalc.optionsRowLengths = [4, 5]
         buttonCalc.optionsRowOffsets = [0.5, 0.0]
         buttonCalc.displayType = .Label
-        buttonCalc.displayLabel.text = "∫"
+        //buttonCalc.displayLabel.text = "∫"
+        buttonCalc.showMagnifier = false
+        buttonCalc.optionsViewDelay = 0.0
         buttonCalc.delegate = self
         buttonCalc.magnifiedDisplayLabelFont = .systemFont(ofSize: 30.0)
     }
